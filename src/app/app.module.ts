@@ -8,6 +8,7 @@ import {routes} from './routes';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationDriver} from '@angular/animations/browser/src/render/animation_driver';
 import { IndexComponent } from './index/index.component';
+import {MatIconModule, MatListModule, MatSidenavModule, MatTabsModule, MatToolbarModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,12 @@ import { IndexComponent } from './index/index.component';
     BrowserModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    MatTabsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
