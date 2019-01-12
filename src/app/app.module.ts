@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { StamBladComponent } from './stam-blad/stam-blad.component';
-import {RouterModule, RouterOutlet} from '@angular/router';
+import {RouterModule} from '@angular/router';
 import {routes} from './routes';
-import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { IndexComponent } from './index/index.component';
 import {
@@ -20,6 +20,8 @@ import {
 import { MediaPlanComponent } from './media-plan/media-plan.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AdresseStambladComponent } from './adresse-stamblad/adresse-stamblad.component';
+import { StamdataService} from  'services/stamdata.service';
+import { StamBladOverSigtComponent } from './stam-blad-over-sigt/stam-blad-over-sigt.component';
 
 
 
@@ -30,6 +32,7 @@ import { AdresseStambladComponent } from './adresse-stamblad/adresse-stamblad.co
     IndexComponent,
     MediaPlanComponent,
     AdresseStambladComponent,
+    StamBladOverSigtComponent,
 
   ],
   imports: [
