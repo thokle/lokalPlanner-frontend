@@ -20,7 +20,7 @@ import {
 import { MediaPlanComponent } from './media-plan/media-plan.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AdresseStambladComponent } from './adresse-stamblad/adresse-stamblad.component';
-import { StamdataService} from  'services/stamdata.service';
+import { StamdataService } from  './services/stamdata.service';
 import { StamBladOverSigtComponent } from './stam-blad-over-sigt/stam-blad-over-sigt.component';
 
 
@@ -52,7 +52,7 @@ import { StamBladOverSigtComponent } from './stam-blad-over-sigt/stam-blad-over-
     MatSelectModule,
     MatGridListModule
   ],
-  providers: [],
+  providers: [StamdataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

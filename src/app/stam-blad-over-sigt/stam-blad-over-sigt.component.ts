@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {StamdataService} from '../services/stamdata.service';
 
 @Component({
   selector: 'app-stam-blad-over-sigt',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StamBladOverSigtComponent implements OnInit {
 
-  constructor() { }
+  constructor(private  st: StamdataService) { }
 
   ngOnInit() {
   }
+
+
+
+
 
 }

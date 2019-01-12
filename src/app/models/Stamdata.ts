@@ -1,4 +1,15 @@
-import {MedlGruppe} from ''
+import {MedlGruppe} from 'src/app/models/MedlGruppe';
+import {Dage1} from './Dage1';
+import {DelOmraade} from './DelOmraade';
+import {GeoKode} from './GeoKode';
+import {HovedGruppe} from './HovedGruppe';
+import {PostNr} from './PostNr';
+import {Region} from './Region';
+import {Prisers} from './Prisers';
+import {PrislisterPrBladPrUges} from './PrislisterPrBladPrUges';
+import {PrislisterPrBladÅr} from './PrislisterPrBladÅr';
+import {MedieplanLinjer} from './MedieplanLinjer';
+import {Dage} from './Dage';
 
 export interface StamData {
 
