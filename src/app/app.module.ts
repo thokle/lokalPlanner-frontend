@@ -6,20 +6,48 @@ import { StamBladComponent } from './stam-blad/stam-blad.component';
 import {RouterModule, RouterOutlet} from '@angular/router';
 import {routes} from './routes';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {NoopAnimationDriver} from '@angular/animations/browser/src/render/animation_driver';
+
 import { IndexComponent } from './index/index.component';
+import {
+  MatFormFieldModule,
+  MatIconModule,
+  MatListModule,
+  MatSidenavModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatInputModule, MatOptionModule, MatSelectModule, MatGridListModule
+} from '@angular/material';
+import { MediaPlanComponent } from './media-plan/media-plan.component';
+import {HttpClientModule} from '@angular/common/http';
+import { AdresseStambladComponent } from './adresse-stamblad/adresse-stamblad.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     StamBladComponent,
-    IndexComponent
+    IndexComponent,
+    MediaPlanComponent,
+    AdresseStambladComponent,
+
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    MatInputModule,
+    MatTabsModule,
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatListModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
