@@ -18,7 +18,7 @@ export class StamdataService {
 
   public getStamBladById(bladid: number): Observable<StamData> {
 
-   let  url = this.baseUrl + `/stamblad/${bladid}`;
+   const  url = this.baseUrl + `/stamblad/${bladid}`;
     return this.http.get<StamData>(url).pipe();
   }
 

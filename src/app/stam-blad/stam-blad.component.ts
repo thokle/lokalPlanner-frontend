@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {StamdataService} from '../services/stamdata.service';
 
 @Component({
   selector: 'app-stam-blad',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StamBladComponent implements OnInit {
 
-  constructor() { }
+  constructor(private st: StamdataService) {
+      }
 
   ngOnInit() {
+    this.st.getStamBladById(2).subscribe(value => console.log(value));
   }
 
 }
