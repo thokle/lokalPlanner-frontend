@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {StamData} from '../models/Stamdata';
+import {environment} from '../../environments/environment';
 
 
 @Injectable({
@@ -9,15 +10,16 @@ import {StamData} from '../models/Stamdata';
 })
 export class StamdataService {
 
-
+  baseUrl = environment.url
 
   constructor(public  http: HttpClient) {
   }
 
 
-  public getStamBladById(bladid: number): Observable<StamData[]> {
+  public getStamBladById(bladid: number): Observable<StamData> {
 
-    return this.http.get<StamData[]>('').pipe();
+   let  url = this.baseUrl + `/stamblad/${bladid}`;
+    return this.http.get<StamData>(url).pipe();
   }
 
 
