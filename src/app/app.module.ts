@@ -15,7 +15,7 @@ import {
   MatSidenavModule,
   MatTabsModule,
   MatToolbarModule,
-  MatInputModule, MatOptionModule, MatSelectModule, MatGridListModule
+  MatInputModule, MatOptionModule, MatSelectModule, MatGridListModule, MatButtonModule, MatMenuModule
 } from '@angular/material';
 import { MediaPlanComponent } from './media-plan/media-plan.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -45,6 +45,9 @@ import { StamBladOverSigtComponent } from './stam-blad-over-sigt/stam-blad-over-
     MatSidenavModule,
     MatFormFieldModule,
     MatListModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatTabsModule,
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,
