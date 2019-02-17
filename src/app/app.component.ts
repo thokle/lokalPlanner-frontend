@@ -1,5 +1,7 @@
 import {ChangeDetectorRef, Component, Input, OnDestroy} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
+import {getMatIconFailedToSanitizeLiteralError} from '@angular/material';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ export class AppComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
   name: String = 'Lokalplanner';
 
-  @Input()
+
  hide = false;
 
   private _mobileQueryListener: () => void;
@@ -26,11 +28,20 @@ export class AppComponent implements OnDestroy {
   }
 
   public showResultat() {
-   this.hide = true;
+    if(!this.hide) {
+      this.hide = true;
+    } else {
+      this.hide = false;
+    }
   }
 
-  public hideResultat() {
-    this.hide = false;
-  }
+  public hideResult() {
+    if (this.hide) {
+      this.hide = false;
+    }
+    setTimeout(function () {
+      this.hide = false;
+    }, 2000);
+}
 
 }

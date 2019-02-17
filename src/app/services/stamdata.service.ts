@@ -7,6 +7,7 @@ import {Dage} from '../models/Dage';
 import {Region} from '../models/Region';
 import {PostNrSoegning} from '../models/PostNrSoegning';
 import {GeoKode} from '../models/GeoKode';
+import {PostNr} from '../models/PostNr';
 
 const httpHeaders = {
   header: new HttpHeaders({
@@ -46,30 +47,30 @@ export class StamdataService {
   }
 
   public StamBladGeoCodes(): Observable<GeoKode[]> {
-    const url = this.baseUrl + '';
+    const url = this.baseUrl + `/stamblad/GeoCodes/`;
     return this.http.get<GeoKode[]>(url).pipe();
   }
 
 
-  public StamBladAllPostnr() {
+  public StamBladAllPostnr(): Observable<PostNr[]> {
       const url = this.baseUrl  + `/stamblad/allpostnr`;
-      
+      return this.http.get<PostNr[]>(url).pipe();
   }
 
   public StamBladPostnrSoeg(): Observable<PostNrSoegning[]> {
-    const url = this.baseUrl + '/stamblad/postnrsoegning';
+    const url = this.baseUrl + `/stamblad/postnrsoegning`;
     return this.http.get<PostNrSoegning[]>(url).pipe();
 
   }
 
   public StamBladRegions(): Observable<Region[]> {
-    const url = this.baseUrl + '';
+    const url = this.baseUrl + `/stamblad/regions`;
     return this.http.get<Region[]>(url).pipe();
 
   }
 
   public StamBladDage(): Observable<Dage[]> {
-    const url = this.baseUrl + '/stamblad/dage';
+    const url = this.baseUrl + `/stamblad/dage`;
     return this.http.get<Dage[]>(url).pipe();
   }
 
