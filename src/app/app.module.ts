@@ -15,13 +15,14 @@ import {
   MatSidenavModule,
   MatTabsModule,
   MatToolbarModule,
-  MatInputModule, MatOptionModule, MatSelectModule, MatGridListModule, MatButtonModule, MatMenuModule
+  MatInputModule, MatOptionModule, MatSelectModule, MatGridListModule, MatButtonModule, MatMenuModule, MatRadioModule, MatChipsModule
 } from '@angular/material';
 import { MediaPlanComponent } from './media-plan/media-plan.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AdresseStambladComponent } from './adresse-stamblad/adresse-stamblad.component';
 import { StamdataService } from  './services/stamdata.service';
 import { StamBladOverSigtComponent } from './stam-blad-over-sigt/stam-blad-over-sigt.component';
+import { StambladPaginatorComponent } from './stamblad-paginator/stamblad-paginator.component';
 
 
 
@@ -33,6 +34,7 @@ import { StamBladOverSigtComponent } from './stam-blad-over-sigt/stam-blad-over-
     MediaPlanComponent,
     AdresseStambladComponent,
     StamBladOverSigtComponent,
+    StambladPaginatorComponent,
 
   ],
   imports: [
@@ -42,6 +44,9 @@ import { StamBladOverSigtComponent } from './stam-blad-over-sigt/stam-blad-over-
     BrowserAnimationsModule,
     MatInputModule,
     MatTabsModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatChipsModule,
     MatSidenavModule,
     MatFormFieldModule,
     MatListModule,

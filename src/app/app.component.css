@@ -47,3 +47,9 @@ h1.example-app-name {
 .example-spacer {
   flex: 1 1 auto;
 }
+
+
+/deep/     .mat-toolbar.mat-primary  {
+
+  background-color: #43c5b9 !important;
+}
