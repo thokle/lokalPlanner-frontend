@@ -26,7 +26,7 @@
 /* DivTable.com */
 .divTable{
   display: table;
-  width: 60;
+  width: 60px;
 }
 .divTableRow {
   display: table-row;
@@ -70,5 +70,20 @@
 }
 
 .mat-list-base {
-  width: 300px !important;
+  width: 600px !important;
+  margin-right: 40px !important;
+}
+
+
+label {
+  width:100px;
+  clear:left;
+  text-align:right;
+  padding-right:0px;
+  padding-left: 0px;
+  right: 30px;
+}
+
+input, label {
+  float:left;
 }

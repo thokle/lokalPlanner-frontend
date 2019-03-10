@@ -5,7 +5,7 @@ import {StamData} from '../models/Stamdata';
 import {environment} from '../../environments/environment';
 import {Dage} from '../models/Dage';
 import {Region} from '../models/Region';
-import {PostNrSoegning} from '../models/PostNrSoegning';
+
 import {GeoKode} from '../models/GeoKode';
 import {PostNr} from '../models/PostNr';
 
@@ -19,7 +19,7 @@ const httpHeaders = {
 })
 export class StamdataService {
 
-  baseUrl = environment.url;
+  baseUrl = environment.url + environment.port;
 
 
   constructor(public  http: HttpClient) {
@@ -55,12 +55,6 @@ export class StamdataService {
   public StamBladAllPostnr(): Observable<PostNr[]> {
       const url = this.baseUrl  + `/stamblad/allpostnr`;
       return this.http.get<PostNr[]>(url).pipe();
-  }
-
-  public StamBladPostnrSoeg(): Observable<PostNrSoegning[]> {
-    const url = this.baseUrl + `/stamblad/postnrsoegning`;
-    return this.http.get<PostNrSoegning[]>(url).pipe();
-
   }
 
   public StamBladRegions(): Observable<Region[]> {

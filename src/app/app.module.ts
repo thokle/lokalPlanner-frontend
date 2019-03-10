@@ -15,7 +15,15 @@ import {
   MatSidenavModule,
   MatTabsModule,
   MatToolbarModule,
-  MatInputModule, MatOptionModule, MatSelectModule, MatGridListModule, MatButtonModule, MatMenuModule, MatRadioModule, MatChipsModule
+  MatInputModule,
+  MatOptionModule,
+  MatSelectModule,
+  MatGridListModule,
+  MatButtonModule,
+  MatMenuModule,
+  MatRadioModule,
+  MatChipsModule,
+  MatTableModule
 } from '@angular/material';
 import { MediaPlanComponent } from './media-plan/media-plan.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -23,6 +31,10 @@ import { AdresseStambladComponent } from './adresse-stamblad/adresse-stamblad.co
 import { StamdataService } from  './services/stamdata.service';
 import { StamBladOverSigtComponent } from './stam-blad-over-sigt/stam-blad-over-sigt.component';
 import { StambladPaginatorComponent } from './stamblad-paginator/stamblad-paginator.component';
+import {StamBladObserver} from './stam-blad-observer';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {PostNummerService} from './services/post-nummer.service';
+import {DateSupplierService} from './services/date-supplier.service';
 
 
 
@@ -47,9 +59,12 @@ import { StambladPaginatorComponent } from './stamblad-paginator/stamblad-pagina
     MatButtonModule,
     MatRadioModule,
     MatChipsModule,
+    MatTableModule,
     MatSidenavModule,
     MatFormFieldModule,
     MatListModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatMenuModule,
     MatTabsModule,
@@ -60,7 +75,8 @@ import { StambladPaginatorComponent } from './stamblad-paginator/stamblad-pagina
     MatSelectModule,
     MatGridListModule
   ],
-  providers: [StamdataService],
+  providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }
