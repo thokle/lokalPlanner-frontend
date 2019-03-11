@@ -28,13 +28,14 @@ import {
 import { MediaPlanComponent } from './media-plan/media-plan.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AdresseStambladComponent } from './adresse-stamblad/adresse-stamblad.component';
-import { StamdataService } from  './services/stamdata.service';
+import { StamdataService } from './services/stamdata.service';
 import { StamBladOverSigtComponent } from './stam-blad-over-sigt/stam-blad-over-sigt.component';
 import { StambladPaginatorComponent } from './stamblad-paginator/stamblad-paginator.component';
 import {StamBladObserver} from './stam-blad-observer';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PostNummerService} from './services/post-nummer.service';
 import {DateSupplierService} from './services/date-supplier.service';
+import {MatSnackBarModule} from '@angular/material/typings/esm5/snack-bar';
 
 
 
@@ -73,9 +74,9 @@ import {DateSupplierService} from './services/date-supplier.service';
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,
-    MatGridListModule
+    MatGridListModule, MatSnackBarModule
   ],
-  providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService],
+  providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, MatSnackBarModule],
   bootstrap: [AppComponent]
 
 })

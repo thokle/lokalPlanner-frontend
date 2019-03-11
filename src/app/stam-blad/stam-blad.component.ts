@@ -7,21 +7,31 @@ import {StamBladObserver} from '../stam-blad-observer';
 import {StamData} from '../models/Stamdata';
 import {PostNr} from '../models/PostNr';
 import {PostNummerService} from '../services/post-nummer.service';
-
+import {MatSnackBar} from '@angular/material';
+export  interface Month {
+  months: string;
+}
 @Component({
   selector: 'app-stam-blad',
   templateUrl: './stam-blad.component.html',
   styleUrls: ['./stam-blad.component.css']
 })
+
+
 export class StamBladComponent implements OnInit {
 
+  months: Month[] = [ {months: 'Januar'} , {months: 'Febuar'} , {months: 'Marts'} , {months: 'April'}
+  , {months: 'Maj'} , {months: 'Juni '} , {months: 'Juli'} , {months: 'August'} , {months: 'September'} ,
+    {months: 'Oktoner '} , {months: 'November'} , {months: 'December'}];
+
+  years: number[] = [];
   dage: Dage[];
   postNr: PostNr[];
   byNavn: PostNr[];
   stamBladForm: FormGroup;
   selectedPostNr;
   selectBynavn;
-  constructor(private st: StamdataService, private obs: StamBladObserver, public fb: FormBuilder, private ps: PostNummerService) {
+  constructor(private st: StamdataService, private obs: StamBladObserver, public fb: FormBuilder, private ps: PostNummerService, private snack: MatSnackBar) {
 this.stamBladForm = this.fb.group({
   stamDataArray: this.initStamData()
 });
@@ -33,6 +43,7 @@ this.stamBladForm = this.fb.group({
    // this.st.getStamBladById(2).subscribe(value => console.log(value));
     this.visStamBlad();
    // this.getAllPostNrData();
+    this.setYear();
   }
 
   public Dage() {
@@ -77,7 +88,7 @@ this.stamBladForm = this.fb.group({
 
 
 console.log('Opret stamblad');
-
+this.snack.open('Stamblad opdateret' , 'action' , { duration: 2000} );
     const stamBlad: StamData = {
       Adresse: this.stamBladForm.get('stamdataArray').get('addresse').value,
       Adresse2: this.stamBladForm.get('stamdataArray').get('addresse2').value,
@@ -116,6 +127,12 @@ console.log('Opret stamblad');
       this.byNavn = data;
       this.postNr = data;
     });
+  }
+
+  public setYear() {
+    for ( let i = 1970; i <= new Date().getFullYear(); i++) {
+      this.years.push(i);
+    }
   }
 
 }

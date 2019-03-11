@@ -26,7 +26,7 @@
 /* DivTable.com */
 .divTable{
   display: table;
-  width: 60px;
+  width: 100px;
 }
 .divTableRow {
   display: table-row;
@@ -39,7 +39,7 @@
   border: 0px solid #999999;
   display: table-cell;
   padding: 3px 6px;
-  width: 100px !important;
+  width: 120px !important;
 }
 .divTableHeading {
   background-color: #EEE;
@@ -79,8 +79,8 @@ label {
   width:100px;
   clear:left;
   text-align:right;
-  padding-right:0px;
-  padding-left: 0px;
+  padding-right:30px !important;
+  padding-left: 3px !important;
   right: 30px;
 }
 

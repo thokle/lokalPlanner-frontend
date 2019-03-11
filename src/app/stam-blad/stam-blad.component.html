@@ -2,9 +2,10 @@
   <app-stamblad-paginator [num]="0" [minNumber]="0" [maxnunber]="10"></app-stamblad-paginator>
 </div>
 <div>
-  <button (click)="OpretStamBlad()"> <mat-icon>add</mat-icon></button>
+  <button mat-icon-button (click)="OpretStamBlad()"> <mat-icon>add_circle</mat-icon></button>
 </div>
   <form [formGroup]="stamBladForm"  (ngSubmit)="OpretStamBlad()">
+    <div style="width: 100%; margin-bottom: 40px !important;">
 <mat-tab-group >
 
   <mat-tab label='Stamdata'>
@@ -114,9 +115,6 @@
               </mat-chip-list>
             </mat-list-item>
               <mat-list-item>
-
-
-
                 <mat-radio-group >
                   <mat-radio-button value="1">DD</mat-radio-button>
                   <mat-radio-button value="2">DL</mat-radio-button>
@@ -126,9 +124,10 @@
               </mat-list-item>
               <mat-list-item>
                 <label>Medlem Siden</label>
-                <mat-select id="medlemSidenAAr" formControlName="medlemSidenAAr" ><mat-option>Månede</mat-option></mat-select>
+                <mat-select id="medlemSidenAAr" formControlName="medlemSidenAAr" ><mat-option *ngFor="let mo of months" [value]="mo.months">{{mo.months}}</mat-option></mat-select>
 
-                <mat-select id="medlemnSidenMd"  formControlName="medlemnSidenMd"><mat-option>År</mat-option></mat-select>
+                <mat-select id="medlemnSidenMd"  formControlName="medlemnSidenMd" ><mat-option *ngFor="let y of years" value="y"
+                >{{y}}</mat-option></mat-select>
               </mat-list-item>
               <mat-list-item>
                 <label for="ejerforhold">Ejerforhold</label>
@@ -176,6 +175,8 @@
   <mat-tab label="Udsending"></mat-tab>
 
 </mat-tab-group>
-  <div style="float: right; padding-bottom: 100px;" ><button mat-raised-button  type="submit">Opdatere</button></div>
+      <div style="float: right !important; padding-right: 40% !important; " ><button mat-raised-button  type="submit">Opdatere</button></div>
+    </div>
+
 </form>
 
