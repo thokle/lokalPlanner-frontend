@@ -71,7 +71,6 @@ this.stamBladForm = this.fb.group({
       fax: new FormControl('', Validators.nullValidator),
       cvr: new FormControl('', Validators.nullValidator),
       fik: new FormControl('', Validators.nullValidator),
-      kontaktPerson: new FormControl('', Validators.nullValidator),
       stamdataSide2: new FormGroup({
         hovedGruppe: new FormControl('', Validators.nullValidator),
         medlemSidenAAr: new FormControl('', Validators.nullValidator),

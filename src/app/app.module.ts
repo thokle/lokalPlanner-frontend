@@ -36,6 +36,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PostNummerService} from './services/post-nummer.service';
 import {DateSupplierService} from './services/date-supplier.service';
 import {MatSnackBarModule} from '@angular/material/typings/esm5/snack-bar';
+import { KomtaktPersonComponent } from './komtakt-person/komtakt-person.component';
 
 
 
@@ -48,6 +49,7 @@ import {MatSnackBarModule} from '@angular/material/typings/esm5/snack-bar';
     AdresseStambladComponent,
     StamBladOverSigtComponent,
     StambladPaginatorComponent,
+    KomtaktPersonComponent,
 
   ],
   imports: [
