@@ -35,7 +35,6 @@ import {StamBladObserver} from './stam-blad-observer';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PostNummerService} from './services/post-nummer.service';
 import {DateSupplierService} from './services/date-supplier.service';
-import {MatSnackBarModule} from '@angular/material/typings/esm5/snack-bar';
 import { KomtaktPersonComponent } from './komtakt-person/komtakt-person.component';
 
 
@@ -76,9 +75,10 @@ import { KomtaktPersonComponent } from './komtakt-person/komtakt-person.componen
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,
-    MatGridListModule, MatSnackBarModule
+    MatGridListModule
+
   ],
-  providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, MatSnackBarModule],
+  providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService],
   bootstrap: [AppComponent]
 
 })

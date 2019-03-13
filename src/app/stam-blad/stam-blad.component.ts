@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {StamdataService} from '../services/stamdata.service';
-import {Observable} from 'rxjs';
+
 import {Dage} from '../models/Dage';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {StamBladObserver} from '../stam-blad-observer';
 import {StamData} from '../models/Stamdata';
 import {PostNr} from '../models/PostNr';
 import {PostNummerService} from '../services/post-nummer.service';
-import {MatSnackBar} from '@angular/material';
+
 export  interface Month {
   months: string;
 }
@@ -24,6 +24,7 @@ export class StamBladComponent implements OnInit {
   , {months: 'Maj'} , {months: 'Juni '} , {months: 'Juli'} , {months: 'August'} , {months: 'September'} ,
     {months: 'Oktoner '} , {months: 'November'} , {months: 'December'}];
 
+
   years: number[] = [];
   dage: Dage[];
   postNr: PostNr[];
@@ -31,16 +32,21 @@ export class StamBladComponent implements OnInit {
   stamBladForm: FormGroup;
   selectedPostNr;
   selectBynavn;
-  constructor(private st: StamdataService, private obs: StamBladObserver, public fb: FormBuilder, private ps: PostNummerService, private snack: MatSnackBar) {
+  maxAntalAviser: number;
+  data: StamData = {};
+  constructor(private st: StamdataService, private obs: StamBladObserver, public fb: FormBuilder,
+              private ps: PostNummerService) {
 this.stamBladForm = this.fb.group({
   stamDataArray: this.initStamData()
 });
-
+this.getAllPostNrData();
     this.obs.getEventsEmitter().subscribe(on => console.log(on));
+
   }
 
   ngOnInit() {
-   // this.st.getStamBladById(2).subscribe(value => console.log(value));
+
+   this.st.GetAntalStamBlad().subscribe(value => this.maxAntalAviser = value);
     this.visStamBlad();
    // this.getAllPostNrData();
     this.setYear();
@@ -60,17 +66,16 @@ this.stamBladForm = this.fb.group({
 
    return  new FormGroup(
     {
-      bladId: new FormControl('', Validators.nullValidator),
-      navn: new FormControl('', Validators.required),
-      navn2: new FormControl('', Validators.nullValidator),
-      addresse: new FormControl('', Validators.nullValidator),
-      addresse2: new FormControl('', Validators.nullValidator),
-      postnr: new FormControl('', Validators.nullValidator),
-      by: new FormControl('', Validators.nullValidator),
-      tlf: new FormControl('', Validators.nullValidator),
-      fax: new FormControl('', Validators.nullValidator),
-      cvr: new FormControl('', Validators.nullValidator),
-      fik: new FormControl('', Validators.nullValidator),
+      BladID: new FormControl('', Validators.nullValidator),
+      Navn: new FormControl('', Validators.required),
+
+      Addresse: new FormControl('', Validators.nullValidator),
+      Addresse2: new FormControl('', Validators.nullValidator),
+      Postnr: new FormControl('', Validators.nullValidator),
+      By: new FormControl('', Validators.nullValidator),
+      Tlf: new FormControl('', Validators.nullValidator),
+      Fax: new FormControl('', Validators.nullValidator),
+      CVR: new FormControl('', Validators.nullValidator),
       stamdataSide2: new FormGroup({
         hovedGruppe: new FormControl('', Validators.nullValidator),
         medlemSidenAAr: new FormControl('', Validators.nullValidator),
@@ -87,7 +92,7 @@ this.stamBladForm = this.fb.group({
 
 
 console.log('Opret stamblad');
-this.snack.open('Stamblad opdateret' , 'action' , { duration: 2000} );
+
     const stamBlad: StamData = {
       Adresse: this.stamBladForm.get('stamdataArray').get('addresse').value,
       Adresse2: this.stamBladForm.get('stamdataArray').get('addresse2').value,
@@ -112,8 +117,14 @@ this.snack.open('Stamblad opdateret' , 'action' , { duration: 2000} );
 
     public  visStamBlad() {
       this.obs.getStamBladEventEmitter().subscribe(s => {
-        console.log(s.id);
-      });
+        console.log(s);
+        if ( s !== 1 ) {
+        this.st.getStamBladById(s).subscribe(value => {
+          this.data = value;
+
+         });
+      }});
+
     }
 
   public OpdatereStamBlad() {
@@ -122,7 +133,7 @@ this.snack.open('Stamblad opdateret' , 'action' , { duration: 2000} );
 
 
   public  getAllPostNrData() {
-    this.ps.getAllPostNummer().subscribe(data => {
+    this.st.StamBladAllPostnr().subscribe(data => {
       this.byNavn = data;
       this.postNr = data;
     });
@@ -133,6 +144,8 @@ this.snack.open('Stamblad opdateret' , 'action' , { duration: 2000} );
       this.years.push(i);
     }
   }
+
+
 
 }
 
