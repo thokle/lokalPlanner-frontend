@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StamdataService} from '../services/stamdata.service';
 
 import {Dage} from '../models/Dage';
@@ -8,9 +8,10 @@ import {StamData} from '../models/Stamdata';
 import {PostNr} from '../models/PostNr';
 import {PostNummerService} from '../services/post-nummer.service';
 
-export  interface Month {
+export interface Month {
   months: string;
 }
+
 @Component({
   selector: 'app-stam-blad',
   templateUrl: './stam-blad.component.html',
@@ -20,9 +21,9 @@ export  interface Month {
 
 export class StamBladComponent implements OnInit {
 
-  months: Month[] = [ {months: 'Januar'} , {months: 'Febuar'} , {months: 'Marts'} , {months: 'April'}
-  , {months: 'Maj'} , {months: 'Juni '} , {months: 'Juli'} , {months: 'August'} , {months: 'September'} ,
-    {months: 'Oktoner '} , {months: 'November'} , {months: 'December'}];
+  months: Month[] = [{months: 'Januar'}, {months: 'Febuar'}, {months: 'Marts'}, {months: 'April'}
+    , {months: 'Maj'}, {months: 'Juni '}, {months: 'Juli'}, {months: 'August'}, {months: 'September'},
+    {months: 'Oktoner '}, {months: 'November'}, {months: 'December'}];
 
 
   years: number[] = [];
@@ -33,27 +34,29 @@ export class StamBladComponent implements OnInit {
   selectedPostNr;
   selectBynavn;
   maxAntalAviser: number;
-  data: StamData = {};
+  data: StamData[] = [];
+
   constructor(private st: StamdataService, private obs: StamBladObserver, public fb: FormBuilder,
               private ps: PostNummerService) {
-this.stamBladForm = this.fb.group({
-  stamDataArray: this.initStamData()
-});
-this.getAllPostNrData();
-    this.obs.getEventsEmitter().subscribe(on => console.log(on));
+    this.stamBladForm = this.fb.group({
+
+      stamDataArray: this.initStamData()
+    });
+    this.getAllPostNrData();
+   // this.obs.getEventsEmitter().subscribe(on =>);
 
   }
 
   ngOnInit() {
 
-   this.st.GetAntalStamBlad().subscribe(value => this.maxAntalAviser = value);
+    this.st.GetAntalStamBlad().subscribe(value => this.maxAntalAviser = value);
     this.visStamBlad();
-   // this.getAllPostNrData();
+    // this.getAllPostNrData();
     this.setYear();
   }
 
   public Dage() {
-    this.st.StamBladDage().subscribe( value => this.dage = value);
+    this.st.StamBladDage().subscribe(value => this.dage = value);
   }
 
 
@@ -64,34 +67,34 @@ this.getAllPostNrData();
 
   protected initStamData(): FormGroup {
 
-   return  new FormGroup(
-    {
-      BladID: new FormControl('', Validators.nullValidator),
-      Navn: new FormControl('', Validators.required),
+    return new FormGroup(
+      {
+        BladID: new FormControl(1, Validators.nullValidator),
+        Navn: new FormControl('navn', Validators.required),
 
-      Addresse: new FormControl('', Validators.nullValidator),
-      Addresse2: new FormControl('', Validators.nullValidator),
-      Postnr: new FormControl('', Validators.nullValidator),
-      By: new FormControl('', Validators.nullValidator),
-      Tlf: new FormControl('', Validators.nullValidator),
-      Fax: new FormControl('', Validators.nullValidator),
-      CVR: new FormControl('', Validators.nullValidator),
-      stamdataSide2: new FormGroup({
-        hovedGruppe: new FormControl('', Validators.nullValidator),
-        medlemSidenAAr: new FormControl('', Validators.nullValidator),
-        medlemnSidenMd: new FormControl('', Validators.nullValidator),
-        ejerforhold: new FormControl('', Validators.nullValidator),
-        koncern: new FormControl('', Validators.nullValidator)
-      })
+        Addresse: new FormControl('addresse', Validators.nullValidator),
+        Addresse2: new FormControl('addresse2', Validators.nullValidator),
+        Postnr: new FormControl('postnr', Validators.nullValidator),
+        By: new FormControl('by', Validators.nullValidator),
+        Tlf: new FormControl('tlf', Validators.nullValidator),
+        Fax: new FormControl('fax', Validators.nullValidator),
+        CVR: new FormControl('cvr', Validators.nullValidator),
+        stamdataSide2: new FormGroup({
+          hovedGruppe: new FormControl('hovedgruppe', Validators.nullValidator),
+          medlemSidenAAr: new FormControl('2333', Validators.nullValidator),
+          medlemnSidenMd: new FormControl('32', Validators.nullValidator),
+          ejerforhold: new FormControl('ejerforhold', Validators.nullValidator),
+          koncern: new FormControl('koncern', Validators.nullValidator)
+        })
 
-    });
+      });
 
   }
 
   public OpretStamBlad() {
 
 
-console.log('Opret stamblad');
+    console.log('Opret stamblad');
 
     const stamBlad: StamData = {
       Adresse: this.stamBladForm.get('stamdataArray').get('addresse').value,
@@ -109,30 +112,32 @@ console.log('Opret stamblad');
       Navn2: this.stamBladForm.get('stamdataArray').get('navn2').value
     };
 
-  //  this.st.createStamblad(stamBlad).subscribe(value => {});
+    //  this.st.createStamblad(stamBlad).subscribe(value => {});
 
 
   }
 
 
-    public  visStamBlad() {
-      this.obs.getStamBladEventEmitter().subscribe(s => {
-        console.log(s);
-        if ( s !== 1 ) {
+  public visStamBlad() {
+    this.obs.getStamBladEventEmitter().subscribe(s => {
+      console.log(s);
+      if (s !== 1) {
         this.st.getStamBladById(s).subscribe(value => {
           this.data = value;
+           const bladId =  value[0].BladID;
+           console.log(bladId);
+        });
+      }
+    });
 
-         });
-      }});
-
-    }
+  }
 
   public OpdatereStamBlad() {
 
   }
 
 
-  public  getAllPostNrData() {
+  public getAllPostNrData() {
     this.st.StamBladAllPostnr().subscribe(data => {
       this.byNavn = data;
       this.postNr = data;
@@ -140,11 +145,10 @@ console.log('Opret stamblad');
   }
 
   public setYear() {
-    for ( let i = 1970; i <= new Date().getFullYear(); i++) {
+    for (let i = 1970; i <= new Date().getFullYear(); i++) {
       this.years.push(i);
     }
   }
-
 
 
 }

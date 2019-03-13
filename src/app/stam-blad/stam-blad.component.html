@@ -12,7 +12,7 @@
 
     <div class="divTable" >
       <div class="divTableBody" >
-        <div formGroupName="stamDataArray">
+        <div formGroupName="stamDataArray" *ngFor="let s of data">
 
         <div   class="divTableCell" >
 
@@ -20,7 +20,7 @@
               <mat-list-item >
                 <label for="BladID">Blad ID</label>
                 <mat-form-field >
-                  <input matInput id="BladID" formControlName="BladID" name="BladID"  value="{{ data.BladID }}" >
+                  <input matInput id="BladID" formControlName="BladID" name="BladID"  value="{{s.BladID}}" >
 
                 </mat-form-field>
 
@@ -29,7 +29,7 @@
                 <label for="Navn" >Navn</label>
                 <mat-form-field  >
 
-                  <input id="Navn"  matInput class="mat-form-field" formControlName="Navn"  required>
+                  <input id="Navn"  matInput class="mat-form-field" formControlName="Navn"  value="{{s.Navn}}" required>
 
 
 
@@ -41,14 +41,14 @@
                 <mat-form-field>
 
 
-                  <input matInput id="Addresse" formControlName="Addresse" >
+                  <input matInput id="Addresse" formControlName="Addresse"  value="{{s.Adresse}}">
                 </mat-form-field>
               </mat-list-item>
 
               <mat-list-item>
                 <label for="Addresse2" >Adresse2</label>
                 <mat-form-field  >
-                  <input matInput id="Addresse2"  formControlName="Addresse2">
+                  <input matInput id="Addresse2"  formControlName="Addresse2" value="{{s.Adresse2}}">
                 </mat-form-field>
 
               </mat-list-item>

@@ -8,6 +8,7 @@ import {Region} from '../models/Region';
 
 import {GeoKode} from '../models/GeoKode';
 import {PostNr} from '../models/PostNr';
+import {tap} from 'rxjs/operators';
 
 const httpHeaders = {
   header: new HttpHeaders({
@@ -26,9 +27,9 @@ export class StamdataService {
   }
 
 
-  public getStamBladById(bladid: any): Observable<StamData> {
+  public getStamBladById(bladid: any): Observable<StamData[]> {
     const url = this.baseUrl + '/stamblad/' + bladid.id;
-    return this.http.get<StamData>(url).pipe();
+    return this.http.get<StamData[]>(url);
   }
 
   public getStabbladByName(name: string): Observable<StamData> {
