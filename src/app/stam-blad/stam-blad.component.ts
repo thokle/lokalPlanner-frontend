@@ -60,8 +60,8 @@ this.stamBladForm = this.fb.group({
 
    return  new FormGroup(
     {
-      bladId: new FormControl('', Validators.nullValidator),
-      navn: new FormControl('', Validators.required),
+      bladId: new FormControl('0', Validators.nullValidator),
+      navn: new FormControl('n', Validators.required),
       navn2: new FormControl('', Validators.nullValidator),
       addresse: new FormControl('', Validators.nullValidator),
       addresse2: new FormControl('', Validators.nullValidator),
