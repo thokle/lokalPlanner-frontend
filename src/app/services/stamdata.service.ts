@@ -73,6 +73,7 @@ export class StamdataService {
     return this.http.get<any>(url).pipe();
   }
 
+
 }
 //   Get("/stamblad/GeoCodes", o => { return stamBladDao.GetTableGeoCode(); });
 //

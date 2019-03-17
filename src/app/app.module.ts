@@ -23,7 +23,7 @@ import {
   MatMenuModule,
   MatRadioModule,
   MatChipsModule,
-  MatTableModule
+  MatTableModule, MatDialogModule
 } from '@angular/material';
 import { MediaPlanComponent } from './media-plan/media-plan.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -36,6 +36,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PostNummerService} from './services/post-nummer.service';
 import {DateSupplierService} from './services/date-supplier.service';
 import { KomtaktPersonComponent } from './komtakt-person/komtakt-person.component';
+import { ByComponent } from './by/by.component';
+import { StambladkontaktDialogComponent } from './services/stambladkontakt-dialog/stambladkontakt-dialog.component';
 
 
 
@@ -49,6 +51,8 @@ import { KomtaktPersonComponent } from './komtakt-person/komtakt-person.componen
     StamBladOverSigtComponent,
     StambladPaginatorComponent,
     KomtaktPersonComponent,
+    ByComponent,
+    StambladkontaktDialogComponent,
 
   ],
   imports: [
@@ -75,7 +79,8 @@ import { KomtaktPersonComponent } from './komtakt-person/komtakt-person.componen
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule
 
   ],
   providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService],

@@ -73,4 +73,5 @@ export interface StamData {
   MaterialeDeadlineRubrikKl?: string;
   Overført?: boolean;
   timestamp?: string;
+
 }

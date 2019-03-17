@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {StambladKontaktPerson} from '../models/stamblad-kontakt-person';
 
 @Component({
   selector: 'app-komtakt-person',
@@ -9,8 +11,9 @@ export class KomtaktPersonComponent implements OnInit {
 
   @Input() bladId: number;
 
-  constructor() {
-  }
+  constructor(
+    public dialogRef: MatDialogRef<KomtaktPersonComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:   StambladKontaktPerson) {}
 
   ngOnInit() {
   }

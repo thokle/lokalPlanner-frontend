@@ -57,13 +57,19 @@
                 <mat-form-field  >
                   <mat-select id="postnr" formControlName="Postnr" [(ngModel)]="selectedPostNr">
                     <mat-option *ngFor="let p of postNr" [value]="p.PostNr">{{p.PostNr}}</mat-option>
+                    <div *ngIf="s.PostNr !== null">
+                      <mat-option >{{s.PostNr}}</mat-option>
+                    </div>
                   </mat-select>
 
                 </mat-form-field>
                 <label for="By" >By</label>
                 <mat-form-field>
                   <mat-select id="By" formControlName="By"  [(ngModel)]="selectBynavn" >
-                    <mat-option  *ngFor="let s of byNavn" [value]="s.PostBy">{{s.PostBy}}</mat-option>
+                    <mat-option    *ngFor="let w of byNavn" value="">{{w.PostBy}}</mat-option>
+                    <div *ngIf="s.PostNr !== null">
+                      <mat-option >{{s.PostNr}}</mat-option>
+                    </div>
                   </mat-select>
                 </mat-form-field>
               </mat-list-item>

@@ -126,6 +126,7 @@ export class StamBladComponent implements OnInit {
           this.data = value;
            const bladId =  value[0].BladID;
            console.log(bladId);
+           this.stamBladForm.controls['stamDataArray'].patchValue({BladID: bladId});
         });
       }
     });
