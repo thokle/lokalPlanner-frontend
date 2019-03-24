@@ -23,7 +23,7 @@ import {
   MatMenuModule,
   MatRadioModule,
   MatChipsModule,
-  MatTableModule, MatDialogModule
+  MatTableModule, MatDialogModule, MatDialog, MatDialogRef
 } from '@angular/material';
 import { MediaPlanComponent } from './media-plan/media-plan.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -35,9 +35,11 @@ import {StamBladObserver} from './stam-blad-observer';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PostNummerService} from './services/post-nummer.service';
 import {DateSupplierService} from './services/date-supplier.service';
-import { KomtaktPersonComponent } from './komtakt-person/komtakt-person.component';
+
 import { ByComponent } from './by/by.component';
-import { StambladkontaktDialogComponent } from './services/stambladkontakt-dialog/stambladkontakt-dialog.component';
+import { StambladkontaktDialogComponent } from './stambladkontakt-dialog/stambladkontakt-dialog.component';
+import { LoginComponent } from './login/login.component';
+import { RegisteruserComponent } from './registeruser/registeruser.component';
 
 
 
@@ -50,9 +52,10 @@ import { StambladkontaktDialogComponent } from './services/stambladkontakt-dialo
     AdresseStambladComponent,
     StamBladOverSigtComponent,
     StambladPaginatorComponent,
-    KomtaktPersonComponent,
     ByComponent,
     StambladkontaktDialogComponent,
+    LoginComponent,
+    RegisteruserComponent,
 
   ],
   imports: [
@@ -84,6 +87,8 @@ import { StambladkontaktDialogComponent } from './services/stambladkontakt-dialo
 
   ],
   providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService],
+  entryComponents: [StambladkontaktDialogComponent],
+
   bootstrap: [AppComponent]
 
 })

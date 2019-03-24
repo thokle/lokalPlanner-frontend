@@ -17,6 +17,7 @@ export class StambladPaginatorComponent implements OnInit {
   constructor(private  stob: StamBladObserver) { }
 
   ngOnInit() {
+    this.stob.emitChange({id: 0})
     this.minDisable = true;
     this.maxDisable = true;
   }

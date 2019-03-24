@@ -12,7 +12,7 @@
 
     <div class="divTable" >
       <div class="divTableBody" >
-        <div formGroupName="stamDataArray" *ngFor="let s of data">
+        <div formGroupName="stamDataArray" *ngFor="let s of data"  >
 
         <div   class="divTableCell" >
 
@@ -100,8 +100,9 @@
             <mat-list>
 <mat-list-item>
   <mat-list-item>
-    <label for="kontaktPerson" >Kontakt Person</label>
-    <app-komtakt-person id="kontaktPerson"></app-komtakt-person>
+
+
+    <button mat-raised-button (click)="visOpretKontakDialog()" >Opret nykontakt</button>
   </mat-list-item>
 </mat-list-item>
               <mat-list-item>

@@ -7,6 +7,9 @@ import {StamBladObserver} from '../stam-blad-observer';
 import {StamData} from '../models/Stamdata';
 import {PostNr} from '../models/PostNr';
 import {PostNummerService} from '../services/post-nummer.service';
+import {MatDialog} from '@angular/material';
+
+import {StambladkontaktDialogComponent} from '../stambladkontakt-dialog/stambladkontakt-dialog.component';
 
 export interface Month {
   months: string;
@@ -35,24 +38,27 @@ export class StamBladComponent implements OnInit {
   selectBynavn;
   maxAntalAviser: number;
   data: StamData[] = [];
-
+bladId: number;
   constructor(private st: StamdataService, private obs: StamBladObserver, public fb: FormBuilder,
-              private ps: PostNummerService) {
+              private ps: PostNummerService, private dialog: MatDialog) {
     this.stamBladForm = this.fb.group({
 
       stamDataArray: this.initStamData()
     });
+
     this.getAllPostNrData();
    // this.obs.getEventsEmitter().subscribe(on =>);
 
   }
 
   ngOnInit() {
+   this.visStamBlad();
 
     this.st.GetAntalStamBlad().subscribe(value => this.maxAntalAviser = value);
-    this.visStamBlad();
+
     // this.getAllPostNrData();
     this.setYear();
+
   }
 
   public Dage() {
@@ -92,7 +98,7 @@ export class StamBladComponent implements OnInit {
   }
 
   public OpretStamBlad() {
-
+this.stamBladForm.reset();
 
     console.log('Opret stamblad');
 
@@ -119,15 +125,13 @@ export class StamBladComponent implements OnInit {
 
 
   public visStamBlad() {
+    console.log('Vis Stamblad')
     this.obs.getStamBladEventEmitter().subscribe(s => {
       console.log(s);
-      if (s !== 1) {
+      if (s !== 'undefined' && (s !== 1 && this.bladId !== 1)) {
         this.st.getStamBladById(s).subscribe(value => {
           this.data = value;
-           const bladId =  value[0].BladID;
-           console.log(bladId);
-           this.stamBladForm.controls['stamDataArray'].patchValue({BladID: bladId});
-        });
+                  });
       }
     });
 
@@ -151,6 +155,12 @@ export class StamBladComponent implements OnInit {
     }
   }
 
+  public visOpretKontakDialog() {
+    this.dialog.open(StambladkontaktDialogComponent, {
+      width: '30%',
+      data: {bladid: this.bladId}
+    });
+  }
 
 }
 

@@ -1,0 +1,21 @@
+<div>
+  <form [formGroup]="kontaktPersonGroup">
+    <mat-form-field>
+      <label>Kontakt navn </label>
+      <input matInput type="text" id="kontaktNavn" formControlName="kontakPersonNan">
+    </mat-form-field>
+    <mat-form-field>
+      <label>Kontakt Email</label>
+      <input matInput type="email" id="" formControlName="kontakPersonEmail">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="tel" formControlName="kontakPersonTelefon" >
+    </mat-form-field>
+    <mat-form-field>
+    <mat-select formControlName="kontakPersonTitel" >
+      <mat-option></mat-option>
+    </mat-select>
+    </mat-form-field>
+<button mat-raised-button (click)="opRetKontaktPerson()" >Opret kontakt </button>
+  </form>
+</div>
