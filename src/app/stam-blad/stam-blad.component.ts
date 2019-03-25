@@ -10,6 +10,7 @@ import {PostNummerService} from '../services/post-nummer.service';
 import {MatDialog} from '@angular/material';
 
 import {StambladkontaktDialogComponent} from '../stambladkontakt-dialog/stambladkontakt-dialog.component';
+import {v} from '@angular/core/src/render3';
 
 export interface Month {
   months: string;
@@ -26,9 +27,9 @@ export class StamBladComponent implements OnInit {
 
   months: Month[] = [{months: 'Januar'}, {months: 'Febuar'}, {months: 'Marts'}, {months: 'April'}
     , {months: 'Maj'}, {months: 'Juni '}, {months: 'Juli'}, {months: 'August'}, {months: 'September'},
-    {months: 'Oktoner '}, {months: 'November'}, {months: 'December'}];
+    {months: 'Oktober '}, {months: 'November'}, {months: 'December'}];
 
-
+  firstLoad = true;
   years: number[] = [];
   dage: Dage[];
   postNr: PostNr[];
@@ -38,21 +39,24 @@ export class StamBladComponent implements OnInit {
   selectBynavn;
   maxAntalAviser: number;
   data: StamData[] = [];
-bladId: number;
+  bladId: number;
+
   constructor(private st: StamdataService, private obs: StamBladObserver, public fb: FormBuilder,
-              private ps: PostNummerService, private dialog: MatDialog) {
+              private ps: PostNummerService, private dialog: MatDialog,) {
+    this.obs.emitChange({id: 0});
+    this.visStamBlad();
     this.stamBladForm = this.fb.group({
 
       stamDataArray: this.initStamData()
     });
 
     this.getAllPostNrData();
-   // this.obs.getEventsEmitter().subscribe(on =>);
+    this.visStamBlad();
 
   }
 
   ngOnInit() {
-   this.visStamBlad();
+    this.visStamBlad();
 
     this.st.GetAntalStamBlad().subscribe(value => this.maxAntalAviser = value);
 
@@ -98,7 +102,7 @@ bladId: number;
   }
 
   public OpretStamBlad() {
-this.stamBladForm.reset();
+    this.stamBladForm.reset();
 
     console.log('Opret stamblad');
 
@@ -118,6 +122,7 @@ this.stamBladForm.reset();
       Navn2: this.stamBladForm.get('stamdataArray').get('navn2').value
     };
 
+    console.log(stamBlad);
     //  this.st.createStamblad(stamBlad).subscribe(value => {});
 
 
@@ -125,14 +130,11 @@ this.stamBladForm.reset();
 
 
   public visStamBlad() {
-    console.log('Vis Stamblad')
     this.obs.getStamBladEventEmitter().subscribe(s => {
-      console.log(s);
-      if (s !== 'undefined' && (s !== 1 && this.bladId !== 1)) {
-        this.st.getStamBladById(s).subscribe(value => {
-          this.data = value;
-                  });
-      }
+
+      this.st.getStamBladById(s).subscribe(value => {
+        this.data = value;
+      });
     });
 
   }

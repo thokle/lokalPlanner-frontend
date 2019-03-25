@@ -8,17 +8,9 @@ import {LoginGuard} from './login.guard';
 import {LoginComponent} from './login/login.component';
 
 export const routes: Routes = [
-  {
-    path: 'login'   , canActivate: [LoginGuard], component: LoginComponent ,  canActivateChild: [
-      {path: '', component: IndexComponent},
-      {path: 'stamblad', component: StamBladComponent},
-      {path: 'medieplan', component: MediaPlanComponent},
-      {path: 'createUser', component: RegisteruserComponent}
-    ]
-  } ,
-  {path: '', component: IndexComponent },
-  {path: 'register', component: RegisteruserComponent}
-];
+  {path: 'stamblad'  , canActivate: [LoginGuard] , component: StamBladComponent},
+  {path: 'createUser', canActivate: [LoginGuard], component: RegisteruserComponent}
+  ]
 
 
 

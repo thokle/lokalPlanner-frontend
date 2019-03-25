@@ -40,6 +40,7 @@ import { ByComponent } from './by/by.component';
 import { StambladkontaktDialogComponent } from './stambladkontakt-dialog/stambladkontakt-dialog.component';
 import { LoginComponent } from './login/login.component';
 import { RegisteruserComponent } from './registeruser/registeruser.component';
+import {RegisteruserService} from './services/registeruser.service';
 
 
 
@@ -86,7 +87,7 @@ import { RegisteruserComponent } from './registeruser/registeruser.component';
     MatDialogModule
 
   ],
-  providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService],
+  providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, RegisteruserService],
   entryComponents: [StambladkontaktDialogComponent],
 
   bootstrap: [AppComponent]
