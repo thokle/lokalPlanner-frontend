@@ -73,7 +73,10 @@ export class StamdataService {
     return this.http.get<any>(url).pipe();
   }
 
-
+ public  GetLastestStamBladId(): Observable<any> {
+    const url = this.baseUrl + `/stamblad/latestid`;
+    return this.http.get<any>(url).pipe();
+ }
 }
 //   Get("/stamblad/GeoCodes", o => { return stamBladDao.GetTableGeoCode(); });
 //

@@ -8,9 +8,10 @@ import {LoginGuard} from './login.guard';
 import {LoginComponent} from './login/login.component';
 
 export const routes: Routes = [
+  {path: '', component: IndexComponent},
   {path: 'stamblad'  , canActivate: [LoginGuard] , component: StamBladComponent},
   {path: 'createUser', canActivate: [LoginGuard], component: RegisteruserComponent}
-  ]
+  ];
 
 
 

@@ -10,7 +10,9 @@ import {PostNummerService} from '../services/post-nummer.service';
 import {MatDialog} from '@angular/material';
 
 import {StambladkontaktDialogComponent} from '../stambladkontakt-dialog/stambladkontakt-dialog.component';
-import {v} from '@angular/core/src/render3';
+import {MatSnackBar} from '@angular/material/typings/snack-bar';
+
+
 
 export interface Month {
   months: string;
@@ -42,7 +44,7 @@ export class StamBladComponent implements OnInit {
   bladId: number;
 
   constructor(private st: StamdataService, private obs: StamBladObserver, public fb: FormBuilder,
-              private ps: PostNummerService, private dialog: MatDialog,) {
+              private ps: PostNummerService, private dialog: MatDialog) {
     this.obs.emitChange({id: 0});
     this.visStamBlad();
     this.stamBladForm = this.fb.group({
@@ -103,7 +105,11 @@ export class StamBladComponent implements OnInit {
 
   public OpretStamBlad() {
     this.stamBladForm.reset();
-
+    let bladid = 0;
+    this.st.GetLastestStamBladId().subscribe(value => {
+      bladid = value.item2;
+    });
+    this.stamBladForm.controls['stamDataArray'].patchValue({'BladId' : bladid  });
     console.log('Opret stamblad');
 
     const stamBlad: StamData = {

@@ -23,7 +23,7 @@ import {
   MatMenuModule,
   MatRadioModule,
   MatChipsModule,
-  MatTableModule, MatDialogModule, MatDialog, MatDialogRef
+  MatTableModule, MatDialogModule, MatDialog, MatDialogRef, MatSnackBarModule
 } from '@angular/material';
 import { MediaPlanComponent } from './media-plan/media-plan.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -84,7 +84,8 @@ import {RegisteruserService} from './services/registeruser.service';
     MatOptionModule,
     MatSelectModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
 
   ],
   providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, RegisteruserService],
