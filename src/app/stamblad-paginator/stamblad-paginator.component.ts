@@ -9,7 +9,7 @@ import {StamBladObserver} from '../stam-blad-observer';
 export class StambladPaginatorComponent implements OnInit {
 
   @Input() num:  number
-  @Input() maxnunber: number
+  @Input() maxNumber: number
   @Input() minNumber: number;
 
   minDisable: boolean;
@@ -17,7 +17,7 @@ export class StambladPaginatorComponent implements OnInit {
   constructor(private  stob: StamBladObserver) { }
 
   ngOnInit() {
-    this.minDisable = false;
+    this.minDisable = true;
     this.maxDisable = true;
   }
 
@@ -36,7 +36,7 @@ export class StambladPaginatorComponent implements OnInit {
 
   nextStamblad() {
     this.minDisable = true;
-    if (this.num + 1 <= this.maxnunber) {
+    if (this.num + 1 <= this.maxNumber) {
       this.num = this.num + 1;
       this.stob.emitStamBladChange({id: this.num});
     }

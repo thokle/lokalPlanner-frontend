@@ -1,10 +1,10 @@
 <div style="left: 100px;">
-  <app-stamblad-paginator [num]="0" [minNumber]="0" [maxnunber]="10"></app-stamblad-paginator>
+  <app-stamblad-paginator [num]="0" [minNumber]="0" [maxNumber]="maxAntalAviser"></app-stamblad-paginator>
 </div>
 <div>
   <button mat-icon-button (click)="OpretStamBlad()"> <mat-icon>add_circle</mat-icon></button>
 </div>
-  <form [formGroup]="stamBladForm"  (ngSubmit)="OpretStamBlad()">
+  <form [formGroup]="stamBladForm"  (ngSubmit)="OpretStamBlad()"   >
     <div style="width: 100%; margin-bottom: 40px !important;">
 <mat-tab-group >
 
@@ -12,101 +12,92 @@
 
     <div class="divTable" >
       <div class="divTableBody" >
-        <div formGroupName="stamDataArray">
+        <div formGroupName="stamDataArray" *ngFor="let s of data">
+
         <div   class="divTableCell" >
 
             <mat-list>
               <mat-list-item >
-                <label for="bladid">Blad ID</label>
+                <label for="BladID">Blad ID</label>
                 <mat-form-field >
-                  <input matInput id="bladid" formControlName="bladId" name="bladid">
+                  <input matInput id="BladID" formControlName="BladID" name="BladID"  value="{{s.BladID}}" >
 
                 </mat-form-field>
 
               </mat-list-item>
               <mat-list-item>
-                <label for="navn" >Navn</label>
+                <label for="Navn" >Navn</label>
                 <mat-form-field  >
 
-                  <input id="navn"  matInput class="mat-form-field" formControlName="navn"  required>
+                  <input id="Navn"  matInput class="mat-form-field" formControlName="Navn"  value="{{s.Navn}}" required>
 
 
 
                 </mat-form-field>
               </mat-list-item>
-              <mat-list-item>
-                <label for="navn2" >Navn2</label>
-                <mat-form-field  >
 
-                  <input id="navn2"  matInput  formControlName="navn2" >
-                </mat-form-field>
-              </mat-list-item>
               <mat-list-item>
-                <label for="addresse" >Addresse</label>
+                <label for="Addresse" >Addresse</label>
                 <mat-form-field>
 
 
-                  <input matInput id="addresse" formControlName="addresse" >
+                  <input matInput id="Addresse" formControlName="Addresse"  value="{{s.Adresse}}">
                 </mat-form-field>
               </mat-list-item>
 
               <mat-list-item>
-                <label for="addresse2" >Adresse2</label>
+                <label for="Addresse2" >Adresse2</label>
                 <mat-form-field  >
-                  <input matInput id="addresse2"  formControlName="addresse2">
+                  <input matInput id="Addresse2"  formControlName="Addresse2" value="{{s.Adresse2}}">
                 </mat-form-field>
 
               </mat-list-item>
               <mat-list-item>
-                <label  for="postnr">Post nr</label>
+                <label  for="Postnr">Post nr</label>
                 <mat-form-field  >
-                  <mat-select id="postnr" formControlName="postnr" [(ngModel)]="selectedPostNr">
+                  <mat-select id="postnr" formControlName="Postnr" [(ngModel)]="selectedPostNr">
                     <mat-option *ngFor="let p of postNr" [value]="p.PostNr">{{p.PostNr}}</mat-option>
                   </mat-select>
 
                 </mat-form-field>
-                <label for="by" >By</label>
+                <label for="By" >By</label>
                 <mat-form-field>
-                  <mat-select id="by" formControlName="by"  [(ngModel)]="selectBynavn" >
+                  <mat-select id="By" formControlName="By"  [(ngModel)]="selectBynavn" >
                     <mat-option  *ngFor="let s of byNavn" [value]="s.PostBy">{{s.PostBy}}</mat-option>
                   </mat-select>
                 </mat-form-field>
               </mat-list-item>
               <mat-list-item>
-                <label for="tlf" >Tlf</label>
+                <label for="Tlf" >Tlf</label>
                 <mat-form-field>
-                  <input matInput id="tlf" formControlName="tlf">
+                  <input matInput id="Tlf" formControlName="Tlf">
                 </mat-form-field>
               </mat-list-item>
               <mat-list-item>
-                <label for="fax" >fax</label>
+                <label for="Fax" >fax</label>
                 <mat-form-field>
-                  <input matInput id="fax" formControlName="fax" >
+                  <input matInput id="Fax" formControlName="Fax" >
                 </mat-form-field>
               </mat-list-item>
               <mat-list-item>
-                <label  for="cvr">CVR</label>
+                <label  for="CVR">CVR</label>
                 <mat-form-field >
-                  <input matInput id="cvr" formControlName="cvr">
+                  <input matInput id="CVR" formControlName="CVR">
                 </mat-form-field>
               </mat-list-item>
-              <mat-list-item>
-                <label for="fik" >FIK</label>
-                <mat-form-field >
-                  <input matInput id="fik" formControlName="fik">
-                </mat-form-field>
-              </mat-list-item>
-              <mat-list-item>
-                <label for="kontaktPerson" >Kontakt Person</label>
-                <app-komtakt-person id="kontaktPerson"></app-komtakt-person>
-              </mat-list-item>
+
             </mat-list>
           </div>
 
 
           <div class="divTableCell" formGroupName="stamdataSide2">
             <mat-list>
-
+<mat-list-item>
+  <mat-list-item>
+    <label for="kontaktPerson" >Kontakt Person</label>
+    <app-komtakt-person id="kontaktPerson"></app-komtakt-person>
+  </mat-list-item>
+</mat-list-item>
               <mat-list-item>
               <mat-chip-list>
                 <mat-chip>Hovedgruppe</mat-chip>

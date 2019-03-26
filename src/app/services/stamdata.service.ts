@@ -8,6 +8,7 @@ import {Region} from '../models/Region';
 
 import {GeoKode} from '../models/GeoKode';
 import {PostNr} from '../models/PostNr';
+import {tap} from 'rxjs/operators';
 
 const httpHeaders = {
   header: new HttpHeaders({
@@ -26,10 +27,9 @@ export class StamdataService {
   }
 
 
-  public getStamBladById(bladid: number): Observable<StamData> {
-
-    const url = this.baseUrl + `/stamblad/${bladid}`;
-    return this.http.get<StamData>(url).pipe();
+  public GetStamBladById(bladid: any): Observable<StamData[]> {
+    const url = this.baseUrl + '/stamblad/' + bladid.id;
+    return this.http.get<StamData[]>(url);
   }
 
   public getStabbladByName(name: string): Observable<StamData> {
@@ -53,7 +53,7 @@ export class StamdataService {
 
 
   public StamBladAllPostnr(): Observable<PostNr[]> {
-      const url = this.baseUrl  + `/stamblad/allpostnr`;
+      const url = this.baseUrl  + '/stamblad/allpostnr';
       return this.http.get<PostNr[]>(url).pipe();
   }
 
@@ -68,6 +68,10 @@ export class StamdataService {
     return this.http.get<Dage[]>(url).pipe();
   }
 
+  public GetAntalStamBlad(): Observable<any> {
+    const url = this.baseUrl + `/stamblad/antalblade`;
+    return this.http.get<any>(url).pipe();
+  }
 
 }
 //   Get("/stamblad/GeoCodes", o => { return stamBladDao.GetTableGeoCode(); });
