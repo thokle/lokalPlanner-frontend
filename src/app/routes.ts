@@ -6,11 +6,16 @@ import {MediaPlanComponent} from './media-plan/media-plan.component';
 import {RegisteruserComponent} from './registeruser/registeruser.component';
 import {LoginGuard} from './login.guard';
 import {LoginComponent} from './login/login.component';
+import {AppComponent} from './app.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 export const routes: Routes = [
-  {path: '', component: IndexComponent},
-  {path: 'stamblad'  , canActivate: [LoginGuard] , component: StamBladComponent},
-  {path: 'createUser', canActivate: [LoginGuard], component: RegisteruserComponent}
+  { path: '', pathMatch: 'full', redirectTo: 'login'},
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard], children: [
+      {path: 'stamblad', component: StamBladComponent},
+      {path: 'opret', component: RegisteruserComponent}
+    ] }
   ];
 
 

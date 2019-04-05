@@ -41,6 +41,9 @@ import { StambladkontaktDialogComponent } from './stambladkontakt-dialog/stambla
 import { LoginComponent } from './login/login.component';
 import { RegisteruserComponent } from './registeruser/registeruser.component';
 import {RegisteruserService} from './services/registeruser.service';
+import { BogholderiComponent } from './bogholderi/bogholderi.component';
+import {PostService} from './services/post.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -57,6 +60,8 @@ import {RegisteruserService} from './services/registeruser.service';
     StambladkontaktDialogComponent,
     LoginComponent,
     RegisteruserComponent,
+    BogholderiComponent,
+    DashboardComponent,
 
   ],
   imports: [
@@ -86,9 +91,8 @@ import {RegisteruserService} from './services/registeruser.service';
     MatGridListModule,
     MatDialogModule,
     MatSnackBarModule
-
   ],
-  providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, RegisteruserService],
+  providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, RegisteruserService, PostService],
   entryComponents: [StambladkontaktDialogComponent],
 
   bootstrap: [AppComponent]

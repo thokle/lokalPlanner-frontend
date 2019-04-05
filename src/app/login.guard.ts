@@ -16,8 +16,8 @@ export class LoginGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    const user: User = JSON.parse(localStorage.getItem('user'));
-    if (user.username !== undefined) {
+    const user: User = JSON.parse(localStorage.getItem('user')) || null;
+    if (user !== undefined) {
       return true;
     }
     this.stob.emitStamBladChange({id: 0});

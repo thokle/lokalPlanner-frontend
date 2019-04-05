@@ -27,11 +27,9 @@ export class LoginComponent implements OnInit {
   public login() {
     this.rs.login(this.logninForm.get('username').value, this.logninForm.get('password').value).subscribe(rs  => {
      const user: User =  rs;
-     console.log(JSON.stringify(user))
+     console.log(JSON.stringify(user));
   localStorage.setItem('user', JSON.stringify(user));
-     this.router.navigate(['']);
-    },  error1 => {
-
+    this.router.navigateByUrl('/dashboard');
     });
   }
 }

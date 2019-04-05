@@ -11,7 +11,7 @@ export interface StamData {
   Tlf?: string;
   Fax?: string;
   CVR?: string;
-  FIK?: string;
+
   Kontaktperson?: string;
   HovedgruppeID?: number | null;
   MedlemMåned?: number | null;

@@ -26,10 +26,9 @@ export class StamdataService {
   constructor(public  http: HttpClient) {
   }
 
-
   public getStamBladById(bladid: any): Observable<StamData[]> {
     const url = this.baseUrl + '/stamblad/' + bladid.id;
-    return this.http.get<StamData[]>(url);
+    return this.http.get<StamData[]>(url).pipe();
   }
 
   public getStabbladByName(name: string): Observable<StamData> {
@@ -50,7 +49,6 @@ export class StamdataService {
     const url = this.baseUrl + `/stamblad/GeoCodes/`;
     return this.http.get<GeoKode[]>(url).pipe();
   }
-
 
   public StamBladAllPostnr(): Observable<PostNr[]> {
       const url = this.baseUrl  + '/stamblad/allpostnr';

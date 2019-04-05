@@ -1,21 +1,20 @@
-import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
-import {getMatIconFailedToSanitizeLiteralError} from '@angular/material';
-import {element} from 'protractor';
-import {User} from './models/user';
+import {User} from '../models/user';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class AppComponent implements OnDestroy, OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
+
   mobileQuery: MediaQueryList;
   name: String = 'Lokalplanner';
 
   isUserLoggedIn = false;
 
- hide = false;
+  hide = false;
 
   private _mobileQueryListener: () => void;
 
@@ -42,10 +41,10 @@ export class AppComponent implements OnDestroy, OnInit {
   }
 
   private isLoggedIn() {
-   const user = JSON.parse(localStorage.getItem('user')) as  User;
-   if (user.username !== undefined) {
-     this.isUserLoggedIn = true;
-   }
+    const user = JSON.parse(localStorage.getItem('user')) as  User;
+    if (user.username !== undefined) {
+      this.isUserLoggedIn = true;
+    }
 
   }
 
@@ -58,6 +57,5 @@ export class AppComponent implements OnDestroy, OnInit {
     setTimeout(function () {
       this.hide = false;
     }, 2000);
-}
-
+  }
 }
