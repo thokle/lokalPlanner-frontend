@@ -15,7 +15,9 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard], children: [
       {path: 'stamblad', component: StamBladComponent},
       {path: 'opret', component: RegisteruserComponent}
-    ] }
+    ]},
+  {path: 'opret', component: RegisteruserComponent},
+  {path: 'stamblad', component: StamBladComponent}
   ];
 
 

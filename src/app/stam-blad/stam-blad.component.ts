@@ -13,6 +13,7 @@ import {StambladkontaktDialogComponent} from '../stambladkontakt-dialog/stamblad
 import {MatSnackBar} from '@angular/material/typings/snack-bar';
 import {Observable, Subscribable} from 'rxjs';
 import {PostService} from '../services/post.service';
+import {StamBladViewModel} from '../models/StamBladViewModel';
 
 
 
@@ -45,10 +46,11 @@ export class StamBladComponent implements OnInit {
   selectBynavn;
   bladId: number;
   maxAntalAviser: number;
-  data$: StamData[] | null;
+  data$: StamBladViewModel[] | null;
   erDerStamblad = false;
   nytBladId: number;
   opretOdatere: string;
+
   constructor(private st: StamdataService, private obs: StamBladObserver, public fb: FormBuilder,
               private ps: PostNummerService, private dialog: MatDialog, private pss: PostService) {
     this.obs.emitChange({id: 0});

@@ -5,7 +5,17 @@
 
 .example-container > * {
   margin-left: 10px;
-  width: 40%;
+  width: 100%;
+}
+
+.udsending-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.udsending-container > * {
+  margin-left: 0px;
+  width: 80% !important;
 }
 .mat-radio-button ~ .mat-radio-button {
   margin-left: 16px;
@@ -38,8 +48,10 @@
 .divTableCell, .divTableHead {
   border: 0px solid #999999;
   display: table-cell;
-  padding: 3px 6px;
-  width: 100px !important;
+  padding: 3px 3px;
+  width: 90px !important;
+  scroll-behavior: unset;
+  height: 89% !important;
 }
 .divTableHeading {
   background-color: #EEE;
@@ -70,8 +82,8 @@
 }
 
 .mat-list-base {
-  width: 600px !important;
-  margin-right: 40px !important;
+  width: 500px !important;
+  margin-right: 2px !important;
 }
 
 
@@ -86,4 +98,22 @@ label {
 
 input, label {
   float:left;
+}
+label{
+  position: absolute;
+}
+.right{
+  top: 0;
+  left: 100%;
+}
+.left{
+  top: 0;
+  right: 100%;
+}
+.top{
+  bottom: 100%;
+  left: 0;
+}
+.bottom {
+  top: 100%;
 }

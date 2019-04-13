@@ -8,7 +8,8 @@ import {Region} from '../models/Region';
 
 import {GeoKode} from '../models/GeoKode';
 import {PostNr} from '../models/PostNr';
-import {tap} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
+import {StamBladViewModel} from '../models/StamBladViewModel';
 
 const httpHeaders = {
   header: new HttpHeaders({
@@ -26,14 +27,14 @@ export class StamdataService {
   constructor(public  http: HttpClient) {
   }
 
-  public getStamBladById(bladid: any): Observable<StamData[]> {
+  public getStamBladById(bladid: any): Observable<StamBladViewModel[]> {
     const url = this.baseUrl + '/stamblad/' + bladid.id;
-    return this.http.get<StamData[]>(url).pipe();
+    return this.http.get<StamBladViewModel[]>(url).pipe();
   }
 
-  public getStabbladByName(name: string): Observable<StamData> {
+  public getStabbladByName(name: string): Observable<StamBladViewModel> {
     const url = this.baseUrl + `/stamblad/navn/${name}`;
-    return this.http.get<StamData>(url).pipe();
+    return this.http.get<StamBladViewModel>(url).pipe();
   }
 
   public createStamblad(stamblad: StamData): Observable<StamData> {

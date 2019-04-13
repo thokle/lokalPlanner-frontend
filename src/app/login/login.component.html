@@ -1,12 +1,14 @@
-<div>
+<div style="width: 400px; height: 200px; margin-top: 20%; margin-bottom: 20%; margin-left:  30%; margin-right: 25%; ">
   <form [formGroup]="logninForm" (submit)="login()">
-    <mat-form-field>
-      <label for="username">Brugernavn</label>
+    <mat-form-field >
+
       <input formControlName="username"  id="username" type="text" matInput>
+      <mat-label>Bruger navn</mat-label>
     </mat-form-field>
     <mat-form-field>
-      <label for="password">Password</label>
+
       <input formControlName="password" id="password"  type="password" matInput>
+      <mat-label>Kodeord</mat-label>
     </mat-form-field>
     <button mat-raised-button type="submit">Login</button>
   </form>

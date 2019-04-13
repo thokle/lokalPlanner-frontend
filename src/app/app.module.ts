@@ -23,7 +23,7 @@ import {
   MatMenuModule,
   MatRadioModule,
   MatChipsModule,
-  MatTableModule, MatDialogModule, MatDialog, MatDialogRef, MatSnackBarModule
+  MatTableModule, MatDialogModule, MatDialog, MatDialogRef, MatSnackBarModule, MatCheckboxModule
 } from '@angular/material';
 import { MediaPlanComponent } from './media-plan/media-plan.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -44,6 +44,9 @@ import {RegisteruserService} from './services/registeruser.service';
 import { BogholderiComponent } from './bogholderi/bogholderi.component';
 import {PostService} from './services/post.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PriceAskingDialogComponent } from './price-asking-dialog/price-asking-dialog.component';
+import { PriceAskingComponent } from './price-asking/price-asking.component';
+import {PriceAskingService} from './services/price-asking.service';
 
 
 
@@ -62,6 +65,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     RegisteruserComponent,
     BogholderiComponent,
     DashboardComponent,
+    PriceAskingDialogComponent,
+    PriceAskingComponent,
 
   ],
   imports: [
@@ -90,10 +95,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatSelectModule,
     MatGridListModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule
   ],
-  providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, RegisteruserService, PostService],
-  entryComponents: [StambladkontaktDialogComponent],
+  providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, RegisteruserService,
+    PostService, PriceAskingService],
+  entryComponents: [StambladkontaktDialogComponent, PriceAskingDialogComponent],
 
   bootstrap: [AppComponent]
 
