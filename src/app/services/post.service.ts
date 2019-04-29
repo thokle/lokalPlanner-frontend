@@ -5,29 +5,30 @@ import {Observable} from 'rxjs';
 import {PostNrSoegning} from '../models/PostNrSoegning';
 import {tap} from 'rxjs/operators';
 import {post} from 'selenium-webdriver/http';
+import {PostNr} from '../models/PostNr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  url = environment.url + ':' + environment.port;
+  url = environment.url + environment.port;
 
   constructor(private  http: HttpClient) {
   }
 
 
-  public getallPost(postnr: number): Observable<PostNrSoegning[]> {
+  public getallPost(postnr: number): Observable<PostNr[]> {
     const url = this.url + '/postnr/getall';
     return this.http.get<PostNrSoegning[]>(url).pipe();
   }
 
-  public getByNavnByPostnr(postnr: string): Observable<PostNrSoegning[]> {
-    const url = this.url + 'postnr/bynavn/' + postnr;
+  public getByNavnByPostnr(postnr: number): Observable<PostNr[]> {
+    const url = this.url + '/postnr/bynavn/' + postnr;
     return this.http.get<PostNrSoegning[]>(url).pipe();
   }
 
-  public getZipCodeByNavn(bynavn: number) {
+  public getZipCodeByNavn(bynavn: number): Observable<PostNr[]> {
     const url = this.url + '/postnr/zipcode/' + bynavn;
     return this.http.get<PostNrSoegning[]>(url).pipe();
   }

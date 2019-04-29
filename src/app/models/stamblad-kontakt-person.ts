@@ -1,7 +1,7 @@
 export interface StambladKontaktPerson {
-  StamBladId;
-  KontakPersonNavn;
-  KontakPersonEmail;
-  KontakPersonTitel;
-  KontakPersonTelefon;
+  StamBladId?: number;
+  KontakPersonNavn?: string;
+  KontakPersonEmail?: string;
+  KontakPersonTitel?: string;
+  KontakPersonTelefon?: number;
 }

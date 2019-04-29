@@ -18,15 +18,9 @@ export interface StamData {
   Emails?;
   FakturaGruppeID?;
   Fax?;
-  FIK?;
-  Format?;
   GeoKodeID?;
-  GiverWebTillaeg?;
-  GruppeRabat?;
-  Hjemmeside?;
+  Format?;
   HovedgruppeID?;
-  Koncern?;
-  Kontakperson?;
   KontaktpersonerEmails?;
   MaterialedeadlineRubrik?;
   MaterialeDeadlineRubrikDag?;
@@ -35,10 +29,10 @@ export interface StamData {
   MaterialeDeadlineTekstDag?;
   MaterialeDeadlineTekstKl?;
   MaterialeEmail?;
-  MatGodtBeloeb?;
+  MatGodtBeløb?;
   MedieNetKode?;
   MedlemMaaned?;
-  MedlemSiden?;
+  Koncern?;
   MedlemÅr?;
   MaaGiveFarveRabat?;
   Navn?;
@@ -55,9 +49,12 @@ Tlf?;
   OrdredeadlineTekst?;
   OrdreDeadlineTekstDag?;
   OrdreDeadlineTekstKl?;
-
+  RegionId?;
   OrdreEmail?;
   SendetidOrdrecheck?;
-  SendIndevaerendeUge?;
+  SendIndeværendeUge?;
+  RedaktionEmail?;
 
+  GruppeRabat?;
+  Hjemmeside?;
 }

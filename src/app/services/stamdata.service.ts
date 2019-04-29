@@ -39,7 +39,7 @@ export class StamdataService {
 
   public createStamblad(stamblad: StamData): Observable<StamData> {
     const url = this.baseUrl + `/stamblad`;
-    return this.http.post<StamData>(url, JSON.stringify(stamblad), {
+    return this.http.post<StamData>(url, stamblad, {
       headers: new HttpHeaders({
         'Content-type': 'application/json'
       })
@@ -55,6 +55,7 @@ export class StamdataService {
       const url = this.baseUrl  + '/stamblad/allpostnr';
       return this.http.get<PostNr[]>(url).pipe();
   }
+
 
   public StamBladRegions(): Observable<Region[]> {
     const url = this.baseUrl + `/stamblad/regions`;

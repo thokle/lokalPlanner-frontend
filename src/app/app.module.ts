@@ -47,6 +47,24 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PriceAskingDialogComponent } from './price-asking-dialog/price-asking-dialog.component';
 import { PriceAskingComponent } from './price-asking/price-asking.component';
 import {PriceAskingService} from './services/price-asking.service';
+import { ByselectComponent } from './byselect/byselect.component';
+import {RegionService} from './services/region.service';
+import {DelomraadeService} from './services/delomraade.service';
+import { DagePipe } from './pipies/dage.pipe';
+import { DelomraadePipe } from './pipies/delomraade.pipe';
+import { RegionPipe } from './pipies/region.pipe';
+import { BynavnPipe } from './pipies/bynavn.pipe';
+import { GeoPipe } from './pipies/geo.pipe';
+import {GeoService} from './services/geo.service';
+import { YearPipe } from './pipies/year.pipe';
+import { BladDaekningComponent } from './blad-daekning/blad-daekning.component';
+import {StamBladKontaktPersonService} from './services/stam-blad-kontakt-person.service';
+import {BladdaekningService} from './services/bladdaekning.service';
+import { EditBladdaekningComponent } from './blad-daekning/edit-bladdaekning/edit-bladdaekning.component';
+import { EjerforholdComponent } from './ejerforhold/ejerforhold.component';
+import {ExcelexportService} from './services/excelexport.service';
+import { EjerforholdTableComponent } from './ejerforhold/ejerforhold-table/ejerforhold-table.component';
+
 
 
 
@@ -67,6 +85,17 @@ import {PriceAskingService} from './services/price-asking.service';
     DashboardComponent,
     PriceAskingDialogComponent,
     PriceAskingComponent,
+    ByselectComponent,
+    DagePipe,
+    DelomraadePipe,
+    RegionPipe,
+    BynavnPipe,
+    GeoPipe,
+    YearPipe,
+    BladDaekningComponent,
+    EditBladdaekningComponent,
+    EjerforholdComponent,
+    EjerforholdTableComponent,
 
   ],
   imports: [
@@ -97,10 +126,11 @@ import {PriceAskingService} from './services/price-asking.service';
     MatDialogModule,
     MatSnackBarModule,
     MatCheckboxModule
+
   ],
   providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, RegisteruserService,
-    PostService, PriceAskingService],
-  entryComponents: [StambladkontaktDialogComponent, PriceAskingDialogComponent],
+    PostService, PriceAskingService, RegionService, DelomraadeService, StamBladKontaktPersonService, BladdaekningService, ExcelexportService],
+  entryComponents: [StambladkontaktDialogComponent, PriceAskingDialogComponent, EditBladdaekningComponent],
 
   bootstrap: [AppComponent]
 

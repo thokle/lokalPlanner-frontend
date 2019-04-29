@@ -1,21 +1,39 @@
-<div>
-  <form [formGroup]="kontaktPersonGroup">
-    <mat-form-field>
-      <label>Kontakt navn </label>
-      <input matInput type="text" id="kontaktNavn" formControlName="kontakPersonNan">
-    </mat-form-field>
-    <mat-form-field>
-      <label>Kontakt Email</label>
-      <input matInput type="email" id="" formControlName="kontakPersonEmail">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput type="tel" formControlName="kontakPersonTelefon" >
-    </mat-form-field>
-    <mat-form-field>
-    <mat-select formControlName="kontakPersonTitel" >
-      <mat-option></mat-option>
-    </mat-select>
-    </mat-form-field>
-<button mat-raised-button (click)="opRetKontaktPerson()" >Opret kontakt </button>
-  </form>
+<div style="width: 50%; height: 70%;">
+
+    <mat-grid-list [cols]="2" rowHeight="6:1">
+      <mat-grid-tile [colspan]="2" rowspan="2">
+        <mat-form-field class="example-container">
+
+          <input matInput type="text" id="kontakPersonNavn"  [formControl]="kontakPersonNavn"  class="example-container" placeholder="Kontakt Person">
+
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" rowspan="2">
+        <mat-form-field>
+
+          <input matInput type="email" id="kontakPersonEmail" [formControl]="kontakPersonEmail"  placeholder="Email">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" rowspan="2">
+        <mat-form-field>
+          <input matInput type="tel" [formControl]="kontakPersonTelefon" placeholder="Telefon">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" rowspan="2">
+        <mat-form-field>
+          <mat-select  [(value)]="selectedTitlel" placeholder="Titel" >
+            <mat-option value="Redaktør">Redaktør</mat-option>
+            <mat-option value="Sælger">Sælger</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" rowspan="2">
+        <button mat-raised-button (click)="OpRetKontaktPerson()"  >Opret kontakt </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+
+
+
+
 </div>

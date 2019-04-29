@@ -1,0 +1,14 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  margin-left: 10px;
+  width: 100%;
+}
+
+.udsending-container {
+  display: flex;
+  flex-direction: column;
+}

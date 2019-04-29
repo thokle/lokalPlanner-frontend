@@ -1,0 +1,27 @@
+<div>
+  <mat-grid-list cols="1" rowHeight="100px" >
+    <mat-grid-tile>
+      <mat-form-field>
+        <input matInput type="text" [formControl]="daekninggrad"  value="{{updateData?.DaekningsGrad1}}">
+        <mat-label>Dækning Grad</mat-label>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field>
+        <input matInput type="text" [formControl]="oplag"  value="{{updateData?.Oplag1}}" >
+        <mat-label>Oplag</mat-label>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+<mat-form-field>
+      <mat-select placeholder="{{updateData?.PostNr1}}"   [formControl]="postnummer" value="{{updateData?.PostNr1}}">
+        <mat-option *ngFor="let p of psnr" [value]="p?.PostNr">{{p?.PostNr}}</mat-option>
+      </mat-select>
+</mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button (click)="AddOrUpdateBladDaekning()">{{text}}</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</div>

@@ -10,7 +10,8 @@ export class StamBladObserver {
 
   private stambladPagerChanged: EventEmitter<StamBladPagerId> = new EventEmitter<StamBladPagerId>();
   private  stamBladOprettetChanged: EventEmitter<number> = new EventEmitter<number>();
-
+  private daekningBladidChangeed: EventEmitter<number> = new EventEmitter<number>();
+  private kontakBladId: EventEmitter<number> = new EventEmitter<number>();
   public emitChange(o: any) {
 
     this.observable.emit(o);
@@ -36,5 +37,19 @@ export class StamBladObserver {
     return this.observable;
   }
 
+  public getDaekningEventEmitter(): EventEmitter<number> {
+    return this.daekningBladidChangeed;
+  }
 
+  public setDaekninkId(id: any) {
+    this.daekningBladidChangeed.emit(id);
+  }
+
+  public getKontaktBladId(): EventEmitter<number> {
+    return this.kontakBladId;
+  }
+
+  public setKontaktBladId(id: any) {
+    return this.kontakBladId.emit(id);
+  }
 }
