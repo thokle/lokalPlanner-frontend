@@ -10,6 +10,7 @@ import {GeoKode} from '../models/GeoKode';
 import {PostNr} from '../models/PostNr';
 import {map, tap} from 'rxjs/operators';
 import {StamBladViewModel} from '../models/StamBladViewModel';
+import {encode} from 'punycode';
 
 const httpHeaders = {
   header: new HttpHeaders({
@@ -76,6 +77,11 @@ export class StamdataService {
  public  GetLastestStamBladId(): Observable<any> {
     const url = this.baseUrl + `/stamblad/latestid`;
     return this.http.get<any>(url).pipe();
+ }
+
+ public  GetStamBladByEjerforHold(ejerforhold: string): Observable<StamBladViewModel[]>  {
+    const url = this.baseUrl + '/stamblad/ejerforhold/';
+    return  this.http.get<StamBladViewModel[]>(url, {headers: {'ejerforhold': ejerforhold }} ).pipe();
  }
 }
 //   Get("/stamblad/GeoCodes", o => { return stamBladDao.GetTableGeoCode(); });

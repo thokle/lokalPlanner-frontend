@@ -85,6 +85,7 @@ export class StamBladComponent implements OnInit {
     if (this.bladId === undefined) {
       this.st.getStamBladById({id: 0}).subscribe(value => {
         this.obs.setKontaktBladId(0);
+        this.obs.setDaekninkId(0);
         this.data$ = value[0];
         this.bladId = this.data$.BladId;
         this.obs.setDaekninkId(value[0].BladId);
@@ -208,7 +209,6 @@ export class StamBladComponent implements OnInit {
       bladId = this.nytBladId;
     }
     console.log(this.nytBladId);
-
     console.log(value);
   }
 
@@ -220,7 +220,6 @@ export class StamBladComponent implements OnInit {
         this.data$ = value[0];
         this.obs.setDaekninkId(value[0].BladId);
         this.obs.setKontaktBladId(value[0].BladId);
-
         this.bladId = value[0].BladId;
         this.toExcel = value;
       }, error1 => {
@@ -247,12 +246,13 @@ export class StamBladComponent implements OnInit {
     }
 
     console.log(this.stamBladForm);
+
     nyStamdat = {
       BladID: bladId,
       MedlemÅr: (<number>this.MedlemAAr.value),
       Ophort: stamdataControles.Ophoert.value,
 
-      MedlemMaaned: (<Month>this.selectedMedlemMd).id,
+      MedlemMaaned: (<Month>this.selectedMedlemMd).id ? undefined : 0,
       MaterialedeadlineTekst: stamdataControles.MaterialedeadlineTekst.value,
       MaterialedeadlineRubrik: stamdataControles.MaterialedeadlineRubrik.value,
       KontaktpersonerEmails: stamdataControles.KontaktpersonerEmails.value,
@@ -309,6 +309,9 @@ export class StamBladComponent implements OnInit {
 
     this.st.createStamblad(nyStamdat).subscribe(value => {
       this.snack.open('Stanblad ', '', { duration: 2000});
+      this.st.getStamBladById(this.nytBladId).subscribe(value1 => {
+        this.data$ = value1[0];
+      });
     }, error1 => {
 
     }, () => {

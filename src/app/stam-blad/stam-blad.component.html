@@ -234,7 +234,7 @@
               </mat-list>
             </div>
             <div class="divTableCell" style="width: 400px !important;">
-              <app-blad-daekning></app-blad-daekning>
+              <app-blad-daekning [bladid]="data$?.BladId" ></app-blad-daekning>
             </div>
 
           </div>
@@ -332,9 +332,7 @@
                     <mat-label>Redaktions email</mat-label>
                   </mat-form-field>
                 </mat-list-item>
-
               </mat-list>
-
             </div>
 
           </div>
@@ -479,7 +477,7 @@
 
       </mat-tab>
       <mat-tab label="Ejerforhold">
-
+<app-ejerforhold></app-ejerforhold>
       </mat-tab>
     </mat-tab-group>
     <div style="float: right !important; padding-right: 10% !important; position: relative " *ngIf="erDerStamblad">

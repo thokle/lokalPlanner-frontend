@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {StamdataService} from '../../services/stamdata.service';
+import {StamBladViewModel} from '../../models/StamBladViewModel';
 
 @Component({
   selector: 'app-ejerforhold-table',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EjerforholdTableComponent implements OnInit {
 
-  constructor() { }
+  stamData: StamBladViewModel[];
+  constructor(private  st: StamdataService) {
+
+  }
 
   ngOnInit() {
+
   }
+
+
 
 }

@@ -64,6 +64,7 @@ import { EditBladdaekningComponent } from './blad-daekning/edit-bladdaekning/edi
 import { EjerforholdComponent } from './ejerforhold/ejerforhold.component';
 import {ExcelexportService} from './services/excelexport.service';
 import { EjerforholdTableComponent } from './ejerforhold/ejerforhold-table/ejerforhold-table.component';
+import {EjerforholdService} from './services/ejerforhold.service';
 
 
 
@@ -129,7 +130,8 @@ import { EjerforholdTableComponent } from './ejerforhold/ejerforhold-table/ejerf
 
   ],
   providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, RegisteruserService,
-    PostService, PriceAskingService, RegionService, DelomraadeService, StamBladKontaktPersonService, BladdaekningService, ExcelexportService],
+    PostService, PriceAskingService, RegionService, DelomraadeService, StamBladKontaktPersonService, BladdaekningService, ExcelexportService,
+    EjerforholdService],
   entryComponents: [StambladkontaktDialogComponent, PriceAskingDialogComponent, EditBladdaekningComponent],
 
   bootstrap: [AppComponent]

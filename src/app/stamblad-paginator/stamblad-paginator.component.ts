@@ -44,4 +44,13 @@ export class StambladPaginatorComponent implements OnInit {
       this.stob.emitStamBladChange({id: this.num});
     }
   }
+
+  goToLastPage() {
+    console.log('Max '  + this.maxNumber);
+    this.stob.emitStamBladChange({id: this.maxNumber});
+  }
+
+  goFirstPage() {
+    this.stob.emitStamBladChange({id: 0});
+  }
 }
