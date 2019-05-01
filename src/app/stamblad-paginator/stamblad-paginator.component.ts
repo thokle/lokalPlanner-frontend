@@ -8,8 +8,8 @@ import {StamBladObserver} from '../stam-blad-observer';
 })
 export class StambladPaginatorComponent implements OnInit {
 
-  @Input() num:  number
-  @Input() maxNumber: number
+  @Input() num:  number;
+  @Input() maxNumber: number;
   @Input() minNumber: number;
 
   minDisable: boolean;
@@ -41,16 +41,20 @@ export class StambladPaginatorComponent implements OnInit {
     this.minDisable = true;
     if (this.num + 1 <= this.maxNumber) {
       this.num = this.num + 1;
-      this.stob.emitStamBladChange({id: this.num});
+      if (this.num !== 1 ) {
+        this.stob.emitStamBladChange({id: this.num});
+      }
     }
   }
 
   goToLastPage() {
     console.log('Max '  + this.maxNumber);
+    this.num = this.maxNumber;
     this.stob.emitStamBladChange({id: this.maxNumber});
   }
 
   goFirstPage() {
+    this.num = 0;
     this.stob.emitStamBladChange({id: 0});
   }
 }

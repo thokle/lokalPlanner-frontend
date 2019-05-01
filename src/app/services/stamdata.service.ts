@@ -11,6 +11,7 @@ import {PostNr} from '../models/PostNr';
 import {map, tap} from 'rxjs/operators';
 import {StamBladViewModel} from '../models/StamBladViewModel';
 import {encode} from 'punycode';
+import {BladIds} from '../models/blad-ids';
 
 const httpHeaders = {
   header: new HttpHeaders({
@@ -82,6 +83,11 @@ export class StamdataService {
  public  GetStamBladByEjerforHold(ejerforhold: string): Observable<StamBladViewModel[]>  {
     const url = this.baseUrl + '/stamblad/ejerforhold/';
     return  this.http.get<StamBladViewModel[]>(url, {headers: {'ejerforhold': ejerforhold }} ).pipe();
+ }
+
+ public GetAllIBladIds(): Observable<BladIds[]> {
+    const url = this.baseUrl + '/stamblad/getAllBladid';
+    return this.http.get<BladIds[]>(url).pipe();
  }
 }
 //   Get("/stamblad/GeoCodes", o => { return stamBladDao.GetTableGeoCode(); });

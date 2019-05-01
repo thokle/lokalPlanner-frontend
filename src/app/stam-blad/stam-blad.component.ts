@@ -69,12 +69,12 @@ export class StamBladComponent implements OnInit {
   selectedGeoCodeId = 0;
 
   geoService: GeoService;
-  RegionId = new FormControl('', Validators.nullValidator);
-  Delomraade = new FormControl('', Validators.nullValidator);
-  Ugedage = new FormControl('', Validators.nullValidator);
-  MedlemMaaned = new FormControl('', Validators.nullValidator);
-  OrdrecheckSendeDagID = new FormControl('', Validators.nullValidator);
-  MedlemAAr = new FormControl('', Validators.nullValidator);
+  RegionId = new FormControl('0', Validators.nullValidator);
+  Delomraade = new FormControl('0', Validators.nullValidator);
+  Ugedage = new FormControl('0', Validators.nullValidator);
+  MedlemMaaned = new FormControl('0', Validators.nullValidator);
+  OrdrecheckSendeDagID = new FormControl('0', Validators.nullValidator);
+  MedlemAAr = new FormControl('0', Validators.nullValidator);
 
   constructor(private st: StamdataService, private obs: StamBladObserver, public fb: FormBuilder,
               private ps: PostNummerService, private dialog: MatDialog, private pss: PostService, private  rs: RegionService,
@@ -177,7 +177,7 @@ export class StamBladComponent implements OnInit {
 
     });
 
-    this.st.GetAntalStamBlad().subscribe(value => this.maxAntalAviser = value);
+   this.getLatestId();
     this.opretOdatere = 'Opdater';
     // this.getAllPostNrData();
     this.setYear();
@@ -191,6 +191,10 @@ export class StamBladComponent implements OnInit {
   }
 
 
+   getLatestId() {
+     this.st.GetLastestStamBladId().subscribe(value => this.maxAntalAviser = value.item2);
+
+   }
   public StartOpretNytStamBlad() {
     this.opretOdatere = 'Opret nyt Stamblad';
     this.stamBladForm.reset();
@@ -311,6 +315,7 @@ export class StamBladComponent implements OnInit {
       this.snack.open('Stanblad ', '', { duration: 2000});
       this.st.getStamBladById(this.nytBladId).subscribe(value1 => {
         this.data$ = value1[0];
+        this.getLatestId();
       });
     }, error1 => {
 
