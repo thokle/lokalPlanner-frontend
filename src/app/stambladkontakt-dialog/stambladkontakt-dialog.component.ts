@@ -40,7 +40,7 @@ export class StambladkontaktDialogComponent {
 
     };
     this.kt.CreateStamBladKontaktPerson(kontakt).subscribe( value => {
-      this.snack.open('Kontak Er oprettet', '', { duration: 2000});
+      this.dialogRef.close({'contact': 'crated'});
     }, error1 => {
       console.log(error1);
     });

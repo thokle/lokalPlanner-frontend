@@ -1,0 +1,30 @@
+<div style="margin-left: 30px; margin-top: 20px; border: steelblue">
+  <mat-form-field>
+    <mat-select [(ngModel)]="selctedPriceItem">
+      <mat-option *ngFor="let pl of priseListItemns" value="{{pl}}">{{pl.PrislisteNavn}}</mat-option>
+    </mat-select>
+    <mat-label>Prisliste navn</mat-label>
+  </mat-form-field>
+<mat-form-field>
+  <mat-select [(ngModel)]="selectedPlacringItemn">
+    <mat-option *ngFor="let pc of placeringListItems" value="{{pc}}">{{pc.Betegnelse}}</mat-option>
+  </mat-select>
+  <mat-label>Placering</mat-label>
+</mat-form-field>
+  <mat-form-field>
+
+      <mat-select>
+        <mat-option *ngFor="let y of years" value="y">{{y}}</mat-option>
+      </mat-select>
+    <mat-label>År</mat-label>
+
+  </mat-form-field>
+  <button mat-raised-button>Søg</button>
+  <button mat-raised-button>Opret</button>
+</div>
+<table style="width: 100%;">
+      <app-price-builder [priser]="priser"></app-price-builder>
+
+
+
+</table>

@@ -4,8 +4,10 @@
 }
 
 .example-container > * {
-  margin-left: 10px;
-  width: 100%;
+
+  width: 80%;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .udsending-container {
@@ -44,7 +46,7 @@
 /* DivTable.com */
 .divTable{
   display: table;
-  width: 100px;
+  width: 100%;
 }
 .divTableRow {
   display: table-row;
@@ -57,9 +59,11 @@
   border: 0px solid #999999;
   display: table-cell;
   padding: 3px 3px;
-  width: 90px !important;
+  margin-left: 5px  !important;
+  width: 33.33% !important;
   scroll-behavior: unset;
   height: 89% !important;
+  align-items: flex-start;
 }
 .divTableHeading {
   background-color: #EEE;
@@ -124,4 +128,11 @@ label{
 }
 .bottom {
   top: 100%;
+}
+
+/deep/ .mat-grid-tile .mat-figure  {
+  display: block !important;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  padding-top: 5px !important;
 }

@@ -8,9 +8,10 @@ import {LoginGuard} from './login.guard';
 import {LoginComponent} from './login/login.component';
 import {AppComponent} from './app.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import {RedirectComponent} from './redirect/redirect.component';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login'},
+  {path: '', component: RedirectComponent},
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard], children: [
       {path: 'stamblad', component: StamBladComponent},

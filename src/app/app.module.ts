@@ -23,6 +23,7 @@ import {
   MatMenuModule,
   MatRadioModule,
   MatChipsModule,
+  MatExpansionModule,
   MatTableModule, MatDialogModule, MatDialog, MatDialogRef, MatSnackBarModule, MatCheckboxModule
 } from '@angular/material';
 import { MediaPlanComponent } from './media-plan/media-plan.component';
@@ -65,6 +66,17 @@ import { EjerforholdComponent } from './ejerforhold/ejerforhold.component';
 import {ExcelexportService} from './services/excelexport.service';
 import { EjerforholdTableComponent } from './ejerforhold/ejerforhold-table/ejerforhold-table.component';
 import {EjerforholdService} from './services/ejerforhold.service';
+import {RedirectComponent} from './redirect/redirect.component';
+import {VisKontakterComponent} from './vis-kontakter/vis-kontakter.component';
+import { CreatePriceComponent } from './create-price/create-price.component';
+import { PriceBuilderComponent } from './price-builder/price-builder.component';
+import {PriceTabComponent} from './price-tab/price-tab.component';
+import { MonthPipe } from './pipies/month.pipe';
+
+import { BladkommentarComponent } from './bladkommentar/bladkommentar.component';
+import {KommentarService} from './services/kommentar.service';
+import { PriceWeekComponent } from './price-week/price-week.component';
+
 
 
 
@@ -97,6 +109,16 @@ import {EjerforholdService} from './services/ejerforhold.service';
     EditBladdaekningComponent,
     EjerforholdComponent,
     EjerforholdTableComponent,
+    RedirectComponent,
+    VisKontakterComponent,
+    CreatePriceComponent,
+    PriceBuilderComponent,
+    PriceTabComponent,
+    MonthPipe,
+
+    BladkommentarComponent,
+
+    PriceWeekComponent
 
   ],
   imports: [
@@ -126,12 +148,14 @@ import {EjerforholdService} from './services/ejerforhold.service';
     MatGridListModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatExpansionModule
 
   ],
   providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, RegisteruserService,
-    PostService, PriceAskingService, RegionService, DelomraadeService, StamBladKontaktPersonService, BladdaekningService, ExcelexportService,
-    EjerforholdService],
+    PostService, PriceAskingService, RegionService, DelomraadeService, StamBladKontaktPersonService, BladdaekningService
+    , ExcelexportService,
+    EjerforholdService, KommentarService],
   entryComponents: [StambladkontaktDialogComponent, PriceAskingDialogComponent, EditBladdaekningComponent],
 
   bootstrap: [AppComponent]

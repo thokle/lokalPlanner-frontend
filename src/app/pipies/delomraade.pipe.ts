@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {DelomraadeService} from '../services/delomraade.service';
 import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environments/environment.prod';
+import {environment} from '../../environments/environment';
 
 @Pipe({
   name: 'delomraade'

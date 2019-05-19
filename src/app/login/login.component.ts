@@ -12,6 +12,8 @@ import {IndexComponent} from '../index/index.component';
 })
 export class LoginComponent implements OnInit {
 
+  inCorrectText = '';
+  isInCorrect;
   logninForm: FormGroup;
   constructor(private rs: RegisteruserService, private  fb: FormBuilder, private router: Router ) {
     this.logninForm = this.fb.group({
@@ -26,10 +28,17 @@ export class LoginComponent implements OnInit {
 
   public login() {
     this.rs.login(this.logninForm.get('username').value, this.logninForm.get('password').value).subscribe(rs  => {
-     const user: User =  rs;
-     console.log(JSON.stringify(user));
-  localStorage.setItem('user', JSON.stringify(user));
-    this.router.navigateByUrl('/dashboard');
+    this.isInCorrect = false;
+     const user: User =  rs[0];
+      console.log(JSON.stringify(user));
+     if ( user.username !== undefined) {
+
+       localStorage.setItem('user', JSON.stringify(user));
+       this.router.navigateByUrl('/dashboard');
+     } else {
+        this.inCorrectText = 'Indtastet brugernavn og eller adgangs kode er forkert';
+        this.isInCorrect = true;
+     }
     });
   }
 }

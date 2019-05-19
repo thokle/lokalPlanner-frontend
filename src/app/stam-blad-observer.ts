@@ -12,6 +12,7 @@ export class StamBladObserver {
   private  stamBladOprettetChanged: EventEmitter<number> = new EventEmitter<number>();
   private daekningBladidChangeed: EventEmitter<number> = new EventEmitter<number>();
   private kontakBladId: EventEmitter<number> = new EventEmitter<number>();
+  private postNummer: EventEmitter<number> = new EventEmitter<number>();
   public emitChange(o: any) {
 
     this.observable.emit(o);
@@ -51,5 +52,13 @@ export class StamBladObserver {
 
   public setKontaktBladId(id: any) {
     return this.kontakBladId.emit(id);
+  }
+
+  public setPostNr(postNummer: number) {
+    this.postNummer.emit(postNummer);
+  }
+
+  public getPostNummerObserver(): EventEmitter<number> {
+    return this.postNummer;
   }
 }

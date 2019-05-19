@@ -1,6 +1,6 @@
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches"  >
 
-  <mat-toolbar color="primary" class="example-toolbar"  >
+  <mat-toolbar color="primary" class="example-toolbar"  *ngIf="isUserLoggedIn" >
 
     <mat-toolbar-row  >
       <h1 class="example-app-name">{{name}}</h1>
@@ -31,7 +31,7 @@
       <button mat-button [matMenuTriggerFor]="Administration">Adminstration</button>
       <mat-menu #Administration>
         <button mat-menu-item routerLink="stamblad">Stamblad</button>
-        <button mat-menu-item routerLink="creatUser">Opret bruger</button>
+        <button mat-menu-item routerLink="opret">Opret bruger</button>
       </mat-menu>
 
       <div style="margin-left: 30%;">
@@ -63,5 +63,5 @@
 
   </mat-sidenav-container>
 </div>
-<h1>jello</h1>
+
 

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {StamData} from '../models/Stamdata';
-import {environment} from '../../environments/environment';
+
 import {Dage} from '../models/Dage';
 import {Region} from '../models/Region';
 
@@ -12,6 +12,7 @@ import {map, tap} from 'rxjs/operators';
 import {StamBladViewModel} from '../models/StamBladViewModel';
 import {encode} from 'punycode';
 import {BladIds} from '../models/blad-ids';
+import {environment} from '../../environments/environment';
 
 const httpHeaders = {
   header: new HttpHeaders({
@@ -43,7 +44,7 @@ export class StamdataService {
     const url = this.baseUrl + `/stamblad`;
     return this.http.post<StamData>(url, stamblad, {
       headers: new HttpHeaders({
-        'Content-type': 'application/json'
+
       })
     }).pipe();
   }

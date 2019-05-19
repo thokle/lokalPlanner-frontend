@@ -11,11 +11,13 @@ export class GeoPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     let navn = '';
-    this.gs.GetGeoCode(value).subscribe(value1 => {
-      navn =  value1[0].GeoKodeNavn;
-    });
-    console.log('GeoPipe  ' + navn);
-    return navn;
+    if (value !== null) {
+      this.gs.GetGeoCode(value).subscribe(value1 => {
+        navn = value1[0].GeoKodeNavn;
+      });
+      console.log('GeoPipe  ' + navn);
+      return navn;
+    }
   }
 
 }
