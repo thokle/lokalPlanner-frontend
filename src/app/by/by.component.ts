@@ -24,7 +24,11 @@ export class ByComponent implements OnInit {
 
   private  setByNavn() {
     this.os.getPostNummerObserver().subscribe( value => {
-      this.st.getByNavnByPostnr(value).subscribe( value1 => this.byNavn = value1[0].PostBy );
+      if (value === 0 ) {
+        this.byNavn = '';
+      } else {
+        this.st.getByNavnByPostnr(value).subscribe(value1 => this.byNavn = value1[0].PostBy);
+      }
     });
   }
 }

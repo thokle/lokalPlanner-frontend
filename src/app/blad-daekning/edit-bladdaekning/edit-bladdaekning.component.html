@@ -1,27 +1,44 @@
 <div>
+
+  <form [formGroup]="form">
   <mat-grid-list cols="1" rowHeight="100px" >
     <mat-grid-tile>
       <mat-form-field>
-        <input matInput type="text" [formControl]="daekninggrad"  value="{{updateData?.DaekningsGrad1}}">
+        <input matInput type="text" formControlName="DaekningsGrad1"  >
         <mat-label>Dækning Grad</mat-label>
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-form-field>
-        <input matInput type="text" [formControl]="oplag"  value="{{updateData?.Oplag1}}" >
+        <input matInput type="text" formControlName="Oplag1" >
         <mat-label>Oplag</mat-label>
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile>
 <mat-form-field>
-      <mat-select placeholder="{{updateData?.PostNr1}}"   [formControl]="postnummer" value="{{updateData?.PostNr1}}">
+      <mat-select placeholder="PostNr1"   formControlName="PostNr1">
+        <mat-option>{{form.get('PostNr1').value }}</mat-option>
         <mat-option *ngFor="let p of psnr" [value]="p?.PostNr">{{p?.PostNr}}</mat-option>
       </mat-select>
+
 </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile>
-      <button mat-raised-button (click)="AddOrUpdateBladDaekning()">{{text}}</button>
+      <mat-form-field>
+        <input matInput formControlName="Postby">
+      </mat-form-field>
     </mat-grid-tile>
+    <mat-grid-tile>
+      <div *ngIf="opret">
+      <button mat-raised-button (click)="AddOrUpdateBladDaekning()">{{text}}</button>
+      </div>
+      <div *ngIf="opdater">
+        <button mat-raised-button (click)="AddOrUpdateBladDaekning()">{{text}}</button>
+      </div>
+      <div *ngIf="slet">
+      <button mat-raised-button  (click)="deleteDaekning()">{{text}}</button>
+      </div>    </mat-grid-tile>
   </mat-grid-list>
-
+    <input hidden="true" formControlName="BladID1" value="BladID1">
+  </form>
 </div>

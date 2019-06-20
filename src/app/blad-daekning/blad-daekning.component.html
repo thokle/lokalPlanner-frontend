@@ -1,14 +1,14 @@
 <div  *ngIf="show">
 <table style="width: 100% !important;">
-  <tr><th>Dæknings grad</th><th>Oplag</th><th>Post Nummer</th><th></th></tr>
+  <tr><th>Dæknings grad</th><th>Oplag</th><th>Post Nummer</th><th>By navn</th><th>Edit</th><th>Slet</th></tr>
   <tr *ngFor="let s of data" >
-  <td>{{s.DaekningsGrad1}}</td><td>{{s.Oplag1}}</td><td>{{s.PostNr1}}</td><td (click)="opdatereDaekningGrad(s)">Edit</td>
+  <td>{{s.DaekningsGrad1}}</td><td>{{s.Oplag1}}</td><td>{{s.PostNr1}}</td><td>{{s.Postby}}</td><td (click)="opdatereDaekningGrad(s)">Edit</td><td (click)="slet(s)">slet</td>
   </tr>
 
-<tr><td colspan="4"><button mat-mini-fab (click)="tilFfoejDeakningGrrap()">Add</button></td></tr>
+<tr><td colspan="6"><button mat-mini-fab (click)="tilFfoejDeakningGrrap()">TilFøj</button></td></tr>
 </table>
 </div>
 <div *ngIf="!show">
 
-  <button mat-mini-fab (click)="tilFfoejDeakningGrrap()">Add</button>
+  <button mat-mini-fab (click)="tilFfoejDeakningGrrap()">TilFøj</button>
 </div>

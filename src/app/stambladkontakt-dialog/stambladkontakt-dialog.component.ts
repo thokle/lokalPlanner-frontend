@@ -1,9 +1,10 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Form, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef, MatSnackBar} from '@angular/material';
 import {StambladKontaktPerson} from '../models/stamblad-kontakt-person';
 import {StamBladKontaktPersonService} from '../services/stam-blad-kontakt-person.service';
 import {StamBladObserver} from '../stam-blad-observer';
+import {validate} from 'codelyzer/walkerFactory/walkerFn';
 
 @Component({
   selector: 'app-stambladkontakt-dialog',
@@ -12,35 +13,37 @@ import {StamBladObserver} from '../stam-blad-observer';
 })
 export class StambladkontaktDialogComponent {
 
+  form: FormGroup;
 
 
-  kontakPersonNavn = new FormControl();
-  kontakPersonEmail =  new FormControl();
-  kontakPersonTelefon =  new FormControl();
-  kontakPersonTitel = new FormControl();
-  selectedTitlel;
   @Input()
+
   bladId;
   constructor(
     public dialogRef: MatDialogRef<StambladkontaktDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:  any, private kt: StamBladKontaktPersonService, private  obs: StamBladObserver, private  snack: MatSnackBar) {
-
+    @Inject(MAT_DIALOG_DATA) public data:  any, private kt: StamBladKontaktPersonService, private  obs: StamBladObserver, private  snack: MatSnackBar, private  fb: FormBuilder) {
+      this.form = this.fb.group({
+        KontakPersonEmail: ['', [Validators.min(5), Validators.email]],
+        KontakPersonNavn: ['', Validators.min(5)],
+        KontakPersonTelefon: ['', Validators.nullValidator],
+        KontakPersonTitel: ['', Validators.nullValidator]
+      });
 
   }
 
 
   OpRetKontaktPerson() {
-    console.log(this.kontakPersonEmail.value)
+
     const kontakt: StambladKontaktPerson  = {
-        KontakPersonEmail: this.kontakPersonEmail.value,
-      KontakPersonNavn: this.kontakPersonNavn.value,
-      KontakPersonTelefon: this.kontakPersonTelefon.value,
-      KontakPersonTitel: this.selectedTitlel,
+        KontakPersonEmail: this.form.controls.KontakPersonEmail.value,
+      KontakPersonNavn: this.form.controls.kontakPersonNavn.value,
+      KontakPersonTelefon: this.form.controls.kontakPersonTelefon.value,
+      KontakPersonTitel: this.form.controls.selectedTitlel.value,
       StamBladId: this.data.bladid
 
     };
-    this.kt.CreateStamBladKontaktPerson(kontakt).subscribe( value => {
-      this.dialogRef.close({'contact': 'crated'});
+    this.kt.CreateStamBladKontaktPerson(kontakt).subscribe( value => {console.log('opret kontak value ' + value);
+      this.dialogRef.close({'contact': 'created'});
     }, error1 => {
       console.log(error1);
     });

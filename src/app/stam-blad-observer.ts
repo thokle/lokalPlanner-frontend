@@ -1,8 +1,15 @@
 import {$} from 'protractor';
 import {EventEmitter} from '@angular/core';
+import {SetPrisListTable} from './models/set-pris-list-table';
 
 export  interface StamBladPagerId {
   id: number;
+}
+
+export  interface PrisersTable {
+prisListe;
+id;
+year;
 }
 export class StamBladObserver {
   private observable: EventEmitter<any> = new EventEmitter();
@@ -13,11 +20,20 @@ export class StamBladObserver {
   private daekningBladidChangeed: EventEmitter<number> = new EventEmitter<number>();
   private kontakBladId: EventEmitter<number> = new EventEmitter<number>();
   private postNummer: EventEmitter<number> = new EventEmitter<number>();
+
+  private emitPriosetable: EventEmitter<SetPrisListTable> = new EventEmitter<SetPrisListTable>();
   public emitChange(o: any) {
 
     this.observable.emit(o);
   }
 
+  public  emitToPriseTable(o: SetPrisListTable) {
+    this.emitPriosetable.emit(o);
+
+  }
+
+  public  getToTableEmitter(): EventEmitter<SetPrisListTable> {return this.emitPriosetable;
+  }
   public emitStamBladChange(o: StamBladPagerId) {
     this.stambladPagerChanged.emit(o);
   }

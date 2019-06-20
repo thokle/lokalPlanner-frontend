@@ -1,0 +1,8 @@
+.by /deep/ .mat-form-field-infix {
+  background-color: white !important;
+  border: black;
+  border-style: solid;
+  border-width: thin;
+  height: 10px;
+  padding-left: 3px;
+}

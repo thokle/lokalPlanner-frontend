@@ -27,5 +27,13 @@ export class BladdaekningService {
       }
     }).pipe();
   }
+
+  public  DeleteDaeknig(bladid, postr) {
+    const url = this.baseurl + '/bladdaekning/delete/' + bladid + '/' + postr ;
+    return this.http.delete(url , {
+      headers: {
+      }
+    }).pipe();
+  }
 }
 

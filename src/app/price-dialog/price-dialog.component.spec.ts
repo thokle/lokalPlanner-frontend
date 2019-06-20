@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ByselectComponent } from './byselect.component';
+import { PriceDialogComponent } from './price-dialog.component';
 
-describe('ByselectComponent', () => {
-  let component: ByselectComponent;
-  let fixture: ComponentFixture<ByselectComponent>;
+describe('PriceDialogComponent', () => {
+  let component: PriceDialogComponent;
+  let fixture: ComponentFixture<PriceDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ByselectComponent ]
+      declarations: [ PriceDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ByselectComponent);
+    fixture = TestBed.createComponent(PriceDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

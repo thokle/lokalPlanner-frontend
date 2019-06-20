@@ -1,0 +1,12 @@
+<div style="margin-top: 5%" >
+<table>
+  <tr *ngFor="let k of kontaktData">
+    <td>{{k.KontakPersonTitel}}</td>
+    <td>{{k.KontakPersonNavn}}</td>
+    <td>{{k.KontakPersonEmail}}</td>
+    <td>{{k.KontakPersonTelefon}}</td>
+    <td><mat-checkbox (click)="selectEmail(k)" ></mat-checkbox></td>
+  </tr>
+  <tr><td ><button mat-raised-button>Send Mail</button></td></tr>
+</table>
+</div>

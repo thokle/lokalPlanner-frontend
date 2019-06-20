@@ -41,7 +41,7 @@ h1.example-app-name {
 }
 
 .example-icon {
-  padding: 0 14px;
+  margin-right: 0;
 }
 
 .example-spacer {
@@ -51,5 +51,13 @@ h1.example-app-name {
 
 /deep/     .mat-toolbar.mat-primary  {
 
-  background-color: #43c5b9 !important;
+  background-color: #377ec5 !important;
+}
+
+.stambladtab /deep/ mat-tab-body {
+  overflow: hidden !important;
+}
+
+.menu-icon /deep/ .mat-icon-button {
+  margin-right: 0 !important;
 }

@@ -1,0 +1,17 @@
+.priser-grid /deep/ .mat-grid-tile .mat-figure {
+  justify-content: flex-start !important ;
+  align-items: flex-start !important;
+  margin-left: 5% !important;
+  margin-top: 0px !important;
+  overflow-y: auto !important;
+  position: page !important;
+  display: list-item !important;
+}
+
+.priser /deep/ .mat-form-field-infix {
+  background-color: white !important;
+  border: black;
+  border-style: solid;
+  border-width: thin;
+  height: 10px;
+}

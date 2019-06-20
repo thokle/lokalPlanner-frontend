@@ -1,0 +1,31 @@
+<form [formGroup]="form" novalidate>
+<div style="width: 270px;">
+  <label>Kontakt Typer</label>
+  <mat-form-field style="width: 100%;" class="stamblad">
+<select formControlName="type" matNativeControl [(ngModel)]="selectedValue">
+    <option *ngFor="let k of kontaktTyper" value="{{k.id}}" >{{k.titel}}</option>
+</select>
+
+  </mat-form-field>
+
+  <label>Navn</label>
+<mat-form-field class="stamblad"  style="width: 100%;">
+  <input type="text" matInput formControlName="navn">
+
+</mat-form-field>
+
+  <label>E-mail</label>
+  <mat-form-field class="stamblad" style="width: 100%;">
+    <input type formControlName="email" matInput>
+
+  </mat-form-field>
+  <label>Telefon nummer</label>
+  <mat-form-field class="stamblad" style="width: 100%;">
+    <input type="text" formControlName="telefonnummer" matInput>
+
+  </mat-form-field>
+
+  <button mat-raised-button (click)="OpretNyKontakt()">Opret kontakt</button>
+</div>
+
+</form>

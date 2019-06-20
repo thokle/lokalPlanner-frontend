@@ -30,17 +30,19 @@
       </mat-menu>
       <button mat-button [matMenuTriggerFor]="Administration">Adminstration</button>
       <mat-menu #Administration>
-        <button mat-menu-item routerLink="stamblad">Stamblad</button>
+        <button mat-menu-item routerLink="stamblad">Nyt Stamblad</button>
         <button mat-menu-item routerLink="opret">Opret bruger</button>
+        <button mat-menu-item routerLink="indhentPriser">Indhent Priser</button>
+        <button mat-menu-item >Rabat Gruppe</button>
       </mat-menu>
 
-      <div style="margin-left: 30%;">
+      <div style="margin-left: 5%;">
         <mat-form-field>
           <input matInput type="text" style="width: 100px;">
         </mat-form-field>
         <button mat-button (click)="showResultat()" >Search</button>
       </div>
-      <button  class="example-icon"  mat-icon-button (click)="endnav.toggle()"><mat-icon >menu</mat-icon></button>
+      <button   mat-icon-button (click)="endnav.toggle()"><mat-icon class="menu-icon" >menu</mat-icon></button>
 
     </mat-toolbar-row>
   </mat-toolbar>

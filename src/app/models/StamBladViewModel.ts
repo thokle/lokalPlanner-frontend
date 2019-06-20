@@ -70,5 +70,10 @@ export interface StamBladViewModel {
   MaterialeDeadlineRubrikKl?: string;
   Overfoert?: boolean;
   Timestamp?: string;
+  DelOmraadeNavn?: string;
+  DagNavn?: string;
+  HovedGruppeNavn?: string;
+  GeoKodeNavn?: string;
+  RegionNavn?: string;
 }
 

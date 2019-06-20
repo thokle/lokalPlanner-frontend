@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {StamdataService} from '../services/stamdata.service';
 
 import {Dage} from '../models/Dage';
@@ -7,11 +7,11 @@ import {StamBladObserver} from '../stam-blad-observer';
 import {StamData} from '../models/Stamdata';
 import {PostNr} from '../models/PostNr';
 import {PostNummerService} from '../services/post-nummer.service';
-import {MatDialog, MatSnackBar} from '@angular/material';
+import {MatDialog, MatSelect, MatSnackBar} from '@angular/material';
 
 import {StambladkontaktDialogComponent} from '../stambladkontakt-dialog/stambladkontakt-dialog.component';
 
-import {Observable, Subscribable} from 'rxjs';
+import {Observable, ReplaySubject, Subscribable} from 'rxjs';
 import {PostService} from '../services/post.service';
 import {StamBladViewModel} from '../models/StamBladViewModel';
 import {Region} from '../models/Region';
@@ -23,6 +23,8 @@ import {GeoService} from '../services/geo.service';
 import {Month} from '../models/Month';
 import {ExcelexportService} from '../services/excelexport.service';
 import {v} from '@angular/core/src/render3';
+import {EjerforholdService} from '../services/ejerforhold.service';
+import {Ejerforhold} from '../models/ejerforhold';
 
 
 
@@ -35,8 +37,8 @@ import {v} from '@angular/core/src/render3';
 
 export class StamBladComponent implements OnInit {
 
-  months: Month[] = [{id: 0, name: 'Januar'}, {id: 1, name: 'Febuar'}, {id: 2, name: 'Marts'}, {id: 3, name: 'April'}
-    , {id: 4, name: 'Maj'}, {id: 5, name: 'Jumi'}, {id: 6, name: 'Juli'}, {id: 7, name: 'August'}, {id: 8, name: 'September'}, {
+  months: Month[] = [{id: 0, name: 'Januar'}, {id: 1, name: 'februar'}, {id: 2, name: 'Marts'}, {id: 3, name: 'April'}
+    , {id: 4, name: 'Maj'}, {id: 5, name: 'Juni'}, {id: 6, name: 'Juli'}, {id: 7, name: 'August'}, {id: 8, name: 'September'}, {
       id: 9,
       name: 'Oktober'
     }, {id: 10, name: 'November'}
@@ -44,6 +46,7 @@ export class StamBladComponent implements OnInit {
 
   firstLoad = true;
   selectedZipCode;
+  stamBladNavn;
   selectedByNavn;
   years: number[] = [];
   dage: Dage[];
@@ -69,14 +72,19 @@ export class StamBladComponent implements OnInit {
   selectedMedlemMd;
   selectedmedlemAar;
   selectedGeoCodeId = 0;
-
+ejerforholdliste: Ejerforhold[];
   geoService: GeoService;
+searchLabelPlaceHolder = 'Søg';
 
+
+  @ViewChild('singleSelect') singleSelect: MatSelect;
 postnr: number;
   constructor(private st: StamdataService, private obs: StamBladObserver, public fb: FormBuilder,
               private ps: PostNummerService, private dialog: MatDialog, private pss: PostService, private  rs: RegionService,
-              private dels: DelomraadeService, private gs: GeoService, private  exservice: ExcelexportService, private snack: MatSnackBar) {
+              private dels: DelomraadeService, private gs: GeoService, private  exservice: ExcelexportService,
+              private snack: MatSnackBar, private  efs: EjerforholdService) {
     this.obs.emitChange({id: 0});
+    this.setEjerforhold();
     this.stamBladForm = this.fb.group({
       BladId: [ '', Validators.nullValidator],
       Navn:  ['', Validators.nullValidator],
@@ -147,7 +155,8 @@ postnr: number;
       MedlemAAr: ['', Validators.nullValidator],
       RegionId: ['', Validators.nullValidator],
       Delomraade: ['', Validators.nullValidator],
-      OrdrecheckSendeDagID: ['', Validators.nullValidator]
+      OrdrecheckSendeDagID: ['', Validators.nullValidator],
+
 
     });
     if (this.bladId === undefined) {
@@ -157,7 +166,7 @@ postnr: number;
         this.obs.setKontaktBladId(0);
         this.obs.setDaekninkId(0);
         this.stamBladForm.reset();
-        this.obs.setDaekninkId(value[0].BladId || 0);
+        this.obs.setDaekninkId(value[0].BladId);
 
 
         this.postnr = value[0].PostNr || 1000;
@@ -166,6 +175,8 @@ postnr: number;
         this.setStamBladData(value);
         this.erDerStamblad = true;
         this.setStamBladData(value);
+        this.bladId  = 0;
+
       });
 
       this.geoService = this.gs;
@@ -195,19 +206,23 @@ postnr: number;
   public StartOpretNytStamBlad() {
     this.opretOdatere = 'Opret nyt Stamblad';
     this.stamBladForm.reset();
+
+
+    this.obs.setPostNr(0);
+
     this.st.GetLastestStamBladId().subscribe(value1 => {
       this.bladId = value1.item2 + 1;
       this.stamBladForm.patchValue({BladId: this.bladId});
     });
     const value = this.stamBladForm.controls;
     console.log(this.selectedDelOmraade);
-    const stamdataControles = this.stamBladForm.controls;
 
-    let bladId = 0;
+   const stamdataControles = this.stamBladForm.controls;
+
     if (stamdataControles.BladId.value !== undefined) {
-      bladId = stamdataControles.BladId.value;
+      this.stamBladForm.patchValue({'BladId': stamdataControles.BladId.value});
     } else {
-      bladId = this.nytBladId;
+      this.stamBladForm.patchValue({'BladId': this.nytBladId || 0});
     }
     console.log(this.nytBladId);
     console.log(value);
@@ -221,8 +236,7 @@ postnr: number;
 
         this.obs.setDaekninkId(value[0].BladId);
         this.obs.setKontaktBladId(value[0].BladId);
-
-        this.bladId = value[0].BladId;
+        this.stamBladNavn = value[0].Navn;
         this.toExcel = value;
         this.obs.setPostNr(value[0].PostNr);
         this.setStamBladData(value);
@@ -238,6 +252,7 @@ postnr: number;
   }
 
   private setStamBladData(value) {
+    console.log('stamblad data' + value[0]);
     this.erDerStamblad = true;
     this.stamBladForm.patchValue({'BladId': value[0].BladId || 0});
     this.stamBladForm.patchValue({'Navn': value[0].Navn || ''});
@@ -248,7 +263,7 @@ postnr: number;
     this.stamBladForm.patchValue({'Fax': value[0].Fax || 0});
     this.stamBladForm.patchValue({'Cvr': value[0].Cvr || 0});
     this.stamBladForm.patchValue({'HovedgruppeId': value[0].HovedgruppeId || 0});
-    this.stamBladForm.patchValue({'MedlemMaaned': value[0].MedlemMaaned ||  0});
+    this.stamBladForm.patchValue({'MedlemMaaned': value[0].MedlemMaaned || 0});
     this.stamBladForm.patchValue({'MedlemAAr': value[0].MedlemAAr || 0});
     this.stamBladForm.patchValue({'Ejerforhold': value[0].Ejerforhold || ''});
     this.stamBladForm.patchValue({'Ophoert': value[0].Ophoert || false});
@@ -279,10 +294,14 @@ postnr: number;
     this.stamBladForm.patchValue({'Emails': value[0].Emails});
     this.stamBladForm.patchValue({'KontaktpersonerEmails': value[0].KontaktpersonerEmails});
     this.stamBladForm.patchValue({'BogholderiEmails': value[0].BogholderiEmails});
-    this.stamBladForm.patchValue({'RegionId': value[0].RegionId || 0 });
-    this.stamBladForm.patchValue({'Delomraade': value[0].Delomraade});
+    this.stamBladForm.patchValue({'RegionId': value[0].RegionNavn});
+    this.stamBladForm.patchValue({'Delomraade': value[0].DelOmraadeNavn});
+    this.stamBladForm.patchValue({'GeoKodeId': value[0].GeoKodeNavn});
+    this.stamBladForm.patchValue({'UgedagID': value[0].DagNavn});
+    this.stamBladForm.patchValue({'Kontaktperson': value[0].Kontaktperson});
+   }
 
-  }
+
 
   public OpdatereStamBlad() {
 
@@ -303,13 +322,13 @@ postnr: number;
       MedlemÅr: stamdataControles.MedlemAAr.value,
       Ophort: stamdataControles.Ophoert.value,
 
-      MedlemMaaned: stamdataControles.mdlmaaned.value,
+      MedlemMaaned: stamdataControles.MedlemMaaned.value,
       MaterialedeadlineTekst: stamdataControles.MaterialedeadlineTekst.value,
       MaterialedeadlineRubrik: stamdataControles.MaterialedeadlineRubrik.value,
       KontaktpersonerEmails: stamdataControles.KontaktpersonerEmails.value,
       OrdredeadlineTekst: stamdataControles.OrdredeadlineTekst.value,
       OrdredeadlineRubrik: stamdataControles.OrdredeadlineRubrik.value,
-      UgedagID: stamdataControles.Ugedage.value,
+      UgedagID: stamdataControles.UgedagId.value,
       Format: stamdataControles.Format.value,
       Ejerforhold: stamdataControles.Ejerforhold.value,
       Oplag: stamdataControles.Oplag.value,
@@ -373,6 +392,7 @@ postnr: number;
     this.st.StamBladAllPostnr().subscribe(data => {
       this.byNavn = data;
       this.postNr = data;
+
     });
   }
 
@@ -400,6 +420,7 @@ postnr: number;
     this.dialog.open(StambladkontaktDialogComponent, { data: {bladid: this.bladId} ,
       width: '30%', height: '70%' }).afterClosed().subscribe(value => {
       console.log(value);
+
       this.snack.open('Kontakt er blevet oprettet', ' ', {duration: 3000});
     });
   }
@@ -437,5 +458,10 @@ postnr: number;
 
   }
 
+  private  setEjerforhold() {
+    this.efs.GetAllEjerforhold().subscribe(value => {
+      this.ejerforholdliste = value;
+    });
+  }
 }
 

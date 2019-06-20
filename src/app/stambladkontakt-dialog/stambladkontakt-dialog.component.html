@@ -1,27 +1,28 @@
 <div style="min-width: 50%; min-height: 70%;">
-
+<form [formGroup]="form" >
     <mat-grid-list [cols]="2" rowHeight="6:1">
       <mat-grid-tile [colspan]="2" rowspan="2">
+
         <mat-form-field class="example-container">
 
-          <input matInput type="text" id="kontakPersonNavn"  [formControl]="kontakPersonNavn"  class="example-container" placeholder="Kontakt Person">
+          <input matInput type="text" id="kontakPersonNavn"   formControlName="kontakPersonNavn"  class="example-container" placeholder="Kontakt Person">
 
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="2" rowspan="2">
         <mat-form-field>
 
-          <input matInput type="email" id="kontakPersonEmail" [formControl]="kontakPersonEmail"  placeholder="Email">
+          <input matInput type="email" id="kontakPersonEmail" formControlName="kontakPersonEmail"  placeholder="Email">
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="2" rowspan="2">
         <mat-form-field>
-          <input matInput type="tel" [formControl]="kontakPersonTelefon" placeholder="Telefon">
+          <input matInput type="tel" formControlName="kontakPersonTelefon" placeholder="Telefon">
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="2" rowspan="2">
         <mat-form-field>
-          <mat-select  [(value)]="selectedTitlel" placeholder="Titel" >
+          <mat-select  formControlName="KontakPersonTitel" placeholder="Titel" >
             <mat-option value="Redaktør">Redaktør</mat-option>
             <mat-option value="Sælger">Sælger</mat-option>
           </mat-select>
@@ -33,7 +34,7 @@
     </mat-grid-list>
 
 
-
+</form>
 
 
 </div>

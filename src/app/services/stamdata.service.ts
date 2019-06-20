@@ -35,9 +35,9 @@ export class StamdataService {
     return this.http.get<StamBladViewModel[]>(url).pipe();
   }
 
-  public getStabbladByName(name: string): Observable<StamBladViewModel> {
+  public GetStabbladByName(name: string): Observable<StamBladViewModel[]> {
     const url = this.baseUrl + `/stamblad/navn/${name}`;
-    return this.http.get<StamBladViewModel>(url).pipe();
+    return this.http.get<StamBladViewModel[]>(url).pipe();
   }
 
   public createStamblad(stamblad: StamData): Observable<StamData> {

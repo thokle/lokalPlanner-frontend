@@ -46,10 +46,12 @@
 /* DivTable.com */
 .divTable{
   display: table;
-  width: 100%;
+  width: 60%;
+  height: 100%;
 }
 .divTableRow {
   display: table-row;
+  width: 20% ;
 }
 .divTableHeading {
   background-color: #EEE;
@@ -59,10 +61,10 @@
   border: 0px solid #999999;
   display: table-cell;
   padding: 3px 3px;
-  margin-left: 5px  !important;
-  width: 33.33% !important;
+  margin-left: 0px  !important;
+  width:20% !important;
   scroll-behavior: unset;
-  height: 89% !important;
+  height: 100% !important;
   align-items: flex-start;
 }
 .divTableHeading {
@@ -99,40 +101,99 @@
 }
 
 
+
 label {
-  width:100px;
-  clear:left;
-  text-align:right;
-  padding-right:30px !important;
-  padding-left: 3px !important;
-  right: 30px;
+  margin-right: 7%;
+  margin-left: 0%;
+  font-size: 14px;
+  font-weight: bold;
 }
 
-input, label {
-  float:left;
-}
-label{
-  position: absolute;
-}
-.right{
-  top: 0;
-  left: 100%;
-}
-.left{
-  top: 0;
-  right: 100%;
-}
-.top{
-  bottom: 100%;
-  left: 0;
-}
-.bottom {
-  top: 100%;
+
+
+
+
+
+.mat-grid-tile {
+  height: 20px !important;
 }
 
-/deep/ .mat-grid-tile .mat-figure  {
+.stamblad /deep/ .mat-form-field-infix {
+  background-color: white !important;
+  border: black;
+  border-style: solid;
+  border-width: thin;
+  height: 10px;
+}
+
+.stamblad /deep/ .mat-list-item-content {
+  width: 100px !important;
+}
+
+.stamblad-kontakt /deep/ .mat-list-item-content {
+  height: 300px !important;
+
+
+                   }
+.textares /deep/ .mat-list-item-content {
+  padding-top: 0px !important;
+  height: 300px !important;
+color: red !important;
+
+}
+
+
+.divTableCell2, .divTableHead {
+  border: 0px solid #999999;
+  display: table-cell;
+  padding: 3px 3px;
+  margin-left: 0px  !important;
+  width:40% !important;
+  scroll-behavior: unset;
+  height: 89% !important;
+  align-items: flex-start;
+}
+
+
+.stamblad-grid /deep/  .mat-grid-tile .mat-figure {
+  margin-bottom: 4% !important;
+
+  margin-top: 30px !important; ;
+  background-color: transparent;
+  overflow: hidden !important;
   display: block !important;
-  padding-left: 30px !important;
-  padding-right: 30px !important;
-  padding-top: 5px !important;
+  margin-left: 12% !important;
+
+
+  justify-content: start !important;
+
+}
+
+.stambladtab /deep/ .mat-tab-body-content {
+  overflow: hidden !important;
+}
+
+.udsending-stamblad-grid /deep/ .mat-grid-tile .mat-figure {
+   justify-content: flex-start !important ;
+   align-items: flex-start !important;
+   margin-left: 1% !important;
+   margin-top: 30px !important;
+ }
+
+.udsending-stamblad-grid.lov /deep/ .mat-grid-tile .mat-figure {
+  justify-content: flex-start !important ;
+  align-items: flex-start !important;
+  margin-left: 2% !important;
+  margin-top: 30px !important;
+}
+
+.udsending-expansionpanl /deep/ .mat-expansion-panel-header {
+  background-color: #377ec5 !important;
+  margin-left: 3% !important;
+  margin-right: 3% !important;
+}
+
+.udsending-expansion-body /deep/ .   .mat-expansion-panel-body  {
+  margin-right: 3% !important;
+  margin-left: 3% !important;
 }

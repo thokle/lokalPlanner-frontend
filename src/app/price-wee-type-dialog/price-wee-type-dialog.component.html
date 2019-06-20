@@ -1,0 +1,5 @@
+<label>Vælg prisliste</label>
+<select (change)="update()"  [(ngModel)]="selectedId">
+  <option *ngFor="let p of priceList" value="{{p.PrislisteID}}">{{p.PrislisteNavn}}</option>
+
+</select>

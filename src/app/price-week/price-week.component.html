@@ -1,0 +1,11 @@
+
+<table style="width: 100%; overflow: hidden !important;">
+  <tr><th>År</th><th>Uge</th><th>Prislist</th><th>Ændre</th></tr>
+  <tr *ngFor="let p of priceListWeekItenm">
+    <td>{{p.AAr}}</td><td>{{p.Uige}}</td><td>{{p.PrisListeNavn}}</td>
+
+    <td (click)="update(p)">
+     Ændre
+    </td>
+  </tr>
+</table>

@@ -24,7 +24,7 @@ import {
   MatRadioModule,
   MatChipsModule,
   MatExpansionModule,
-  MatTableModule, MatDialogModule, MatDialog, MatDialogRef, MatSnackBarModule, MatCheckboxModule
+  MatTableModule, MatDialogModule, MatDialog, MatDialogRef, MatSnackBarModule, MatCheckboxModule, MatAutocompleteModule
 } from '@angular/material';
 import { MediaPlanComponent } from './media-plan/media-plan.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -48,7 +48,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PriceAskingDialogComponent } from './price-asking-dialog/price-asking-dialog.component';
 import { PriceAskingComponent } from './price-asking/price-asking.component';
 import {PriceAskingService} from './services/price-asking.service';
-import { ByselectComponent } from './byselect/byselect.component';
+
 import {RegionService} from './services/region.service';
 import {DelomraadeService} from './services/delomraade.service';
 import { DagePipe } from './pipies/dage.pipe';
@@ -56,7 +56,7 @@ import { DelomraadePipe } from './pipies/delomraade.pipe';
 import { RegionPipe } from './pipies/region.pipe';
 import { BynavnPipe } from './pipies/bynavn.pipe';
 import { GeoPipe } from './pipies/geo.pipe';
-import {GeoService} from './services/geo.service';
+
 import { YearPipe } from './pipies/year.pipe';
 import { BladDaekningComponent } from './blad-daekning/blad-daekning.component';
 import {StamBladKontaktPersonService} from './services/stam-blad-kontakt-person.service';
@@ -76,6 +76,25 @@ import { MonthPipe } from './pipies/month.pipe';
 import { BladkommentarComponent } from './bladkommentar/bladkommentar.component';
 import {KommentarService} from './services/kommentar.service';
 import { PriceWeekComponent } from './price-week/price-week.component';
+import { StambladkontaktTabelComponent } from './stambladkontakt-tabel/stambladkontakt-tabel.component';
+import {PlaceringServiceService} from './services/placering-service.service';
+import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
+import { PricetableComponent } from './pricetable/pricetable.component';
+import { PriceDialogComponent } from './price-dialog/price-dialog.component';
+import {PriceBladAarService} from './services/price-blad-aar.service';
+
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {QuillModule} from 'ngx-quill';
+import {NgxEditorModule} from 'ngx-editor';
+import { YeardialogComponent } from './yeardialog/yeardialog.component';
+
+
+import { UdsendingkontaktertableComponent } from './udsendingkontaktertable/udsendingkontaktertable.component';
+import {UdsendingkontakterDialogComponent} from './udsendingkontakter-dialog/udsendingkontakter-dialog.component';
+import {UdsendingkontakterService} from './services/udsendingkontakter.service';
+import {UdsendingKontaktTyperService} from './services/udsending-kontakt-typer.service';
+import { AktiveAviserDialogComponent } from './aktive-aviser-dialog/aktive-aviser-dialog.component';
+import { PriceWeeTypeDialogComponent } from './price-wee-type-dialog/price-wee-type-dialog.component';
 
 
 
@@ -98,7 +117,7 @@ import { PriceWeekComponent } from './price-week/price-week.component';
     DashboardComponent,
     PriceAskingDialogComponent,
     PriceAskingComponent,
-    ByselectComponent,
+
     DagePipe,
     DelomraadePipe,
     RegionPipe,
@@ -118,7 +137,29 @@ import { PriceWeekComponent } from './price-week/price-week.component';
 
     BladkommentarComponent,
 
-    PriceWeekComponent
+    PriceWeekComponent,
+
+    StambladkontaktTabelComponent,
+
+    PricetableComponent,
+
+    PriceDialogComponent,
+
+    YeardialogComponent,
+
+ UdsendingkontakterDialogComponent,
+
+
+
+    UdsendingkontaktertableComponent,
+
+
+
+    AktiveAviserDialogComponent,
+
+
+
+    PriceWeeTypeDialogComponent
 
   ],
   imports: [
@@ -149,14 +190,20 @@ import { PriceWeekComponent } from './price-week/price-week.component';
     MatDialogModule,
     MatSnackBarModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    NgxMatSelectSearchModule,
+    QuillModule,
+    AngularFontAwesomeModule,
+    NgxEditorModule,
+    MatAutocompleteModule
 
   ],
   providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, RegisteruserService,
     PostService, PriceAskingService, RegionService, DelomraadeService, StamBladKontaktPersonService, BladdaekningService
     , ExcelexportService,
-    EjerforholdService, KommentarService],
-  entryComponents: [StambladkontaktDialogComponent, PriceAskingDialogComponent, EditBladdaekningComponent],
+    EjerforholdService, KommentarService, PlaceringServiceService, PlaceringServiceService, PriceBladAarService, UdsendingkontakterService, UdsendingKontaktTyperService],
+  entryComponents: [StambladkontaktDialogComponent, PriceAskingDialogComponent, EditBladdaekningComponent, PriceDialogComponent,
+     UdsendingkontakterDialogComponent, PriceWeeTypeDialogComponent],
 
   bootstrap: [AppComponent]
 

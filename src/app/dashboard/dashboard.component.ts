@@ -1,6 +1,9 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {User} from '../models/user';
+import {StamBladObserver} from '../stam-blad-observer';
+import {StamdataService} from '../services/stamdata.service';
+import {StamBladViewModel} from '../models/StamBladViewModel';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,14 +14,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   mobileQuery: MediaQueryList;
   name: String = 'Lokalplanner';
-
+username;
   isUserLoggedIn = false;
-
+  stanDataList: StamBladViewModel[] = [];
   hide = false;
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private  obs: StamBladObserver, private st: StamdataService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -44,7 +47,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     const user = JSON.parse(localStorage.getItem('user')) as  User;
     if (user.username !== undefined) {
       this.isUserLoggedIn = true;
-    }
+      this.username = user.firstname + ' ' + user.lastname;
+     }
 
   }
 
@@ -57,5 +61,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     setTimeout(function () {
       this.hide = false;
     }, 2000);
+  }
+
+  public  search(text: any) {
+    this.st.GetStabbladByName(text).subscribe(value => {
+      console.log(value);
+    } );
   }
 }

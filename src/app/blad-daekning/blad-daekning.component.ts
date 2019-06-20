@@ -4,7 +4,7 @@ import {BladDaekning} from '../models/blad-daekning';
 import {StamBladObserver} from '../stam-blad-observer';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {EditBladdaekningComponent} from './edit-bladdaekning/edit-bladdaekning.component';
-import {b} from '@angular/core/src/render3';
+import {b, v} from '@angular/core/src/render3';
 
 
 @Component({
@@ -40,19 +40,54 @@ export class BladDaekningComponent implements OnInit {
 
 
   tilFfoejDeakningGrrap() {
-    const data = [{'selected' : 'selected'}, {'bladid': this.bladid}, {'update': 0} ];
-    this.dialog.open(EditBladdaekningComponent, {data: data , width: '20%', height: '60%'}).afterClosed().subscribe(value => {
+    const data = [{'selected' : 'selected'}, {'bladid': this.bladid}, {'update': 'opret'} ];
+    this.dialog.open(EditBladdaekningComponent, {data: data , width: '20%', height: '70%'}).afterClosed().subscribe(value => {
+      console.log(value);
       this.snack.open('Dæknings grad er oprettet ', ' ', {duration: 4000});
       this.getBladDaekningByBladId(this.bladid);
     });
 
   }
 
+  /**
+   *  DaekningsGrad1: ['', Validators.nullValidator],
+   PostNr1: ['', Validators.nullValidator],
+   Oplag1: ['', Validators.nullValidator],
+   Postby: ['', Validators.nullValidator],
+   BladID1: ['', Validators.nullValidator]
+   * @param selected
+   */
+
   opdatereDaekningGrad(selected: any) {
-  const data = [{'selected' : selected}, {'update': 1} ];
+  const data = [{'selected' : selected}, {'update': 'opdater'} ];
+    this.dialog.open(EditBladdaekningComponent,  {data:  data, width: '20%', height: '70%'}).afterClosed().subscribe(value => {
+      console.log('data ' + value.data);
+const daekning: BladDaekning = {BladID1: value.data.BladID1, Oplag1: value.data.Oplag1, DaekningsGrad1: value.data.DaekningsGrad1,
+  PostNr1: value.data.PostNr1, Postby: value.data.Postby };
+this.dk.AddBladDaeknig(daekning).subscribe(value1 => {
+  this.snack.open('Dækning grad er opdateret ', ' ', {duration: 4000});
+  this.getBladDaekningByBladId(this.bladid);
+
+}, error1 => {
+  this.snack.open('Dækning grad er opdateret ', ' ', {duration: 4000});
+  this.getBladDaekningByBladId(this.bladid);
+});
+
+
+    });
+  }
+
+  slet(selected: any) {
+    const data = [{'selected' : selected}, {'update': 'slet'} ];
     this.dialog.open(EditBladdaekningComponent,  {data:  data, width: '20%', height: '60%'}).afterClosed().subscribe(value => {
-      this.snack.open('Dækning grad er opdateret ', ' ', {duration: 4000});
-      this.getBladDaekningByBladId(this.bladid);
+      console.log( value.data.BladID1 +  ' ' + value.data.PostNr1);
+      this.dk.DeleteDaeknig(value.data.BladID1, value.data.PostNr1 ).subscribe(value1 => {
+        this.snack.open('Dækning grad er slettet ', ' ', {duration: 4000});
+        this.getBladDaekningByBladId(this.bladid);
+
+      });
+
+
     });
   }
 

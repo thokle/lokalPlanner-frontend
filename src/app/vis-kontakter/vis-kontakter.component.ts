@@ -17,6 +17,8 @@ export class VisKontakterComponent implements OnInit {
   constructor(private  sbk: StamBladKontaktPersonService, private  obs: StamBladObserver) {
     this.obs.getKontaktBladId().subscribe(s => {
       console.log(' ss ' + s    );
+      this.email = '';
+      this.emails = [];
       this.sbk.GetStamBladKontakts(s).subscribe(value => {
         if (value.length > 0) {
           value.forEach(value1 => this.emails.push(value1.KontakPersonEmail));

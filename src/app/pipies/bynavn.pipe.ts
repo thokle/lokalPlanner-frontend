@@ -5,25 +5,21 @@ import {PostService} from '../services/post.service';
   name: 'bynavn'
 })
 export class BynavnPipe implements PipeTransform {
-
+ bynavn = '';
 
   constructor(private  by: PostService) {
 
   }
 
   transform(value: any, args?: any): any {
-    this.by.getByNavnByPostnr(value).subscribe( value1 => {
-      return value1[0].PostBy as string;
-    });
-    switch (value) {
-      case 2620: {
-        return 'Albertsludd';
-      }
-      case 5000: {
-        return  'Assens';
-      }
-    }
 
+
+    if (value !== 0) {
+      this.by.getByNavnByPostnr(value).subscribe(value1 => {
+        return this.bynavn = value1[0].PostBy;
+      });
+    }
+    return this.bynavn;
   }
 
 }

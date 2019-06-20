@@ -1,0 +1,19 @@
+<div >
+  <mat-form-field class="example-container">
+<mat-select [(ngModel)]="selectedListId">
+  <mat-option *ngFor="let p of priseListItemns" value="{{p.PrislisteID}}">{{p.PrislisteNavn}}</mat-option>
+</mat-select>
+  </mat-form-field>
+<mat-form-field class="example-container">
+<mat-select  [(ngModel)]="selectedyear">
+<mat-option *ngFor="let y of years" value="{{y}}">{{y}}</mat-option>
+
+</mat-select>
+
+</mat-form-field>
+<div>
+  <button mat-raised-button (click)="close()">Opret Pris</button>
+</div>
+</div>
+
+

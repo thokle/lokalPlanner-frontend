@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-price.component.css']
 })
 export class CreatePriceComponent implements OnInit {
-
+  htmlFormat;
   constructor() { }
 
   ngOnInit() {
   }
 
+  createBody() {
+    console.log(this.htmlFormat);
+  }
 }
