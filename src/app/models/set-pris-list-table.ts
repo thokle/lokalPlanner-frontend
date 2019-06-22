@@ -1,6 +1,6 @@
 export interface SetPrisListTable {
-bladid;
-  placeringid;
-  aar;
-  prislisteid;
+bladid: number;
+  placeringi: number;
+  aar: number;
+  prislisteid: number;
 }

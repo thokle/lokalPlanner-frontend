@@ -96,6 +96,11 @@ import {UdsendingKontaktTyperService} from './services/udsending-kontakt-typer.s
 import { AktiveAviserDialogComponent } from './aktive-aviser-dialog/aktive-aviser-dialog.component';
 import { PriceWeeTypeDialogComponent } from './price-wee-type-dialog/price-wee-type-dialog.component';
 
+import { BladtilLaegstypeComponent } from './bladtil-laegstype/bladtil-laegstype.component';
+import { BladtilLaegsComponent } from './bladtil-laegs/bladtil-laegs.component';
+import { BladtilLaegsDialogComponent } from './bladtil-laegs-dialog/bladtil-laegs-dialog.component';
+import {BladtillaegsType} from './models/bladtillaegs-type';
+
 
 
 
@@ -159,7 +164,19 @@ import { PriceWeeTypeDialogComponent } from './price-wee-type-dialog/price-wee-t
 
 
 
-    PriceWeeTypeDialogComponent
+    PriceWeeTypeDialogComponent,
+
+
+
+    BladtilLaegstypeComponent,
+
+
+
+    BladtilLaegsComponent,
+
+
+
+    BladtilLaegsDialogComponent
 
   ],
   imports: [
@@ -201,9 +218,11 @@ import { PriceWeeTypeDialogComponent } from './price-wee-type-dialog/price-wee-t
   providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, RegisteruserService,
     PostService, PriceAskingService, RegionService, DelomraadeService, StamBladKontaktPersonService, BladdaekningService
     , ExcelexportService,
-    EjerforholdService, KommentarService, PlaceringServiceService, PlaceringServiceService, PriceBladAarService, UdsendingkontakterService, UdsendingKontaktTyperService],
+    EjerforholdService, KommentarService, PlaceringServiceService, PlaceringServiceService, PriceBladAarService,
+    UdsendingkontakterService, UdsendingKontaktTyperService],
   entryComponents: [StambladkontaktDialogComponent, PriceAskingDialogComponent, EditBladdaekningComponent, PriceDialogComponent,
-     UdsendingkontakterDialogComponent, PriceWeeTypeDialogComponent],
+     UdsendingkontakterDialogComponent, PriceWeeTypeDialogComponent,     BladtilLaegstypeComponent , BladtilLaegsDialogComponent
+  ],
 
   bootstrap: [AppComponent]
 

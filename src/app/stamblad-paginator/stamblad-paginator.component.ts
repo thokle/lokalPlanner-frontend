@@ -14,12 +14,18 @@ export class StambladPaginatorComponent implements OnInit {
 
   minDisable: boolean;
   maxDisable: boolean ;
-  data: Date = new Date()
+  data: Date = new Date();
   constructor(private  stob: StamBladObserver) {
     this.stob.emitStamBladChange({id: 0});
-    this.stob.emitToPriseTable({ bladid: 0, placeringid: 1 , prislisteid: 1, aar: this.data.getFullYear()});
+    this.stob.emitToPriseTable({ bladid: this.num, placeringi: 1 , prislisteid: 1, aar: this.data.getFullYear()});
   }
 
+  /**
+   * bladid: number;
+   placeringi: number;
+   aar: number;
+   prislisteid: number;
+   */
   ngOnInit() {
 
     this.minDisable = true;
@@ -34,7 +40,8 @@ export class StambladPaginatorComponent implements OnInit {
       this.minDisable = true;
       this.num = this.num - 1;
       this.stob.emitStamBladChange({id: this.num});
-
+      this.stob.getToTableEmitter();
+      this.stob.emitToPriseTable({ bladid: this.num, placeringi: 1 , prislisteid: 1, aar: this.data.getFullYear()});
     }
   }
 
@@ -47,7 +54,7 @@ export class StambladPaginatorComponent implements OnInit {
       if (this.num !== 1 ) {
         this.stob.emitStamBladChange({id: this.num});
         this.stob.setKontaktBladId(this.num);
-
+        this.stob.emitToPriseTable({ bladid: this.num, placeringi: 1 , prislisteid: 1, aar: this.data.getFullYear()});
 
       }
     }
@@ -57,10 +64,13 @@ export class StambladPaginatorComponent implements OnInit {
     console.log('Max '  + this.maxNumber);
     this.num = this.maxNumber;
     this.stob.emitStamBladChange({id: this.maxNumber});
+    this.stob.emitToPriseTable({ bladid: this.num, placeringi: 1 , prislisteid: 1, aar: this.data.getFullYear()});
   }
 
   goFirstPage() {
     this.num = 0;
     this.stob.emitStamBladChange({id: 0});
+
+    this.stob.emitToPriseTable({ bladid: this.num, placeringi: 1 , prislisteid: 1, aar: this.data.getFullYear()});
   }
 }

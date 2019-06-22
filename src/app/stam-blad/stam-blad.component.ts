@@ -37,7 +37,7 @@ import {Ejerforhold} from '../models/ejerforhold';
 
 export class StamBladComponent implements OnInit {
 
-  months: Month[] = [{id: 0, name: 'Januar'}, {id: 1, name: 'februar'}, {id: 2, name: 'Marts'}, {id: 3, name: 'April'}
+  months: Month[] = [{id: 0, name: 'Januar'}, {id: 1, name: 'Februar'}, {id: 2, name: 'Marts'}, {id: 3, name: 'April'}
     , {id: 4, name: 'Maj'}, {id: 5, name: 'Juni'}, {id: 6, name: 'Juli'}, {id: 7, name: 'August'}, {id: 8, name: 'September'}, {
       id: 9,
       name: 'Oktober'

@@ -29,7 +29,7 @@ export class PriceTabComponent implements OnInit {
   selctedPriceItem;
   selectedPlacringItemn: PlaceringListItem;
 selected;
-bladId;
+bladId: number;
 year = 2019;
 
 @ViewChild(PricetableComponent)
@@ -39,7 +39,7 @@ private  priveTable: PricetableComponent;
   constructor(private ps: PriceService, private obs: StamBladObserver, private  pls: PlaceringServiceService, private  dialog: MatDialog,
               private bas: PriceBladAarService, private  snack: MatSnackBar) {
     this.obs.getStamBladEventEmitter().subscribe( value => {
-      this.bladId = value;
+      this.bladId = value.id;
 
       this.getPriser(value);
 
@@ -76,7 +76,7 @@ private  priveTable: PricetableComponent;
    this.setSidePlaceringListe();
     this.setSidePlaceringListe();
     this.obs.getStamBladEventEmitter().subscribe( value => {
-      this.bladId = value;
+      this.bladId = value.id;
       this.getPriser(value);
 
     });
@@ -97,17 +97,14 @@ private  priveTable: PricetableComponent;
   setPosition() {
 
       const l: PlaceringListItem = this.listPlaceringTabItems.find(value => value.PlaceringID === 1 );
-      let id_ = this.selctedPriceItem || 1;
+      const id_ = this.selctedPriceItem || 1;
       let bladid = 0;
       //  console.log(element.tab.textLabel + ' ' + this.selctedPriceItem);
-      if (this.bladId === undefined) {
-        this.bladId = 0;
-        bladid = 0;
-        id_ = 1;
-      } else {
+
+
         bladid = this.bladId;
-      }
-      this.obs.emitToPriseTable({ bladid: this.bladId.id , placeringid: l.PlaceringID , prislisteid: id_, aar: this.year});
+
+      this.obs.emitToPriseTable({ bladid: this.bladId , placeringi: l.PlaceringID , prislisteid: id_, aar: this.year});
     }
 
   public selectedPriseList(element) {
@@ -121,9 +118,9 @@ private  priveTable: PricetableComponent;
       bladid = 0;
       id_ = 1;
     } else {
-      bladid = this.bladId.id;
+      bladid = this.bladId;
     }
-    this.obs.emitToPriseTable({ bladid: bladid , placeringid: l.PlaceringID , prislisteid: id_, aar: this.year});
+    this.obs.emitToPriseTable({ bladid: bladid , placeringi: l.PlaceringID , prislisteid: id_, aar: this.year});
   }
   }
 

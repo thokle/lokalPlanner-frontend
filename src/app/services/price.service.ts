@@ -56,7 +56,7 @@ console.log('Update Priser pr week ' + pv );
   }
 
   public createPriserTable(psl: Prisers): Observable<any> {
-    const url = this.baseUrl + '/priser/priserPrisListPrBladPrAar';
+    const url = this.baseUrl + '/priser/createPrice/';
 
     return  this.http.post(url, psl, {}).pipe();
   }
