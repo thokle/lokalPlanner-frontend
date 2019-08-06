@@ -17,4 +17,9 @@ public getPlaceringer(): Observable<PlaceringModel[]> {
     const url = this.baseUrl + '/placeringer';
     return  this.http.get<PlaceringModel[]>(url).pipe();
 }
+
+public  CreatePlacering(tbl: PlaceringModel): Observable<any> {
+    const url = this.baseUrl + '/placeringer';
+    return  this.http.post<any>(url, tbl).pipe();
+}
 }

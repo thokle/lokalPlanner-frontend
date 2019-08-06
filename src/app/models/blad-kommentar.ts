@@ -1,5 +1,5 @@
 export interface BladKommentar {
   bladid?;
-  text?;
+  tekst?;
   date?;
 }

@@ -87,7 +87,11 @@ this.setButtonText(data);
       };
       this.dialogRef.close({'data': opdatering});
     } else if (this.text === 'Opret') {
-
+      const opdatering: BladDaekning = {
+        BladID1: this.form.controls.BladID1.value, Postby: this.form.controls.Postby.value, PostNr1: this.form.controls.PostNr1.value,
+        DaekningsGrad1: this.form.controls.DaekningsGrad1.value, Oplag1: this.form.controls.Oplag1.value
+      };
+      this.dialogRef.close({'data': opdatering});
     }
   }
 

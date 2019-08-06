@@ -49,7 +49,4 @@ h1.example-app-name {
 }
 
 
-/deep/     .mat-toolbar.mat-primary  {
 
-  background-color: #43c5b9 !important;
-}

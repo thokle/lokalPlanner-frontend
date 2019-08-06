@@ -5,4 +5,5 @@ export interface UdsendingKontakterView {
   Telefonnummer?: number;
   BladId?: number;
   Id?: number;
+  Titel?: string;
 }

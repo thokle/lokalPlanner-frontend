@@ -25,6 +25,9 @@ import {ExcelexportService} from '../services/excelexport.service';
 import {v} from '@angular/core/src/render3';
 import {EjerforholdService} from '../services/ejerforhold.service';
 import {Ejerforhold} from '../models/ejerforhold';
+import {BladKommentar} from '../models/blad-kommentar';
+import {KommentarService} from '../services/kommentar.service';
+import {BladkommentarComponent} from '../bladkommentar/bladkommentar.component';
 
 
 
@@ -82,7 +85,7 @@ postnr: number;
   constructor(private st: StamdataService, private obs: StamBladObserver, public fb: FormBuilder,
               private ps: PostNummerService, private dialog: MatDialog, private pss: PostService, private  rs: RegionService,
               private dels: DelomraadeService, private gs: GeoService, private  exservice: ExcelexportService,
-              private snack: MatSnackBar, private  efs: EjerforholdService) {
+              private snack: MatSnackBar, private  efs: EjerforholdService, private  k: KommentarService) {
     this.obs.emitChange({id: 0});
     this.setEjerforhold();
     this.stamBladForm = this.fb.group({
@@ -206,13 +209,16 @@ postnr: number;
   public StartOpretNytStamBlad() {
     this.opretOdatere = 'Opret nyt Stamblad';
     this.stamBladForm.reset();
-
+this.stamBladNavn = '';
 
     this.obs.setPostNr(0);
 
     this.st.GetLastestStamBladId().subscribe(value1 => {
       this.bladId = value1.item2 + 1;
       this.stamBladForm.patchValue({BladId: this.bladId});
+      this.obs.emitStamBladChange({ id: this.bladId});
+      this.obs.setDaekninkId(this.bladId);
+      this.obs.setPriceWeekSubjcet(this.bladId);
     });
     const value = this.stamBladForm.controls;
     console.log(this.selectedDelOmraade);
@@ -236,6 +242,8 @@ postnr: number;
 
         this.obs.setDaekninkId(value[0].BladId);
         this.obs.setKontaktBladId(value[0].BladId);
+        this.obs.setPriceTable({id: value[0].BladId, year: new Date().getFullYear(), prisListe: 1});
+        this.obs.setBladTilaeg( Number(value[0].BladId).valueOf());
         this.stamBladNavn = value[0].Navn;
         this.toExcel = value;
         this.obs.setPostNr(value[0].PostNr);
@@ -263,7 +271,7 @@ postnr: number;
     this.stamBladForm.patchValue({'Fax': value[0].Fax || 0});
     this.stamBladForm.patchValue({'Cvr': value[0].Cvr || 0});
     this.stamBladForm.patchValue({'HovedgruppeId': value[0].HovedgruppeId || 0});
-    this.stamBladForm.patchValue({'MedlemMaaned': value[0].MedlemMaaned || 0});
+    this.stamBladForm.patchValue({'MedlemMaaned': value[0].getMedlemMaaned || 0});
     this.stamBladForm.patchValue({'MedlemAAr': value[0].MedlemAAr || 0});
     this.stamBladForm.patchValue({'Ejerforhold': value[0].Ejerforhold || ''});
     this.stamBladForm.patchValue({'Ophoert': value[0].Ophoert || false});
@@ -297,7 +305,7 @@ postnr: number;
     this.stamBladForm.patchValue({'RegionId': value[0].RegionNavn});
     this.stamBladForm.patchValue({'Delomraade': value[0].DelOmraadeNavn});
     this.stamBladForm.patchValue({'GeoKodeId': value[0].GeoKodeNavn});
-    this.stamBladForm.patchValue({'UgedagID': value[0].DagNavn});
+    this.stamBladForm.patchValue({'UgedagId': value[0].DagNavn});
     this.stamBladForm.patchValue({'Kontaktperson': value[0].Kontaktperson});
    }
 
@@ -461,6 +469,18 @@ postnr: number;
   private  setEjerforhold() {
     this.efs.GetAllEjerforhold().subscribe(value => {
       this.ejerforholdliste = value;
+    });
+  }
+
+  OpretNode() {
+    const d: Date = new Date();
+    this.dialog.open(BladkommentarComponent, {width: '18%', height: '35%', data: {bladid: this.bladId}}).afterClosed().subscribe(value => {
+
+      this.k.CreateKommentart({tekst: value.text, bladid: this.bladId, date: new Date()}).subscribe( value2 => {
+          this.snack.open('Kommentar er oprettet' ,' ' , {duration: 4000});
+      }, error1 => {
+        this.snack.open('noget gik galt' , ' ', {duration: 30000});
+      });
     });
   }
 }

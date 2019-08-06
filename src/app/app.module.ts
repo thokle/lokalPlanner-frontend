@@ -24,9 +24,17 @@ import {
   MatRadioModule,
   MatChipsModule,
   MatExpansionModule,
-  MatTableModule, MatDialogModule, MatDialog, MatDialogRef, MatSnackBarModule, MatCheckboxModule, MatAutocompleteModule
+  MatTableModule,
+  MatDialogModule,
+  MatDialog,
+  MatDialogRef,
+  MatSnackBarModule,
+  MatCheckboxModule,
+  MatAutocompleteModule,
+  MatCardModule,
+  MatDrawerContent
 } from '@angular/material';
-import { MediaPlanComponent } from './media-plan/media-plan.component';
+
 import {HttpClientModule} from '@angular/common/http';
 import { AdresseStambladComponent } from './adresse-stamblad/adresse-stamblad.component';
 import { StamdataService } from './services/stamdata.service';
@@ -100,6 +108,20 @@ import { BladtilLaegstypeComponent } from './bladtil-laegstype/bladtil-laegstype
 import { BladtilLaegsComponent } from './bladtil-laegs/bladtil-laegs.component';
 import { BladtilLaegsDialogComponent } from './bladtil-laegs-dialog/bladtil-laegs-dialog.component';
 import {BladtillaegsType} from './models/bladtillaegs-type';
+import { PlaceringdialogComponent } from './placeringdialog/placeringdialog.component';
+import { RabatComponent } from './rabat/rabat.component';
+import {AktiveaviserService} from './services/aktiveaviser.service';
+import {KontaktTitlerService} from './services/kontakt-titler.service';
+import { PriceListPositionDialogComponent } from './price-list-position-dialog/price-list-position-dialog.component';
+import { AktiveaviserColumnDialogComponent } from './aktiveaviser-column-dialog/aktiveaviser-column-dialog.component';
+import { MedieplanToolbarComponent } from './medieplan-toolbar/medieplan-toolbar.component';
+import { MedieplanComponent } from './medieplan/medieplan.component';
+import { FindMedieplanToolbarComponent } from './find-medieplan-toolbar/find-medieplan-toolbar.component';
+import { NewDashboardComponent } from './new-dashboard/new-dashboard.component';
+import { DashBoardMaterialComponent } from './dash-board-material/dash-board-material.component';
+import { FindMedieplanComponent } from './find-medieplan/find-medieplan.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { MedieplanAvisTableComponent } from './medieplan-avis-table/medieplan-avis-table.component';
 
 
 
@@ -110,7 +132,7 @@ import {BladtillaegsType} from './models/bladtillaegs-type';
     AppComponent,
     StamBladComponent,
     IndexComponent,
-    MediaPlanComponent,
+
     AdresseStambladComponent,
     StamBladOverSigtComponent,
     StambladPaginatorComponent,
@@ -176,7 +198,51 @@ import {BladtillaegsType} from './models/bladtillaegs-type';
 
 
 
-    BladtilLaegsDialogComponent
+    BladtilLaegsDialogComponent,
+
+
+
+    PlaceringdialogComponent,
+
+
+
+    RabatComponent,
+
+
+
+    PriceListPositionDialogComponent,
+
+
+
+    AktiveaviserColumnDialogComponent,
+
+
+
+    MedieplanToolbarComponent,
+
+
+
+    MedieplanComponent,
+
+
+
+    FindMedieplanToolbarComponent,
+
+
+
+    NewDashboardComponent,
+
+
+
+    DashBoardMaterialComponent,
+
+
+
+    FindMedieplanComponent,
+
+
+
+    MedieplanAvisTableComponent
 
   ],
   imports: [
@@ -212,16 +278,18 @@ import {BladtillaegsType} from './models/bladtillaegs-type';
     QuillModule,
     AngularFontAwesomeModule,
     NgxEditorModule,
-    MatAutocompleteModule
-
+    MatAutocompleteModule,
+    MatCardModule,
+    DragDropModule
   ],
   providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, RegisteruserService,
     PostService, PriceAskingService, RegionService, DelomraadeService, StamBladKontaktPersonService, BladdaekningService
-    , ExcelexportService,
+    , ExcelexportService, AktiveaviserService ,
     EjerforholdService, KommentarService, PlaceringServiceService, PlaceringServiceService, PriceBladAarService,
-    UdsendingkontakterService, UdsendingKontaktTyperService],
+    UdsendingkontakterService, UdsendingKontaktTyperService, KontaktTitlerService],
   entryComponents: [StambladkontaktDialogComponent, PriceAskingDialogComponent, EditBladdaekningComponent, PriceDialogComponent,
-     UdsendingkontakterDialogComponent, PriceWeeTypeDialogComponent,     BladtilLaegstypeComponent , BladtilLaegsDialogComponent
+     UdsendingkontakterDialogComponent, PriceWeeTypeDialogComponent,     BladtilLaegstypeComponent , BladtilLaegsDialogComponent,
+    PlaceringdialogComponent, BladkommentarComponent, PriceListPositionDialogComponent, AktiveaviserColumnDialogComponent
   ],
 
   bootstrap: [AppComponent]

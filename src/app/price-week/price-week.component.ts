@@ -14,32 +14,57 @@ import {PriceWeeTypeDialogComponent} from '../price-wee-type-dialog/price-wee-ty
 })
 export class PriceWeekComponent implements OnInit {
 
+  years = [];
 @Input()
 bladid;
 priceListWeekItenm: PriceWeekItem[] = [];
 priceList: PriceListItem[] = [];
+
+isData;
+isTherePrices = false;
   @Input()
   year;
 
+  selectedYear;
   selectedPrisListId;
   constructor(private ps: PriceService , private obs: StamBladObserver, private  dialog: MatDialog) {
-    obs.getStamBladEventEmitter().subscribe(av => {
-      if (av.id !== undefined && this.year !== undefined) {
-        ps.GetPriceWeekListPrBladId(av.id, this.year).subscribe(value => {
-          this.priceListWeekItenm = value;
-        });
-      } else  if (av.id === undefined) {
-        ps.GetPriceWeekListPrBladId(0, this.year).subscribe(value => {
-          this.priceListWeekItenm = value;
-        });
-      }
+    this.setyears();
+if (this.bladid === undefined ) {
+  this.ps.GetPriceWeekListPrBladId(0, new Date().getFullYear()).subscribe(value => {
+    this.priceListWeekItenm = value;
+    if ( this.priceListWeekItenm.length > 0) {
+      this.isTherePrices = true;
+      this.isData = true;
+    }
+  });
+}
+    obs.getPriceWeekSubject().subscribe(av => {
+     this.ps.GetPriceWeekListPrBladId(av, new Date().getFullYear()).subscribe( value =>  {
+       this.priceListWeekItenm = value;
+       if ( this.priceListWeekItenm.length > 0) {
+         this.isTherePrices = true;
+         this.isData = true;
+         if ( this.priceListWeekItenm.length > 0) {
+           this.isTherePrices = true;
+           this.isData = true;
+         }
+       }
+     });
     });
 
   }
   ngOnInit() {
-    this.obs.getStamBladEventEmitter().subscribe(av => {
-     this.ps.GetPriceWeekListPrBladId(av.id, this.year).subscribe( value => {
+    if (this.bladid === undefined ) {
+      this.ps.GetPriceWeekListPrBladId(0, new Date().getFullYear()).subscribe(value => {
         this.priceListWeekItenm = value;
+      });
+    }
+    this.obs.getPriceWeekSubject().subscribe(av => {
+     this.ps.GetPriceWeekListPrBladId(av, new Date().getFullYear()).subscribe( value => {
+        this.priceListWeekItenm = value;
+       if ( this.priceListWeekItenm.length > 0) {
+         this.isTherePrices = true;
+       }
         console.log(this.priceListWeekItenm);
       });
   });
@@ -53,17 +78,43 @@ priceList: PriceListItem[] = [];
 
 
   update(item2: any) {
+    let update_year = 0;
+    if (this.year === this.selectedYear) {
+      update_year  = this.year;
+    } else {
+      update_year = this.selectedYear;
+    }
     const priceListWeekItem: PriceWeekItem = item2;
 
     this.dialog.open(PriceWeeTypeDialogComponent, {height: '15%', width: '14%'}).afterClosed().subscribe(value => {
       priceListWeekItem.PrislisteID = value.data;
-      priceListWeekItem.BladID = this.bladid.id;
+      priceListWeekItem.BladID = this.bladid;
       this.ps.updatePriceIdOnWeek(priceListWeekItem).subscribe(value1 => {
-        this.ps.GetPriceWeekListPrBladId(priceListWeekItem.BladID, this.year).subscribe( value2 => {
+        this.ps.GetPriceWeekListPrBladId(priceListWeekItem.BladID, update_year).subscribe( value2 => {
           this.priceListWeekItenm = value2;
           console.log(this.priceListWeekItenm);
         });
       });
     });
   }
+
+
+  setyears() {
+    for (let i = new Date().getFullYear(); i <= new Date().getFullYear() + 30; i++) {
+      this.years.push(i);
+    }
+  }
+
+  changeYear() {
+
+    this.ps.GetPriceWeekListPrBladId( this.bladid, this.selectedYear).subscribe( value => {
+if (value.length > 0 ) {
+  this.priceListWeekItenm = value;
+  this.isData = true;
+} else {
+  this.isData = false;
+}
+    });
+  }
+
 }

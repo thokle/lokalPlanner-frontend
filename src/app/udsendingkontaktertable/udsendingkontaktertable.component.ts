@@ -17,6 +17,7 @@ export class UdsendingkontaktertableComponent implements OnInit {
 
 kontaktStamBladData: UdsendingKontakterView[] = [];
 bladid = 0 ;
+emais: string[] = [];
   constructor(private us: UdsendingkontakterService, private dialog: MatDialog, private obs: StamBladObserver, private  snack: MatSnackBar) {
     this.getKontakter();
   }
@@ -29,7 +30,7 @@ bladid = 0 ;
       this.dialog.open(UdsendingkontakterDialogComponent, { data: {bladid: this.bladid }, width: '20%', height: '30%'}).afterClosed().subscribe(value => {
       this.us.CreateUdsendingKontakter(value.contact).subscribe(value1 => {
           this.snack.open('Udsending kontakt er blevet oprettet','' , {duration: 4000});
-          this.getKontakter();
+      this.obs.setKontaktBladId(this.bladid);
      }, error1 => {
         this.snack.open('Der er sket en fejl ' + error1.toString(), '' , {duration: 4000});
         this.getKontakter();
@@ -38,17 +39,25 @@ bladid = 0 ;
   }
 
   getKontakter() {
-    this.obs.getStamBladEventEmitter().subscribe( va => {
-      this.bladid = va.id;
-      console.log('udsending kontakt id ' + this.bladid);
-      this.us.GetUdsendingkontakter(this.bladid).subscribe(value => {
-        console.log('value  ' + value[0]);
-        if ( value[0] === undefined) {
-          this.kontaktStamBladData = [];
-        }  else {
-          this.kontaktStamBladData = value;
-        }
-      });
+    this.obs.getKontaktBladId().subscribe( va => {
+        this.bladid = va;
+        console.log('udsending kontakt id ' + this.bladid);
+        this.us.GetUdsendingkontakter(this.bladid).subscribe(value => {
+          console.log('value  ' + value[0]);
+          if ( value[0] === undefined) {
+            this.kontaktStamBladData = [];
+          }  else {
+            this.kontaktStamBladData = value;
+          }
+        });
     });
+  }
+
+  selectedItem(item: UdsendingKontakterView) {
+    this.emais.push(item.Email);
+  }
+
+  sendEmail() {
+
   }
 }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MediaPlanComponent } from './media-plan.component';
+import { BladtilLaegstypeComponent } from './bladtil-laegstype.component';
 
-describe('MediaPlanComponent', () => {
-  let component: MediaPlanComponent;
-  let fixture: ComponentFixture<MediaPlanComponent>;
+describe('BladtilLaegstypeComponent', () => {
+  let component: BladtilLaegstypeComponent;
+  let fixture: ComponentFixture<BladtilLaegstypeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MediaPlanComponent ]
+      declarations: [ BladtilLaegstypeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MediaPlanComponent);
+    fixture = TestBed.createComponent(BladtilLaegstypeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -8,6 +8,7 @@ import {PlaceringListItem} from '../models/placering-list-item';
 import {PriceWeekItem} from '../models/price-week-item';
 import {Prisers} from '../models/Prisers';
 import {tryCatch} from 'rxjs/internal-compatibility';
+import {observableToBeFn} from 'rxjs/internal/testing/TestScheduler';
 
 @Injectable({
   providedIn: 'root'
@@ -59,5 +60,16 @@ console.log('Update Priser pr week ' + pv );
     const url = this.baseUrl + '/priser/createPrice/';
 
     return  this.http.post(url, psl, {}).pipe();
+  }
+
+  public GetPriserForTable(bladid: number, prislisteid: number, aar: number): Observable<Prisers[]> {
+    const url = this.baseUrl + '/priser/table/' + bladid + '/' + prislisteid + '/' + aar;
+    return  this.http.get<Prisers[]>(url).pipe();
+  }
+  public deletePriser(psl: Prisers): Observable<any> {
+    console.log(psl.BladID1  + '  ' + psl.PlaceringId1 + '  ' +  psl.PrislisteID1 + '  ' + psl.AAr1);
+    const url = this.baseUrl + '/priser/' + psl.BladID1 + '/' + psl.PlaceringId1 + '/' +  psl.PrislisteID1 + '/' + psl.AAr1;
+
+    return  this.http.delete<any>(url).pipe();
   }
 }

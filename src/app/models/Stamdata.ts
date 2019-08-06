@@ -54,7 +54,7 @@ Tlf?;
   SendetidOrdrecheck?;
   SendIndeværendeUge?;
   RedaktionEmail?;
-
+  getMedlemMaaned?;
   GruppeRabat?;
   Hjemmeside?;
 }

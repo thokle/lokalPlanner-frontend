@@ -4,10 +4,16 @@
   margin-left: 5% !important;
   margin-top: 0px !important;
   overflow-y: auto !important;
+  overflow-x: hidden !important;
   position: page !important;
   display: list-item !important;
-}
+  margin-bottom:  0% !important;
 
+}
+.priser-grid /deep/ .mat-grid-list {
+
+  overflow: hidden !important;
+}
 .priser /deep/ .mat-form-field-infix {
   background-color: white !important;
   border: black;
@@ -15,3 +21,45 @@
   border-width: thin;
   height: 10px;
 }
+
+
+section {
+background-color: white;
+  height: 70vh !important;
+  margin: 0!important;
+  width: 100% !important;
+}
+
+div#over {
+  padding-top: 20px;
+  margin: 2px;
+  float: left;
+  padding-bottom: 20px;
+  width: 60%;
+}
+div#priser {
+  float: left;
+  height: 33%;
+
+
+
+  margin: 10px;
+  padding-bottom: 50px;
+}
+
+div#tillaeg {
+  float: left;
+  height: 33%;
+  width: 70%
+}
+
+div#uge {
+
+  float: right;
+  min-width: 30%;
+  max-width: 30%;
+  margin: 4px;
+  overflow: auto;
+}
+
+

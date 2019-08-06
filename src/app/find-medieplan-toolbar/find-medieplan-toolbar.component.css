@@ -1,0 +1,50 @@
+div#main {
+  width: 100%;
+  height: 30vh;
+  background-color: white;
+}
+
+section#section {
+  width: 100% !important;
+height: 200px !important;
+}
+
+div#1 {
+  margin-left: 10px !important;
+  animation: ease-in-out !important;
+  float: left !important;
+  width: 25% !important;
+  height: 200px !important;
+background-color: #EEEEEE !important;
+}
+
+div#2 {
+margin-left: 25% !important;
+  height: 200px !important;
+background-color: #377ec5  !important;
+}
+
+div#3 {
+  margin-left: 50% !important;
+  height: 200px !important;
+}
+div#4 {
+  margin-left: 75% !important;
+  height: 200px !important;
+}
+
+.ret {
+  padding:  30px ;
+  width: 25%;
+  margin: 10px ;
+  float: left ;
+background-color: #377ec5;
+}
+
+.field /deep/ .mat-form-field {
+  width: 100% !important;
+  float: left !important;
+}
+label {
+
+}

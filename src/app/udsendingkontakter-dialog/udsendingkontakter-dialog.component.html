@@ -7,7 +7,12 @@
 </select>
 
   </mat-form-field>
-
+  <label>Kontakt Titel</label>
+  <mat-form-field style="width: 100%;" class="stamblad">
+    <select formControlName="kontaktTitel" matNativeControl [(ngModel)]="selectedTitel">
+      <option *ngFor="let kt of listKontaktTitler" value="{{kt.TitelID}}">{{kt.Titel}}</option>
+    </select>
+  </mat-form-field>
   <label>Navn</label>
 <mat-form-field class="stamblad"  style="width: 100%;">
   <input type="text" matInput formControlName="navn">

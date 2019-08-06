@@ -8,3 +8,28 @@ body {
   background-color: #999999;
 }
 
+.mat-raised-button {
+  background-color: #377ec5  !important;
+  color: white !important;
+}
+
+.mat-tab-group {
+  margin-bottom: 0% !important;
+
+}
+
+
+
+ html {
+   overflow: hidden;
+ }
+ .mat-drawer-inner-container {
+   width: 80vh !important;
+
+ }
+
+
+
+ .mat-drawer-content {
+   overflow: hidden !important;
+ }

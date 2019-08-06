@@ -5,4 +5,5 @@ export interface UdsendingKontakter {
   telefonnummer?: number;
   id?: number;
   type?: number;
+  titel?: number;
 }

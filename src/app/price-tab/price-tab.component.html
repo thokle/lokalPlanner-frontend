@@ -1,27 +1,28 @@
-<mat-grid-list cols="4" rowHeight="4:1" class="priser-grid">
-  <mat-grid-tile > <button mat-raised-button (mousedown)="openCreatenewPriceDialog($event)">Opret ny pris</button></mat-grid-tile>
-  <mat-grid-tile><label style="margin-right: 4px;">Vælg År</label>
-    <mat-form-field class="priser">    <select  matInput matNativeControl >
-      <option *ngFor="let y of years" value="y">{{y}}</option>
-    </select>
-    </mat-form-field></mat-grid-tile>
-  <mat-grid-tile>  <label style="margin-right: 4px; text-overflow: ellipsis;">Prisliste</label>
+<section style="overflow-y: scroll; overflow-x: hidden " >
+  <div id="over">
+    <button mat-raised-button (mousedown)="openCreatenewPriceDialog($event)">Opret ny pris</button>
+    <label style="margin-right: 4px;">Vælg År</label>
+    <mat-form-field class="priser">
+      <select  matInput matNativeControl [(ngModel)]="selectedYear"  >
+        <option *ngFor="let y of years" value="{{y}}">{{y}}</option>
+      </select>
+    </mat-form-field>
+    <label style="margin-right: 4px; text-overflow: ellipsis;">Prisliste</label>
     <mat-form-field class="priser">
       <select   (change)="setPosition()" placeholder="Prisliste" [(ngModel)]="selctedPriceItem"  matInput matNativeControl>
         <option *ngFor="let pl of  priseListItemns" value="{{pl.PrislisteID}}">{{pl.PrislisteNavn}}</option>
       </select>
-    </mat-form-field></mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="4"><div style="margin-top: 40%; overflow-y: auto"><app-price-week  [year]="year"  [bladid]=bladId></app-price-week></div></mat-grid-tile>
-  <mat-grid-tile colspan="3" rowspan="3"> <mat-tab-group  (selectedTabChange)="selectedPriseList($event)" >
-    <mat-tab *ngFor="let tab of listPlaceringTabItems; let index = index" label="{{tab.Betegnelse}}"  >
+    </mat-form-field>
+    <app-pricetable></app-pricetable>
+    <app-bladtil-laegs>
 
-      <app-pricetable></app-pricetable>
-    </mat-tab></mat-tab-group> </mat-grid-tile>
-<mat-grid-tile colspan="3">
-  <app-bladtil-laegs>
+    </app-bladtil-laegs>
+  </div>
+  <div id="uge">
+    <app-price-week  [year]="year"  [bladid]=bladId></app-price-week>
+  </div>
 
-  </app-bladtil-laegs>
-</mat-grid-tile>
-</mat-grid-list>
+</section>
+
 
 

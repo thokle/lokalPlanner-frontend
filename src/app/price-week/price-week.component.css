@@ -1,19 +1,21 @@
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+background: transparent !important;
+  height: 60vh;
 overflow: hidden;
+  width:27vh;
 }
 
 td, th {
-  border: 1px solid #dddddd;
+margin: 2px;
   text-align: left;
-  padding: 8px;
   font-size: 14px;
+  border: 0.1px solid  black;
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: white;
 }
 
 

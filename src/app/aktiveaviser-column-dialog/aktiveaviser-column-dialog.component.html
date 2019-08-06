@@ -1,0 +1,8 @@
+<h1>Vælg kolonner</h1>
+<mat-selection-list>
+    <mat-list-option *ngFor="let a of columnsnames" (click)="addName(a)" >
+      {{a}}
+    </mat-list-option>
+
+</mat-selection-list>
+<button mat-raised-button (click)="close()">Luk</button>

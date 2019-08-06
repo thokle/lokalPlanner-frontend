@@ -29,7 +29,8 @@ export class PriceTabComponent implements OnInit {
   selctedPriceItem;
   selectedPlacringItemn: PlaceringListItem;
 selected;
-bladId: number;
+selectedYear  = new Date().getFullYear();
+bladId = 0;
 year = 2019;
 
 @ViewChild(PricetableComponent)
@@ -96,20 +97,14 @@ private  priveTable: PricetableComponent;
 
   setPosition() {
 
-      const l: PlaceringListItem = this.listPlaceringTabItems.find(value => value.PlaceringID === 1 );
       const id_ = this.selctedPriceItem || 1;
-      let bladid = 0;
-      //  console.log(element.tab.textLabel + ' ' + this.selctedPriceItem);
 
-
-        bladid = this.bladId;
-
-      this.obs.emitToPriseTable({ bladid: this.bladId , placeringi: l.PlaceringID , prislisteid: id_, aar: this.year});
+      this.obs.setPriceTable({ id: this.bladId , prisListe: id_, year: this.selectedYear});
     }
 
   public selectedPriseList(element) {
     if (element !== undefined) {
-    const l: PlaceringListItem = this.listPlaceringTabItems.find(value => value.PlaceringID === element.index + 1 );
+    const l: PlaceringModel = this.listPlaceringTabItems.find(value => value.PlaceringID === element.index + 1 );
     let id_ = this.selctedPriceItem || 1;
     let bladid = 0;
   //  console.log(element.tab.textLabel + ' ' + this.selctedPriceItem);
@@ -144,5 +139,10 @@ if (event.button === 0) {
     });
   });
 }
+  }
+
+  setPrisList() {
+    this.obs.emitToPriseTable({placeringi: 1, prislisteid: 1 , aar: this.selectedYear, bladid: this.bladId });
+    this.obs.emitStamBladChange({id: this.bladId, year: this.selectedYear});
   }
 }

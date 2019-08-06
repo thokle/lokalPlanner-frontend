@@ -43,8 +43,11 @@ export class BladDaekningComponent implements OnInit {
     const data = [{'selected' : 'selected'}, {'bladid': this.bladid}, {'update': 'opret'} ];
     this.dialog.open(EditBladdaekningComponent, {data: data , width: '20%', height: '70%'}).afterClosed().subscribe(value => {
       console.log(value);
-      this.snack.open('Dæknings grad er oprettet ', ' ', {duration: 4000});
-      this.getBladDaekningByBladId(this.bladid);
+      this.dk.AddBladDaeknig(value.data).subscribe(value2 => {
+        this.snack.open('Dæknings grad er oprettet ', ' ', {duration: 4000});
+        this.getBladDaekningByBladId(this.bladid);
+      });
+
     });
 
   }
@@ -60,7 +63,7 @@ export class BladDaekningComponent implements OnInit {
 
   opdatereDaekningGrad(selected: any) {
   const data = [{'selected' : selected}, {'update': 'opdater'} ];
-    this.dialog.open(EditBladdaekningComponent,  {data:  data, width: '20%', height: '70%'}).afterClosed().subscribe(value => {
+    this.dialog.open(EditBladdaekningComponent,  {data:  data, width: '10%', height: '30%'}).afterClosed().subscribe(value => {
       console.log('data ' + value.data);
 const daekning: BladDaekning = {BladID1: value.data.BladID1, Oplag1: value.data.Oplag1, DaekningsGrad1: value.data.DaekningsGrad1,
   PostNr1: value.data.PostNr1, Postby: value.data.Postby };
@@ -69,7 +72,7 @@ this.dk.AddBladDaeknig(daekning).subscribe(value1 => {
   this.getBladDaekningByBladId(this.bladid);
 
 }, error1 => {
-  this.snack.open('Dækning grad er opdateret ', ' ', {duration: 4000});
+
   this.getBladDaekningByBladId(this.bladid);
 });
 
@@ -79,7 +82,7 @@ this.dk.AddBladDaeknig(daekning).subscribe(value1 => {
 
   slet(selected: any) {
     const data = [{'selected' : selected}, {'update': 'slet'} ];
-    this.dialog.open(EditBladdaekningComponent,  {data:  data, width: '20%', height: '60%'}).afterClosed().subscribe(value => {
+    this.dialog.open(EditBladdaekningComponent,  {data:  data, width: '10%', height: '30%'}).afterClosed().subscribe(value => {
       console.log( value.data.BladID1 +  ' ' + value.data.PostNr1);
       this.dk.DeleteDaeknig(value.data.BladID1, value.data.PostNr1 ).subscribe(value1 => {
         this.snack.open('Dækning grad er slettet ', ' ', {duration: 4000});

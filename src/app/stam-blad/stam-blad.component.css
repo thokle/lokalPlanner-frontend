@@ -171,6 +171,7 @@ color: red !important;
 
 .stambladtab /deep/ .mat-tab-body-content {
   overflow: hidden !important;
+  width: 100% !important;
 }
 
 .udsending-stamblad-grid /deep/ .mat-grid-tile .mat-figure {
@@ -178,6 +179,7 @@ color: red !important;
    align-items: flex-start !important;
    margin-left: 1% !important;
    margin-top: 30px !important;
+  height: 100vh !important;
  }
 
 .udsending-stamblad-grid.lov /deep/ .mat-grid-tile .mat-figure {
@@ -196,4 +198,47 @@ color: red !important;
 .udsending-expansion-body /deep/ .   .mat-expansion-panel-body  {
   margin-right: 3% !important;
   margin-left: 3% !important;
+}
+
+.daekning-grad /deep/ .mat-grid-list  {
+  background-color: #377ec5 !important;
+  height: 90% !important;
+  overflow:  hidden;
+}
+
+
+section {
+  width: 100%;
+  height: 70vh;
+
+  margin: auto;
+  padding: 10px;
+}
+div#one {
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+div#two {
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+
+div#stabblad1 {
+  width: 33.333%;
+  height: 100%;
+  float: left;
+}
+div#stabblad2 {
+  width: 33.333%;
+  height: 100%;
+  float: left;
+}
+
+div#stabblad3 {
+  width: 33.333%;
+  height: 100%;
+  float: left;
 }

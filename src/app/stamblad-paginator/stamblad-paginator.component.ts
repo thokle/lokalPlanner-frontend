@@ -17,7 +17,10 @@ export class StambladPaginatorComponent implements OnInit {
   data: Date = new Date();
   constructor(private  stob: StamBladObserver) {
     this.stob.emitStamBladChange({id: 0});
-    this.stob.emitToPriseTable({ bladid: this.num, placeringi: 1 , prislisteid: 1, aar: this.data.getFullYear()});
+    this.stob.setPriceTable({id: 0, prisListe : 1, year: new Date().getFullYear() });
+    this.stob.setKontaktBladId(0);
+    this.stob.setPriceWeekSubjcet(0);
+    this.stob.emitToPriseTable({bladid: 0, aar: new Date().getFullYear() , prislisteid: 0, placeringi: 0});
   }
 
   /**
@@ -41,7 +44,9 @@ export class StambladPaginatorComponent implements OnInit {
       this.num = this.num - 1;
       this.stob.emitStamBladChange({id: this.num});
       this.stob.getToTableEmitter();
-      this.stob.emitToPriseTable({ bladid: this.num, placeringi: 1 , prislisteid: 1, aar: this.data.getFullYear()});
+      this.stob.setPriceTable({year: new Date().getFullYear(), prisListe: 1, id: this.num  });
+      this.stob.setKontaktBladId(this.num);
+      this.stob.setPriceWeekSubjcet(this.num);
     }
   }
 
@@ -54,23 +59,31 @@ export class StambladPaginatorComponent implements OnInit {
       if (this.num !== 1 ) {
         this.stob.emitStamBladChange({id: this.num});
         this.stob.setKontaktBladId(this.num);
-        this.stob.emitToPriseTable({ bladid: this.num, placeringi: 1 , prislisteid: 1, aar: this.data.getFullYear()});
-
+        this.stob.setPriceTable({year: new Date().getFullYear(), prisListe: 1, id: this.num  });
+        this.stob.setKontaktBladId(this.num);
+        this.stob.setPriceWeekSubjcet(this.num);
       }
     }
   }
 
   goToLastPage() {
-    console.log('Max '  + this.maxNumber);
+    this.stob.getStamBladEventEmitter().subscribe( value => {
+      this.maxNumber = value.id;
+    });
+ console.log('Max '  + this.maxNumber);
     this.num = this.maxNumber;
     this.stob.emitStamBladChange({id: this.maxNumber});
-    this.stob.emitToPriseTable({ bladid: this.num, placeringi: 1 , prislisteid: 1, aar: this.data.getFullYear()});
+    this.stob.setPriceTable({year: new Date().getFullYear(), prisListe: 1, id: this.num  });
+    this.stob.setKontaktBladId(this.num);
+    this.stob.setPriceWeekSubjcet(this.num);
   }
 
   goFirstPage() {
     this.num = 0;
     this.stob.emitStamBladChange({id: 0});
 
-    this.stob.emitToPriseTable({ bladid: this.num, placeringi: 1 , prislisteid: 1, aar: this.data.getFullYear()});
+    this.stob.setPriceTable({year: new Date().getFullYear(), prisListe: 1, id: this.num  });
+    this.stob.setKontaktBladId(this.num);
+    this.stob.setPriceWeekSubjcet(this.num);
   }
 }

@@ -1,4 +1,4 @@
 export interface PlaceringModel {
-  PlaceringID;
-  Betegnelse;
+  PlaceringID?: number;
+  Betegnelse?: string;
 }
