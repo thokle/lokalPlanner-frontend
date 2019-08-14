@@ -109,7 +109,7 @@ username;
   }
 
   openPlaceringDialog() {
-    this.dialog.open(PlaceringdialogComponent, {height: '10%', width: '20%'}).afterClosed().subscribe(value => {
+    this.dialog.open(PlaceringdialogComponent, {height: '20%', width: '20%'}).afterClosed().subscribe(value => {
       this.ps.CreatePlacering({ Betegnelse: value.text }).subscribe(value1 => {
         this.snack.open('Placering er oprettet', '', {duration: 4000});
         }, error1 => {

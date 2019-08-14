@@ -76,11 +76,15 @@ export class PricetableComponent implements OnInit {
       this.bladid = v.id;
       this.prislisteId = v.prisListe;
       this.yaer = v.year;
-      this.ps.GetPriserForTable(this.bladid, this.prislisteId, this.yaer).subscribe(va => {
-        this.prisList = va;
-        this.hasPlacering = false;
+      if (  v.prisListe !== 0) {
+        this.ps.GetPriserForTable(this.bladid, this.prislisteId, this.yaer).subscribe(va => {
+          this.prisList = va;
+          this.hasPlacering = false;
 
-      });
+        });
+      } else  {
+        this.prisList = [];
+      }
     });
 
   }
@@ -97,9 +101,9 @@ export class PricetableComponent implements OnInit {
     pl.Farve4Pris1 =  this.getValue(this.map , '4farve');
     pl.FormatFra1 = this.getValue(this.map, 'fra');
     pl.AAr1 = this.yaer === undefined ? new Date().getFullYear() : this.yaer;
-    pl.PlaceringId1 = this.selectedPlacering === undefined ? this.placeringId : this.selectedPlacering ;
+    pl.PlaceringId1 =  this.selectedPlacering ;
     pl.PrislisteID1 = this.prislisteId === undefined ? 1 : this.prislisteId;
-
+pl.BladID1 = this.bladid;
     this.ps.createPriserTable(pl).subscribe(value => {
 
       this.ps.GetPriserForTable(this.bladid, this.prislisteId === undefined ? 1 :
@@ -153,7 +157,7 @@ export class PricetableComponent implements OnInit {
     this.dialog.open(PriceListPositionDialogComponent, {width: '30%', height: '20%'}).afterClosed().subscribe(value => {
       this.selectedPlacering = value.PlaceringID;
       this.betegenlse = value.Betegnelse;
-      this.hasPlacering = true;
+
     });
   }
 

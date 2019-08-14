@@ -163,7 +163,7 @@
                           placeholder="{{stamBladForm.get('MedlemAAr').value | year}}" matNativeControl>
 
 
-                    <option *ngFor="let y of years" [value]="y">{{y | year}}</option>
+                    <option *ngFor="let y of years" [value]="y">{{y}}</option>
                   </select>
 
                 </mat-form-field>
@@ -231,7 +231,7 @@
 
 
 <div style="width: 100%; height: 16%;">
-<label>Et eller andet</label>
+<label>Oversigt overdækning</label>
   <textarea rows="3" cols="40" style="overflow-y: auto;" ></textarea>
 </div>
 
@@ -273,12 +273,12 @@
                 <mat-list-item>
                 <label style="margin-right: 27.5% !important;">Ugedag</label>
                   <mat-form-field class="stamblad">
-                  <select id="Ugedage"
-                              formControlName="UgedagId" matNativeControl matInput
-                            placeholder="{{stamBladForm.get('UgedagId').value}}">
+                    <select id="Ugedage"
+                            formControlName="UgedagId" matNativeControl matInput
+                            [placeholder]="tekniskDagNavn"                             (change)="setTekniksUgeDag(stamBladForm.get('UgedagId').value)" >
 
-                    <option class="stamblad" *ngFor="let d of dage" [value]="d">{{d.DagNavn}}</option>
-                  </select>
+                      <option class="stamblad" *ngFor="let d of dage" [value]="d">{{d.DagNavn}}</option>
+                    </select>
                   </mat-form-field>
                 </mat-list-item>
                 <mat-list-item>

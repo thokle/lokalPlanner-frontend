@@ -30,21 +30,26 @@ bladid = 0;
 
   private GetBladTIllaegs() {
     this.obs.getBladTilLaeg().subscribe(v => {
-      this.bladid = v;
-      this.bts.GetBladTilLaegsByBladId(v).subscribe(value => {
-        this.bladtillags = value;
-        if (this.bladtillags.length > 0 ) {
-          this.isBladtillaeg = true;
-        } else {
-          this.isBladtillaeg = false;
-        }
-      });
+      this.bladid = v.bladid;
+      if (v.reset !== 'yes') {
+        this.bts.GetBladTilLaegsByBladId(v.bladid).subscribe(value => {
+          this.bladtillags = value;
+          if (this.bladtillags.length > 0) {
+            this.isBladtillaeg = true;
+          } else {
+            this.isBladtillaeg = false;
+          }
+        });
+      } else {
+        this.bladtillags = [];
+        this.isBladtillaeg = false;
+      }
     });
   }
 
 
     public  CreatBladTillaegsType() {
-      this.dialog.open(BladtilLaegstypeComponent, {width: '30%', height: '14%' }).afterClosed().subscribe(value => {
+      this.dialog.open(BladtilLaegstypeComponent, {width: '30%', height: '25%' }).afterClosed().subscribe(value => {
         console.log(value.type);
         this.bt.CreateBladTillaegsType({type: value.type}).subscribe(value1 => {
 

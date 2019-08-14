@@ -20,7 +20,9 @@ export class StambladPaginatorComponent implements OnInit {
     this.stob.setPriceTable({id: 0, prisListe : 1, year: new Date().getFullYear() });
     this.stob.setKontaktBladId(0);
     this.stob.setPriceWeekSubjcet(0);
+this.stob.setBladTilaeg(0, 'no');
     this.stob.emitToPriseTable({bladid: 0, aar: new Date().getFullYear() , prislisteid: 0, placeringi: 0});
+    this.stob.setCreateYear(0);
   }
 
   /**

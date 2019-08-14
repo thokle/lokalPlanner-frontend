@@ -30,6 +30,7 @@ export class EditBladdaekningComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<EditBladdaekningComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, private  bs: BladdaekningService,
               private ps: StamdataService, private  snack: MatSnackBar, private fb: FormBuilder) {
+    this.dialogRef.disableClose = true;
     this.form = this.fb.group({
       DaekningsGrad1: ['', Validators.nullValidator],
       PostNr1: ['', Validators.nullValidator],
@@ -38,13 +39,8 @@ export class EditBladdaekningComponent implements OnInit {
       BladID1: ['', Validators.nullValidator]
     });
 this.setButtonText(data);
-    this.updateData = {
-      BladID1: this.data[0].selected.BladID1, PostNr1: this.data[0].selected.PostNr1,
-      Oplag1: this.data[0].selected.Oplag1, DaekningsGrad1: this.data[0].selected.DaekningsGrad1, Postby: this.data[0].selected.Postby
-    };
-    if (this.updateData.BladID1 !== undefined) {
-      this.form.setValue(this.updateData);
-    }
+
+
 
     this.ps.StamBladAllPostnr().subscribe(value => {
       this.psnr = value;
@@ -55,19 +51,38 @@ this.setButtonText(data);
 
 
   private setButtonText(data) {
-    if (data[1].update === 'slet') {
+    if (data[2].update === 'slet') {
       this.slet = true;
       this.opret = false;
       this.text = 'Slet';
+      this.bladid = data[1].bladid;
+      this.updateData = {
+        BladID1: this.bladid, PostNr1: this.data[0].selected.PostNr1,
+        Oplag1: this.data[0].selected.Oplag1, DaekningsGrad1: this.data[0].selected.DaekningsGrad1, Postby: this.data[0].selected.Postby
+
+      };
+      if (this.updateData.BladID1 !== undefined) {
+        this.form.setValue(this.updateData);
+      }
     } else if (data[2].update === 'opret') {
       this.slet = false;
       this.opret = true;
+      this.bladid = data[1].bladid;
       this.text = 'Gem';
-    } else if (data[1].update === 'opdater') {
+    } else if (data[2].update === 'opdater') {
       this.slet = false;
       this.opret = false;
       this.opdater = true;
       this.text = 'Opdater';
+      this.bladid = data[1].bladid;
+      this.updateData = {
+        BladID1: this.bladid, PostNr1: this.data[0].selected.PostNr1,
+        Oplag1: this.data[0].selected.Oplag1, DaekningsGrad1: this.data[0].selected.DaekningsGrad1, Postby: this.data[0].selected.Postby
+
+      };
+      if (this.updateData.BladID1 !== undefined) {
+        this.form.setValue(this.updateData);
+      }
     }
   }
   ngOnInit() {
@@ -76,19 +91,15 @@ this.setButtonText(data);
 
   AddOrUpdateBladDaekning() {
     if (this.text === 'Opdater') {
-      const postnummer = this.form.controls.PostNr1.value;
-      const daekningsgrad = this.form.controls.DaekningsGrad1.value;
 
-      const oplag = this.form.controls.Oplag1.value;
-      const bynavne = this.form.controls.Postby.value;
       const opdatering: BladDaekning = {
         BladID1: this.form.controls.BladID1.value, Postby: this.form.controls.Postby.value, PostNr1: this.form.controls.PostNr1.value,
         DaekningsGrad1: this.form.controls.DaekningsGrad1.value, Oplag1: this.form.controls.Oplag1.value
       };
       this.dialogRef.close({'data': opdatering});
-    } else if (this.text === 'Opret') {
+    } else if (this.text === 'Gem') {
       const opdatering: BladDaekning = {
-        BladID1: this.form.controls.BladID1.value, Postby: this.form.controls.Postby.value, PostNr1: this.form.controls.PostNr1.value,
+        BladID1: this.bladid, Postby: this.form.controls.Postby.value, PostNr1: this.form.controls.PostNr1.value,
         DaekningsGrad1: this.form.controls.DaekningsGrad1.value, Oplag1: this.form.controls.Oplag1.value
       };
       this.dialogRef.close({'data': opdatering});

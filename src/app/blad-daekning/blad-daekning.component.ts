@@ -62,7 +62,7 @@ export class BladDaekningComponent implements OnInit {
    */
 
   opdatereDaekningGrad(selected: any) {
-  const data = [{'selected' : selected}, {'update': 'opdater'} ];
+  const data = [{'selected' : selected},  {'bladid': this.bladid}, {'update': 'opdater'} ];
     this.dialog.open(EditBladdaekningComponent,  {data:  data, width: '10%', height: '30%'}).afterClosed().subscribe(value => {
       console.log('data ' + value.data);
 const daekning: BladDaekning = {BladID1: value.data.BladID1, Oplag1: value.data.Oplag1, DaekningsGrad1: value.data.DaekningsGrad1,
@@ -81,7 +81,7 @@ this.dk.AddBladDaeknig(daekning).subscribe(value1 => {
   }
 
   slet(selected: any) {
-    const data = [{'selected' : selected}, {'update': 'slet'} ];
+    const data = [{'selected' : selected},  {'bladid': this.bladid},{'update': 'slet'} ];
     this.dialog.open(EditBladdaekningComponent,  {data:  data, width: '10%', height: '30%'}).afterClosed().subscribe(value => {
       console.log( value.data.BladID1 +  ' ' + value.data.PostNr1);
       this.dk.DeleteDaeknig(value.data.BladID1, value.data.PostNr1 ).subscribe(value1 => {

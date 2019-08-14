@@ -43,3 +43,13 @@ label {
 format /deep/ .mat-form-field-infix {
   width:  50px;
 }
+
+gridtile /deep/ .mat-grid-tile .mat-figure  {
+  background-color: #377ec5 !important;
+
+}
+
+
+.formatx /deep/ .mat-form-field-infix {
+  width: 20px;
+}

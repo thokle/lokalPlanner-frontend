@@ -16,6 +16,16 @@ id;
 year;
 }
 
+export  interface Avis {
+  bladid;
+  year;
+}
+export interface  BladTillægsType {
+bladid;
+reset;
+
+}
+
 
 export class StamBladObserver {
   private observable: EventEmitter<any> = new EventEmitter();
@@ -30,20 +40,28 @@ export class StamBladObserver {
   private emitPriosetable: Subject<SetPrisListTable> = new Subject<SetPrisListTable>();
   private priceWeekSubject: Subject<number> = new Subject<number>();
   private  pristList: Subject<PrisersTable> = new Subject();
-  private  bladtillaeg: Subject<number> = new Subject();
+  private  bladtillaeg: Subject<BladTillægsType> = new Subject();
   private columnsSubjest: Subject<string[]>  = new Subject<string[]>();
-  private aktiveAviserSubject: Subject<AktiveAviser> = new Subject<AktiveAviser>();
+  private aktiveAviserSubject: Subject<Avis> = new Subject<Avis>();
+private createPriseYears: Subject<number> = new Subject<number>();
 
-  public  setBladTilaeg(bladid: number) {
-    this.bladtillaeg.next(bladid);
+public  setCreateYear(b: number) {
+  this.createPriseYears.next(b);
+}
+
+public  getCreatedYear(): Subject<number> {
+ return  this.createPriseYears;
+}
+  public  setBladTilaeg(bladid: number, reset: string) {
+    this.bladtillaeg.next({bladid: bladid, reset: reset });
   }
-  public getBladTilLaeg(): Subject<number> {
+  public getBladTilLaeg(): Subject<BladTillægsType> {
     return this.bladtillaeg;
   }
-  public setAktivAvis(aktivAvis: AktiveAviser) {
+  public setAktivAvis(aktivAvis: Avis) {
     this.aktiveAviserSubject.next(aktivAvis);
   }
-  public getAktivAvis(): Subject<AktiveAviser> {
+  public getAktivAvis(): Subject<Avis> {
     return this.aktiveAviserSubject;
   }
   public setColumnList(columns: string[]) {

@@ -1,27 +1,27 @@
 
   export interface AktiveAviser {
     PostBy1: string;
-    Adresse1: string;
-    Adresse21: string;
+    Adresse: string;
+    Adresse2: string;
     Number: number;
-    Kontaktperson1: string;
-    Navn1: string;
-    Navn21: string;
-    Oplag1: number;
-    Tlf1: number;
-    DagNavn1: string;
-    DaekningsGrad1: number;
-    GruppeNavn1: string;
-    MaterialedeadlineRubrik1: string;
-    MaterialedeadlineTekst1: string;
+    Kontaktperson: string;
+    Navn: string;
+    Navn2: string;
+    Oplag: number;
+    Tlf: number;
+    DagNavn: string;
+    DaekningsGrad: number;
+    GruppeNavn: string;
+    MaterialedeadlineRubrik: string;
+    MaterialedeadlineTekst: string;
     OrdredeadlineRubrik1: string;
-    OrdredeadlineTekst1: string;
-    PostNr1: number;
-    RegionNavn1: string;
-    BladID1: number;
-    CVR1: string;
-    DelOmraadeNavn1: string;
-    GeoKodeNavn1: string;
-    HovedGruppeNavn1: string;
+    OrdredeadlineTekst: string;
+    PostNr: number;
+    RegionNavn: string;
+    BladID: number;
+    CVR: string;
+    DelOmraadeNavn: string;
+    GeoKodeNavn: string;
+    HovedGruppeNavn: string;
 
 }

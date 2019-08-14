@@ -1,4 +1,5 @@
-<mat-form-field class="blad">
+<h3>Opret Bladtillægstype</h3><mat-form-field class="blad">
 
   <input type="text" matInput [(ngModel)]="selectedValue"  (keydown.enter)="CreateType()" >
+  <button mat-raised-button (click)="CreateType()">Opret </button>
 </mat-form-field>

@@ -9,6 +9,7 @@ import {PriceWeekItem} from '../models/price-week-item';
 import {Prisers} from '../models/Prisers';
 import {tryCatch} from 'rxjs/internal-compatibility';
 import {observableToBeFn} from 'rxjs/internal/testing/TestScheduler';
+import {Year} from '../models/year';
 
 @Injectable({
   providedIn: 'root'
@@ -71,5 +72,10 @@ console.log('Update Priser pr week ' + pv );
     const url = this.baseUrl + '/priser/' + psl.BladID1 + '/' + psl.PlaceringId1 + '/' +  psl.PrislisteID1 + '/' + psl.AAr1;
 
     return  this.http.delete<any>(url).pipe();
+  }
+
+  public getCreateYears(bladid: number): Observable<Year[]> {
+    const url = this.baseUrl + '/priser/oprettetyears/' + bladid;
+    return  this.http.get<Year[]>(url).pipe();
   }
 }

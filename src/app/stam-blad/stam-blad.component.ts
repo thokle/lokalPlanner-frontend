@@ -53,6 +53,7 @@ export class StamBladComponent implements OnInit {
   selectedByNavn;
   years: number[] = [];
   dage: Dage[];
+  dag;
   postNr: PostNr[];
   byNavn: PostNr[];
   stamBladForm: FormGroup;
@@ -63,7 +64,7 @@ export class StamBladComponent implements OnInit {
   nytBladId: number;
   toExcel: StamBladViewModel[];
   opretOdatere: string;
-
+tekniskDagNavn;
   geocodes: GeoKode[];
   regions: Region[];
   delomraader: DelOmraade[];
@@ -170,7 +171,7 @@ postnr: number;
         this.obs.setDaekninkId(0);
         this.stamBladForm.reset();
         this.obs.setDaekninkId(value[0].BladId);
-
+this.obs.setCreateYear(0);
 
         this.postnr = value[0].PostNr || 1000;
 
@@ -217,8 +218,11 @@ this.stamBladNavn = '';
       this.bladId = value1.item2 + 1;
       this.stamBladForm.patchValue({BladId: this.bladId});
       this.obs.emitStamBladChange({ id: this.bladId});
+      this.obs.setPriceTable({id: 0, prisListe: 0, year: 0});
       this.obs.setDaekninkId(this.bladId);
       this.obs.setPriceWeekSubjcet(this.bladId);
+      this.obs.setBladTilaeg(0, 'yes');
+      this.obs.setCreateYear(this.bladId);
     });
     const value = this.stamBladForm.controls;
     console.log(this.selectedDelOmraade);
@@ -243,12 +247,12 @@ this.stamBladNavn = '';
         this.obs.setDaekninkId(value[0].BladId);
         this.obs.setKontaktBladId(value[0].BladId);
         this.obs.setPriceTable({id: value[0].BladId, year: new Date().getFullYear(), prisListe: 1});
-        this.obs.setBladTilaeg( Number(value[0].BladId).valueOf());
+        this.obs.setBladTilaeg( Number(value[0].BladId).valueOf(), 'no');
         this.stamBladNavn = value[0].Navn;
         this.toExcel = value;
         this.obs.setPostNr(value[0].PostNr);
         this.setStamBladData(value);
-
+this.obs.setCreateYear(value[0].BladId);
 
         this.bladId = value[0].BladId;
       }, error1 => {
@@ -307,6 +311,8 @@ this.stamBladNavn = '';
     this.stamBladForm.patchValue({'GeoKodeId': value[0].GeoKodeNavn});
     this.stamBladForm.patchValue({'UgedagId': value[0].DagNavn});
     this.stamBladForm.patchValue({'Kontaktperson': value[0].Kontaktperson});
+    this.dag = value[0].DagNavn;
+    this.setTekniksUgeDag(value);
    }
 
 
@@ -407,7 +413,7 @@ this.stamBladNavn = '';
   public setYear() {
     for (let i = 1970; i <= new Date().getFullYear(); i++) {
 
-      this.years.push(i - 1900);
+      this.years.push(i + 1900);
     }
   }
 
@@ -477,11 +483,16 @@ this.stamBladNavn = '';
     this.dialog.open(BladkommentarComponent, {width: '18%', height: '35%', data: {bladid: this.bladId}}).afterClosed().subscribe(value => {
 
       this.k.CreateKommentart({tekst: value.text, bladid: this.bladId, date: new Date()}).subscribe( value2 => {
-          this.snack.open('Kommentar er oprettet' ,' ' , {duration: 4000});
+          this.snack.open('Kommentar er oprettet' , ' ' , {duration: 4000});
       }, error1 => {
         this.snack.open('noget gik galt' , ' ', {duration: 30000});
       });
     });
+  }
+
+  setTekniksUgeDag(dage: Dage[]) {
+    console.log(dage);
+    this.tekniskDagNavn = dage[0].DagNavn;
   }
 }
 

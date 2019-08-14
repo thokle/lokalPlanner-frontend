@@ -6,6 +6,7 @@ import {StamBladObserver} from '../stam-blad-observer';
 import {v} from '@angular/core/src/render3';
 import {MatDialog} from '@angular/material';
 import {PriceWeeTypeDialogComponent} from '../price-wee-type-dialog/price-wee-type-dialog.component';
+import {Year} from '../models/year';
 
 @Component({
   selector: 'app-price-week',
@@ -14,7 +15,7 @@ import {PriceWeeTypeDialogComponent} from '../price-wee-type-dialog/price-wee-ty
 })
 export class PriceWeekComponent implements OnInit {
 
-  years = [];
+  years: Year[] = [];
 @Input()
 bladid;
 priceListWeekItenm: PriceWeekItem[] = [];
@@ -28,9 +29,10 @@ isTherePrices = false;
   selectedYear;
   selectedPrisListId;
   constructor(private ps: PriceService , private obs: StamBladObserver, private  dialog: MatDialog) {
-    this.setyears();
+
 if (this.bladid === undefined ) {
   this.ps.GetPriceWeekListPrBladId(0, new Date().getFullYear()).subscribe(value => {
+    this.setYear(0);
     this.priceListWeekItenm = value;
     if ( this.priceListWeekItenm.length > 0) {
       this.isTherePrices = true;
@@ -39,6 +41,7 @@ if (this.bladid === undefined ) {
   });
 }
     obs.getPriceWeekSubject().subscribe(av => {
+
      this.ps.GetPriceWeekListPrBladId(av, new Date().getFullYear()).subscribe( value =>  {
        this.priceListWeekItenm = value;
        if ( this.priceListWeekItenm.length > 0) {
@@ -51,7 +54,7 @@ if (this.bladid === undefined ) {
        }
      });
     });
-
+    this.setyears();
   }
   ngOnInit() {
     if (this.bladid === undefined ) {
@@ -100,9 +103,11 @@ if (this.bladid === undefined ) {
 
 
   setyears() {
-    for (let i = new Date().getFullYear(); i <= new Date().getFullYear() + 30; i++) {
-      this.years.push(i);
-    }
+    this.obs.getCreatedYear().subscribe( c => {
+      this.ps.getCreateYears(c).subscribe(value => {
+        this.years = value;
+      });
+    });
   }
 
   changeYear() {

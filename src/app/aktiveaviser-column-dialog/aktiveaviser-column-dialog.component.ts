@@ -34,7 +34,8 @@ export class AktiveaviserColumnDialogComponent {
     'HovedGruppeNavn1'];
 
 
-  constructor(private dialogRef: MatDialogRef<AktiveaviserColumnDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private sob: StamBladObserver) {
+  constructor(private dialogRef: MatDialogRef<AktiveaviserColumnDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any, private sob: StamBladObserver) {
   }
 
 

@@ -16,7 +16,7 @@
     </mat-grid-tile>
     <mat-grid-tile>
 <mat-form-field>
-      <select placeholder="PostNr1"   formControlName="PostNr1" matNativeControl >
+      <select placeholder="PostNr"   formControlName="PostNr1" matNativeControl >
         <option>{{form.get('PostNr1').value }}</option>
         <option *ngFor="let p of psnr" [value]="p?.PostNr">{{p?.PostNr}}</option>
       </select>
