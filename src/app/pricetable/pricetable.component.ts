@@ -15,7 +15,7 @@ import {PriceListPositionDialogComponent} from '../price-list-position-dialog/pr
 @Component({
   selector: 'app-pricetable',
   templateUrl: './pricetable.component.html',
-  styleUrls: ['./pricetable.component.css']
+  styleUrls: ['./pricetable.component.scss']
 })
 export class PricetableComponent implements OnInit {
   placeriger: PlaceringModel[] = [];

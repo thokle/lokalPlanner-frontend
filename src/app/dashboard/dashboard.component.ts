@@ -7,21 +7,21 @@ import {StamBladViewModel} from '../models/StamBladViewModel';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {PlaceringServiceService} from '../services/placering-service.service';
 import {PlaceringdialogComponent} from '../placeringdialog/placeringdialog.component';
-import {AktiveAviserDialogComponent} from '../aktive-aviser-dialog/aktive-aviser-dialog.component';
+
 import {AktiveaviserColumnDialogComponent} from '../aktiveaviser-column-dialog/aktiveaviser-column-dialog.component';
 import {animate, state, style, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  styleUrls: ['./dashboard.component.scss'],
    animations: [
      trigger('findMediePlan', [
        state('open', style({
          width: '100%',
          opacity: 1,
          backgroundColor: 'white',
-         height: '200px'
+         height: '300px'
        })),
 
        state('closed' , style( {
@@ -45,7 +45,7 @@ import {animate, state, style, trigger} from '@angular/animations';
    ]
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-hasBackDrop= false;
+hasBackDrop = false;
 
   isOpen = false;
   isResultat = false;
@@ -121,7 +121,7 @@ username;
  }
 
  openAktiveAviserColumnsDialog() {
-    this.dialog.open(AktiveaviserColumnDialogComponent, {width: '30%', height: '20%'})
+    this.dialog.open(AktiveaviserColumnDialogComponent, {width: '30%', height: '20%'});
  }
 
  findMediePlan() {

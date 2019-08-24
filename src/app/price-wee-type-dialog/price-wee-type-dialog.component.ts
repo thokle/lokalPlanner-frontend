@@ -7,7 +7,7 @@ import {PriceListItem} from '../models/price-list-item';
 @Component({
   selector: 'app-price-wee-type-dialog',
   templateUrl: './price-wee-type-dialog.component.html',
-  styleUrls: ['./price-wee-type-dialog.component.css']
+  styleUrls: ['./price-wee-type-dialog.component.scss']
 })
 export class PriceWeeTypeDialogComponent {
   selectedId;

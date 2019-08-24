@@ -6,7 +6,7 @@ import {User} from '../models/user';
 @Component({
   selector: 'app-registeruser',
   templateUrl: './registeruser.component.html',
-  styleUrls: ['./registeruser.component.css']
+  styleUrls: ['./registeruser.component.scss']
 })
 export class RegisteruserComponent implements OnInit {
 

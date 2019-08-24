@@ -6,12 +6,11 @@ import {BladtilaegtypeService} from '../services/bladtilaegtype.service';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {BladtilLaegstypeComponent} from '../bladtil-laegstype/bladtil-laegstype.component';
 import {BladtilLaegsDialogComponent} from '../bladtil-laegs-dialog/bladtil-laegs-dialog.component';
-import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 @Component({
   selector: 'app-bladtil-laegs',
   templateUrl: './bladtil-laegs.component.html',
-  styleUrls: ['./bladtil-laegs.component.css']
+  styleUrls: ['./bladtil-laegs.component.scss']
 })
 export class BladtilLaegsComponent implements OnInit {
 

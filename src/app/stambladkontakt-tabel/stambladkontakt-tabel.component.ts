@@ -6,7 +6,7 @@ import {StamBladObserver} from '../stam-blad-observer';
 @Component({
   selector: 'app-stambladkontakt-tabel',
   templateUrl: './stambladkontakt-tabel.component.html',
-  styleUrls: ['./stambladkontakt-tabel.component.css']
+  styleUrls: ['./stambladkontakt-tabel.component.scss']
 })
 export class StambladkontaktTabelComponent implements OnInit {
 

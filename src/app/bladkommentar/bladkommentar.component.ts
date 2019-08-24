@@ -7,7 +7,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'app-bladkommentar',
   templateUrl: './bladkommentar.component.html',
-  styleUrls: ['./bladkommentar.component.css']
+  styleUrls: ['./bladkommentar.component.scss']
 })
 export class BladkommentarComponent implements OnInit {
 

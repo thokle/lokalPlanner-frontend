@@ -16,92 +16,90 @@
       <mat-tab label='Navn/Adresser'>
       <section>
 <div id="stabblad1">
-  <label style="margin-right: 9% !important;">Blad ID</label>
-  <mat-form-field id="matbladid" class="stamblad">
+  <div class="formfield">
+  <label style="margin-right: 2% !important;">Blad ID</label>
 
-    <input class="textfield-stamblad" matInput id="bladid"  type="text" readonly="true"  formControlName="BladId" value="BladId"  placeholder="Blad Id" >
 
-  </mat-form-field>
+    <input class="textfield-stamblad"  id="bladid"  type="text" readonly="true"  formControlName="BladId" value="BladId"  placeholder="Blad Id" >
 
-  <div>
+
+</div>
+  <div class="formfield">
     <label style="margin-right: 11.5% !important;">Navn</label>
-    <mat-form-field class="stamblad" >
-      <input matInput class="mat-form-field" formControlName="Navn" value="Navn" required placeholder="Navn">
 
-    </mat-form-field>
+      <input  class="mat-form-field" formControlName="Navn" value="Navn" required placeholder="Navn">
+
   </div>
 
 
-  <div>
+  <div class="formfield">
     <label  style="margin-right:8%;">Adresse</label>
-    <mat-form-field class="stamblad">
 
-      <input matInput formControlName="Adresse" value="Adresse" >
 
-    </mat-form-field>
+      <input  formControlName="Adresse" value="Adresse" >
+
+
   </div>
 
 
-  <div>
+  <div class="formfield">
     <label>Adresse2</label>
-    <mat-form-field class="stamblad">
-      <input matInput formControlName="Adresse2" value="Adresse2" placeholder="Addresse 2">
 
-    </mat-form-field>
+      <input  formControlName="Adresse2" value="Adresse2" placeholder="Addresse 2">
+
+
   </div>
 
 
-  <div>
+  <div class="formfield">
     <label>Postnr/By</label>
-    <mat-form-field class="stamblad">
-      <select formControlName="PostNr" value="PostNr" matNativeControl placeholder="Post Nummer" required matAutocompleteOrigin
+<mat-form-field class="stamblad">
+      <select formControlName="PostNr" value="PostNr" matNativeControl placeholder="Post Nummer" required
               [(ngModel)]="selectedPost"
               (change)="setByNavnByZipCode()">
 
         <option *ngFor="let p of postNr" [value]="p?.PostNr">{{p?.PostNr}}</option>
 
       </select>
-    </mat-form-field>
-
+</mat-form-field>
     <app-by></app-by>
   </div>
 
 
 
-  <div><label style="margin-right: 15% !important;">Tlf</label>
-    <mat-form-field class="stamblad">
-      <input matInput id="Tlf" formControlName="Tlf" value="Tlf" placeholder="Tlf">
+  <div class="formfield"><label style="margin-right: 15% !important;">Tlf</label>
 
-    </mat-form-field>
+      <input  id="Tlf" formControlName="Tlf" value="Tlf" placeholder="Tlf">
+
+
   </div>
 
 
 
-  <div>
+  <div class="formfield">
     <label style="margin-right: 14.5% !important;">Fax</label>
-    <mat-form-field class="stamblad">
-      <input matInput id="Fax" formControlName="Fax" value="Fax" placeholder="Fax">
+        <input  id="Fax" formControlName="Fax" value="Fax" placeholder="Fax">
 
-    </mat-form-field>
+
   </div>
 </div>
-<div id="stabblad2">
+<div id="stabblad2" class="formfield">
           <label>Kontakt Person</label>
-          <mat-form-field  class="stamblad">
-          <input formControlName="Kontaktperson" value="Kontaktperson" matInput
-          ></mat-form-field>
+
+          <input formControlName="Kontaktperson" value="Kontaktperson"
+          >
 
 
 
   <div>
     <label>Ejerforhold</label>
-    <mat-form-field class="stamblad">
+<mat-form-field>
       <select formControlName="Ejerforhold" value="Ejerforhold" matNativeControl required placeholder="Ejerforhold">
 
         <option *ngFor="let ej of ejerforholdliste"
                 [value]="ej.Ejerforhold">{{ej.Ejerforhold}}</option>
       </select>
-    </mat-form-field>
+</mat-form-field>
   </div>
 </div>
         <div id="stabblad3">
@@ -147,8 +145,8 @@
                 </mat-radio-group>
 
 
-                <mat-form-field class="stamblad">
-                  <select id="MedlemMaaned" formControlName="MedlemMaaned" matInput
+<mat-form-field>
+                  <select id="MedlemMaaned" formControlName="MedlemMaaned"
                           placeholder="{{stamBladForm.get('MedlemMaaned').value}}"
                           matNativeControl
                           required="true">
@@ -156,9 +154,9 @@
                     <option *ngFor="let mo of months" [value]="mo">{{mo.name}}</option>
 
                   </select>
-                </mat-form-field>
+</mat-form-field>
+<mat-form-field><
 
-                <mat-form-field class="stamblad">
                   <select id="MedlemAAr" formControlName="MedlemAAr"
                           placeholder="{{stamBladForm.get('MedlemAAr').value | year}}" matNativeControl>
 
@@ -166,7 +164,7 @@
                     <option *ngFor="let y of years" [value]="y">{{y}}</option>
                   </select>
 
-                </mat-form-field>
+</mat-form-field>
 
               </mat-grid-list>
             </mat-expansion-panel>
@@ -184,53 +182,53 @@
             </div>
             <div style="width: 100%; height: 16%">
               <label>Region</label>
-              <mat-form-field class="stamblad">
-                <select id="RegionId" formControlName="RegionId" matNativeControl
+<mat-form-field class="formfield">
+                <select id="RegionId" formControlName="RegionId" matNativeControl matInput
                         placeholder="{{stamBladForm.get('RegionId').value}}">
 
                   <option *ngFor="let d of regions" [value]="d">{{d.RegionNavn}}</option>
                 </select>
-              </mat-form-field>
+</mat-form-field>
             </div>
 
               <div style="width: 100%; height: 16%">
                 <label>Delområde</label>
-                <mat-form-field class="stamblad">
-                  <select id="DelOmraadeId" formControlName="Delomraade" matNativeControl
+<mat-form-field class="formfield">
+                  <select id="DelOmraadeId" formControlName="Delomraade" matNativeControl matInput
                           placeholder="{{ stamBladForm.get('Delomraade').value }}"
                   >
 
                     <option *ngFor="let r of delomraader" [value]="r">{{r.DelOmraadeNavn1}}</option>
                   </select>
+</mat-form-field>
 
-                </mat-form-field>
               </div>
 
 <div style="width: 100%; height: 16%">
               <label>GeoKode</label>
-              <mat-form-field class="stamblad">
-                <select formControlName="GeoKodeId" value="GeoKodeId" matNativeControl
+<mat-form-field class="formfield">
+                <select formControlName="GeoKodeId" value="GeoKodeId" matNativeControl matInput
                         placeholder="{{stamBladForm.get('GeoKodeId')?.value }}">
 
                   <option *ngFor="let g of geocodes" [value]="g">{{g.GeoKodeNavn}}</option>
                 </select>
 
-              </mat-form-field>
+</mat-form-field>
 
 </div>
 
-            <div style="width: 100%; height: 16%">
+            <div class="formfield">
               <label>TotalOmråde</label>
-              <mat-form-field class="stamblad">
-                <input matInput id="Totalomraade" formControlName="Totalomraade" value="Totalomraade">
 
-              </mat-form-field>
+                <input  id="Totalomraade" formControlName="Totalomraade" value="Totalomraade">
+
+
 
             </div>
 
 
 
-<div style="width: 100%; height: 16%;">
+<div class="formfield">
 <label>Oversigt overdækning</label>
   <textarea rows="3" cols="40" style="overflow-y: auto;" ></textarea>
 </div>
@@ -265,28 +263,28 @@
                 </mat-list-item>
                 <mat-list-item>
                   <label style="margin-right: 30% !important;">Oplag</label>
-                  <mat-form-field class="stamblad">
-                    <input matInput type="text" id="Oplag" formControlName="Oplag" value="Oplag">
 
-                  </mat-form-field>
+                    <input  type="text" id="Oplag" formControlName="Oplag" value="Oplag">
+
+
                 </mat-list-item>
                 <mat-list-item>
                 <label style="margin-right: 27.5% !important;">Ugedag</label>
-                  <mat-form-field class="stamblad">
+<mat-form-field>
                     <select id="Ugedage"
-                            formControlName="UgedagId" matNativeControl matInput
+                            formControlName="UgedagId" matNativeControl
                             [placeholder]="tekniskDagNavn"                             (change)="setTekniksUgeDag(stamBladForm.get('UgedagId').value)" >
 
                       <option class="stamblad" *ngFor="let d of dage" [value]="d">{{d.DagNavn}}</option>
                     </select>
-                  </mat-form-field>
+</mat-form-field>
                 </mat-list-item>
                 <mat-list-item>
                   <label style="margin-right: 28.5% !important;">Format</label>
-                  <mat-form-field class="stamblad">
-                    <input matInput id="Format" type="text" formControlName="Format" value="Format">
 
-                  </mat-form-field>
+                    <input  id="Format" type="text" formControlName="Format" value="Format">
+
+
                 </mat-list-item>
               </mat-list>
 
@@ -297,20 +295,20 @@
 
                 <mat-list-item>
                   <label style="margin-right: 9% !important;">Ordre Deadline Tekst</label>
-                  <mat-form-field class="stamblad">
 
-                    <input id="OrdredeadlineTekst" formControlName="OrdredeadlineTekst" matInput
+
+                    <input id="OrdredeadlineTekst" formControlName="OrdredeadlineTekst"
                            value="OrdredeadlineTekst">
 
-                  </mat-form-field>
+
                 </mat-list-item>
                 <mat-list-item>
                   <label  style="margin-right: 16% !important;">Deadline Rubrik</label>
-                  <mat-form-field class="stamblad">
 
-                    <input id="OrdredeadlineRubrik" type="text" matInput formControlName="OrdredeadlineRubrik"
+
+                    <input id="OrdredeadlineRubrik" type="text"  formControlName="OrdredeadlineRubrik"
                            value="OrdredeadlineRubrik">
-                  </mat-form-field>
+
                 </mat-list-item>
 
                 <mat-list-item>
@@ -318,19 +316,18 @@
                 </mat-list-item>
                 <mat-list-item>
                   <label  style="margin-right: 18% !important;">Deadline tekst</label>
-                  <mat-form-field class="stamblad">
 
-                    <input id="MaterialedeadlineTekst" matInput type="text" formControlName="MaterialedeadlineTekst"
+
+                    <input id="MaterialedeadlineTekst"  type="text" formControlName="MaterialedeadlineTekst"
                            value="MaterialedeadlineTekst">
-                    <mat-label></mat-label>
-                  </mat-form-field>
+
                 </mat-list-item>
                 <mat-list-item>
                   <label  style="margin-right: 17% !important;">Deadline rubrik</label>
-                  <mat-form-field class="stamblad">
-                    <input matInput type="text" id="MaterialedeadlineRubrik" formControlName="MaterialedeadlineRubrik"
+
+                    <input  type="text" id="MaterialedeadlineRubrik" formControlName="MaterialedeadlineRubrik"
                            value="MaterialedeadlineRubrik">
-                  </mat-form-field>
+
                 </mat-list-item>
 
 
@@ -343,17 +340,17 @@
                 </mat-list-item>
                 <mat-list-item>
                   <label  style="margin-right: 14.5% !important;">Hjemmeside</label>
-                  <mat-form-field class="stamblad">
-                    <input type="text" id="Hjemmeside" matInput formControlName="Hjemmeside"
+
+                    <input type="text" id="Hjemmeside"  formControlName="Hjemmeside"
                            value="Hjemmeside">
-                  </mat-form-field>
+
                 </mat-list-item>
                 <mat-list-item>
                  <label> Redaktions email </label>
-                  <mat-form-field class="stamblad">
-                    <input matInput id="RedaktionEmail" type="text" formControlName="RedaktionEmail"
+
+                    <input  id="RedaktionEmail" type="text" formControlName="RedaktionEmail"
                            value="RedaktionEmail">
-                  </mat-form-field>
+
                 </mat-list-item>
               </mat-list>
             </div>
@@ -367,60 +364,60 @@
         <mat-grid-list cols="2" rowHeight="17:1" class="udsending-stamblad-grid">
           <mat-grid-tile colspan="2" rowspan="1"><label>Udsending</label></mat-grid-tile>
           <mat-grid-tile colspan="2" rowspan="1"><label style="margin-right: 5% !important; margin-left: 0% !important;">Ordre email</label>
-            <mat-form-field class="stamblad" style="width: 80% !important;">
-              <input type="text" id="OrdreEmail" matInput formControlName="OrdreEmail" value="OrdreEmail">
 
-            </mat-form-field></mat-grid-tile>
+              <input type="text" id="OrdreEmail"  formControlName="OrdreEmail" value="OrdreEmail">
+
+       </mat-grid-tile>
           <mat-grid-tile><label style="margin-right: 10% !important;" >Material Email</label>
-            <mat-form-field class="stamblad" style="width: 50% !important; ">
 
-              <input matInput type="text" formControlName="MaterialeEmail" value="MaterialeEmail">
-            </mat-form-field>
+
+              <input  type="text" formControlName="MaterialeEmail" value="MaterialeEmail">
+
 
           </mat-grid-tile>
           <mat-grid-tile><label>Medienet</label></mat-grid-tile>
 
           <mat-grid-tile><label style="margin-right: 10% !important;">Tjekliste email</label>
-            <mat-form-field class="stamblad">
-            <input matInput id="OrdrecheckEmail" formControlName="OrdrecheckEmail"
+
+            <input  id="OrdrecheckEmail" formControlName="OrdrecheckEmail"
                    value="OrdrecheckEmail">
 
-            </mat-form-field></mat-grid-tile>
+       </mat-grid-tile>
           <mat-grid-tile rowspan="6"><label>MedieNet ID</label>
-            <mat-form-field class="stamblad">
-              <input matInput type="text" id="MedieNetKode" formControlName="MedieNetKode"
+
+              <input  type="text" id="MedieNetKode" formControlName="MedieNetKode"
                      value="MedieNetKode">
-            </mat-form-field>
+
           </mat-grid-tile>
           <mat-grid-tile>
             <label>Tjekliste Udsendelse</label>
-            <mat-form-field class="stamblad">
+
               <input type="time" formControlName="MaterialeDeadlineRubrikDag" id="MaterialeDeadlineRubrikDag"
-                     value="MaterialeDeadlineRubrikDag" matInput>
-            </mat-form-field>
+                     value="MaterialeDeadlineRubrikDag" >
 
-            <mat-form-field class="stamblad">
 
-              <select formControlName="OrdrecheckSendeDagID" matInput matNativeControl>
+
+<mat-form-field>
+              <select formControlName="OrdrecheckSendeDagID"  matNativeControl>
                 <mat-label>{{stamBladForm.get('OrdrecheckSendeDagID')?.value | dage}}</mat-label>
                 <option *ngFor="let d of dage" [value]="d">{{d.DagNavn}}</option>
-              </select>
-            </mat-form-field></mat-grid-tile>
+              </select></mat-form-field>
+       </mat-grid-tile>
           <mat-grid-tile>  <mat-checkbox color="accent" id="SendIndevaerendeUge" formControlName="SendIndevaerendeUge"
                                          value="SendIndevaerendeUge"></mat-checkbox> <div style="margin-left: 1%;"> Send Liste for indværende uge</div></mat-grid-tile>
           <mat-grid-tile><label>Annonce Kontrol Email</label>
-            <mat-form-field class="stamblad">
-              <input matInput type="text" formControlName="AnnonceKontrolEmail"
+
+              <input  type="text" formControlName="AnnonceKontrolEmail"
                      value="{{stamBladForm.get('AnnonceKontrolEmail')?.value}}">
 
-            </mat-form-field></mat-grid-tile>
+       </mat-grid-tile>
           <mat-grid-tile><label style="margin-right: 7% !important;">Billagsblade Email</label>
 
-            <mat-form-field class="stamblad">
-              <input matInput type="text" id="BilagsbladeEmail" formControlName="BilagsbladeEmail"
+
+              <input  type="text" id="BilagsbladeEmail" formControlName="BilagsbladeEmail"
                      value="BilagsbladeEmail">
 
-            </mat-form-field>
+
           </mat-grid-tile>
 
         </mat-grid-list>
@@ -435,55 +432,55 @@
 <mat-list style="width: 100% !important;">
   <mat-list-item>
     <label style="margin-left: 0px;">Stamdata Email</label>
-    <mat-form-field class="stamblad" style="width: 80%;">
-      <input type="text" matInput id="StamdataEmail" formControlName="StamdataEmail"
+
+      <input type="text"  id="StamdataEmail" formControlName="StamdataEmail"
              value="StamdataEmail">
 
-    </mat-form-field>
+
   </mat-list-item>
   <mat-list-item>
 
     <label style="margin-left: 0px !important;">Prisforspørgelsel Email</label>
-    <mat-form-field class="stamblad" style="width: 80%;">
-      <input type="text" id="PrisforespoergselEmails" formControlName="PrisforespoergselEmails" matInput
+
+      <input type="text" id="PrisforespoergselEmails" formControlName="PrisforespoergselEmails"
              value="PrisforespoergselEmails">
 
-    </mat-form-field>
+
   </mat-list-item>
   <mat-list-item>
     <label style="margin-left: 0px !important;">Orienterings emails</label>
 
-    <mat-form-field class="stamblad" style="width: 80%;">
-      <input type="text" id="OrienteringEmails" matInput formControlName="OrienteringEmails"
+
+      <input type="text" id="OrienteringEmails"  formControlName="OrienteringEmails"
              value="OrienteringEmails">
 
-    </mat-form-field>
+
   </mat-list-item>
   <mat-list-item>
     <label>Emails</label>
-    <mat-form-field class="stamblad" style="width: 80%;">
-      <input type="email" id="Emails" matInput formControlName="Emails" value="Emails">
 
-    </mat-form-field>
+      <input type="email" id="Emails"  formControlName="Emails" value="Emails">
+
+
 
   </mat-list-item>
   <mat-list-item>
     <label style="margin-left: 0px !important; ">Kontaktpersoners emails</label>
-    <mat-form-field class="stamblad" style="width: 80%;">
 
-      <input matInput type="email" formControlName="KontaktpersonerEmails"
+
+      <input  type="email" formControlName="KontaktpersonerEmails"
              value="KontaktpersonerEmails">
 
-    </mat-form-field>
+
   </mat-list-item>
   <mat-list-item>
 
     <label style="margin-left: 0px !important;">Bogholderi emails </label>
 
-    <mat-form-field class="stamblad" style="width: 80%;">
-      <input matInput type="email" id="BogholderiEmails" formControlName="BogholderiEmails"
+
+      <input  type="email" id="BogholderiEmails" formControlName="BogholderiEmails"
              value="BogholderiEmails">
-    </mat-form-field>
+
   </mat-list-item>
 </mat-list>
 

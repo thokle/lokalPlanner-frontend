@@ -3,7 +3,7 @@ import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Bladtillaegs} from '../models/bladtillaegs';
-import {b} from '@angular/core/src/render3';
+
 
 @Injectable({
   providedIn: 'root'

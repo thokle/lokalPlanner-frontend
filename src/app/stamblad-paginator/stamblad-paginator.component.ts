@@ -4,7 +4,7 @@ import {StamBladObserver} from '../stam-blad-observer';
 @Component({
   selector: 'app-stamblad-paginator',
   templateUrl: './stamblad-paginator.component.html',
-  styleUrls: ['./stamblad-paginator.component.css']
+  styleUrls: ['./stamblad-paginator.component.scss']
 })
 export class StambladPaginatorComponent implements OnInit {
 

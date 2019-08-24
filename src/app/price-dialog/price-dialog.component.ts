@@ -6,7 +6,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 @Component({
   selector: 'app-price-dialog',
   templateUrl: './price-dialog.component.html',
-  styleUrls: ['./price-dialog.component.css']
+  styleUrls: ['./price-dialog.component.scss']
 })
 export class PriceDialogComponent {
 

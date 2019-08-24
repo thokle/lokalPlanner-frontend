@@ -7,7 +7,7 @@ import {visitValue} from '@angular/compiler/src/util';
 @Component({
   selector: 'app-vis-kontakter',
   templateUrl: './vis-kontakter.component.html',
-  styleUrls: ['./vis-kontakter.component.css']
+  styleUrls: ['./vis-kontakter.component.scss']
 })
 export class VisKontakterComponent implements OnInit {
 

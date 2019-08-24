@@ -14,7 +14,7 @@ import {KontaktTitler} from '../models/kontakt-titler';
 @Component({
   selector: 'app-udsendingkontakter-dialog',
   templateUrl: './udsendingkontakter-dialog.component.html',
-  styleUrls: ['./udsendingkontakter-dialog.component.css']
+  styleUrls: ['./udsendingkontakter-dialog.component.scss']
 })
 export class UdsendingkontakterDialogComponent {
 

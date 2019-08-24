@@ -14,7 +14,7 @@ export class AktiveaviserService {
   constructor(private  http: HttpClient) { }
 
 
-  public  GetAllUgeAvierTilGrid(): Observable<Data[]> {
+  public  GetAllUgeAvierTilGrid(): Observable<AktiveAviser[]> {
     const url = this.baseurl + '/AktiveAviser';
     return  this.http.get<AktiveAviser[]>(url).pipe();
   }

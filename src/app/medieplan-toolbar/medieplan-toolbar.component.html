@@ -1,48 +1,160 @@
+<div class="container-fluid" style="margin-bottom: 10px; height: 90%">
+  <div class="row">{{mediePlaId}}</div>
+  <div class="row">
+    <form [formGroup]="form">
+    <div class="col-lg-4">
+<div class="row">
+      <label style="margin-left: 5%; margin-right: 3%; margin-top: 4%;"><strong>Annoncør</strong></label>
+      <mat-form-field class="no-line field">
+        <select matNativeControl formControlName="annoncor" ><option *ngFor="let a of annonceer" value="a">{{a.Annoncoer}}</option></select>
+      </mat-form-field>
+    </div>
+      <div class="row">
+        <label style="margin-left: 5%; margin-right: 3%;"><strong>Bureau</strong></label>
+        <mat-form-field  class="no-line field">
 
-<mat-grid-list cols="4" rowHeight="7:0.5">
-  <mat-grid-tile class="gridtile"> <label>Annoncør</label>
-    <mat-form-field class="medieformfield">
-      <select matNativeControl matInput placeholder="-Vælg Annoncør-"><option *ngFor="let a of annonceer" value="a">{{a.Annoncoer}}</option></select>
-    </mat-form-field></mat-grid-tile>
-  <mat-grid-tile rowspan="6"><label>Bemærkning</label><textarea matNativeControl style="background-color: white"></textarea></mat-grid-tile>
+          <select matNativeControl formControlName="bureau"><option *ngFor="let b of bureau" value="b">{{b.Annoncoer}}</option></select>
+        </mat-form-field>
+      </div>
+<div classs="row">
+  <label style="margin-left: 3%; margin-right: 3%;"><strong>Format</strong></label>
+  <input type="text" style="width: 20px;" formControlName="format1" > x <input type="text" style="width: 20px;" format2>
+</div>
+      <div class="row">
+        <mat-radio-group style="margin-left: 5% !important;" >
+          <mat-radio-button labelPosition="before" formControlName="farve_sh" value="1">S/H</mat-radio-button>
+          <mat-radio-button labelPosition="before" formControlName="farve_1" value="2">1 Farve</mat-radio-button>
+          <mat-radio-button  labelPosition="before" formControlName="farve_4" checked="true" color="3"> 4 Fave</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="row">
+        <label style="margin-left: 5%; margin-right: 3%;"><strong>Placering</strong></label>
+        <mat-form-field class="no-line field" >
 
-  <mat-grid-tile rowspan="7" colspan="2"><label>Kommentar</label><textarea style="background-color: white" rows="20" cols="4"></textarea></mat-grid-tile>
-  <mat-grid-tile><label>Bureau</label>
-    <mat-form-field  class="medieformfield">
+          <select  matNativeControl formControlName="placering" ><option *ngFor="let p of placeringer" value="{{p.PlaceringID}}">{{p.Betegnelse}}</option></select>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <label style="margin-left: 5%; margin-right: 3%;">Ind. uge</label>
+        <mat-form-field class="no-line field" >
 
-      <select matNativeControl matInput placeholder="-Vælg bureau- "><option *ngFor="let b of bureau" value="b">{{b.Annoncoer}}</option></select>
-    </mat-form-field></mat-grid-tile>
-  <mat-grid-tile> <label>Format</label>
-    <mat-form-field  class="formatx">
+          <select  matNativeControl formControlName="uge"><option *ngFor="let w of weeks" value="{{w}}">{{w}}</option></select>
+        </mat-form-field>
+        <label style="margin-left: 5%; margin-right: 3%;">År</label>
+        <mat-form-field class="no-line field">
+          <select  matNativeControl formControlName="aar"><option *ngFor="let y of years" value="{{y}}">{{y}}</option></select>
 
-      <input type="text"  matInput> x <input type="text" matInput>
-    </mat-form-field></mat-grid-tile>
-  <mat-grid-tile> <label>Antal farver</label>
-    <mat-radio-group >
-      <mat-radio-button labelPosition="before">S/H</mat-radio-button>
-      <mat-radio-button labelPosition="before">1 Farve</mat-radio-button>
-      <mat-radio-button value="true" labelPosition="before"> 4 Fave</mat-radio-button>
-    </mat-radio-group></mat-grid-tile>
-  <mat-grid-tile> <label>Placering</label>
-    <mat-form-field  class="medieformfield">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="row">
+        <label   style="margin-left: 5%; margin-right: 3%; margin-top: 4%;">Bemærkning</label><textarea formControlName="bemaerkning" matNativeControl style="background-color: white"></textarea>
+      </div>
 
-      <select  matNativeControl matInput placeholder="-vælg placering"><option *ngFor="let p of placeringer" value="{{p.PlaceringID}}">{{p.Betegnelse}}</option></select>
-    </mat-form-field></mat-grid-tile>
-  <mat-grid-tile rowspan="2"> <label>Ind. uge</label>
-    <mat-form-field class="medieformfield">
+    </div>
+    <div class="col-lg-4">
 
-      <select matInput matNativeControl><option *ngFor="let w of weeks" value="{{w}}">{{w}}</option></select>
-    </mat-form-field>
-    <label>År</label>
-    <mat-form-field>
-      <select matInput matNativeControl><option *ngFor="let y of years" value="{{y}}">{{y}}</option></select>
+      <div class="row">
+        <label   style="margin-left: 5%; margin-right: 3%; margin-top: 4%;">Kommentar</label><textarea formControlName="kommentar" style="background-color: white" ></textarea>
+      </div>
 
-    </mat-form-field></mat-grid-tile>
-  <mat-grid-tile>10</mat-grid-tile>
+    </div>
+    </form>
 
-</mat-grid-list>
-<div>
-<app-medieplan-avis-table></app-medieplan-avis-table>
+  </div>
+<div class="col-lg-offset-0">
+  <div class="row">  <button igxButton="raised" (click)="exportButtonHandler()" class="btn-primary">Export Grid to Excel</button></div>
+</div>
+
+  <igx-grid #grid [showToolbar]="true"  [data]="ObsPaper | async" (onCellEdit)="totalSum()"
+            [columnHiding]="true" toolbarTitle="Aviser" >
+            [columnHiding]="true" toolbarTitle="Aviser" >
+  <igx-column *ngFor="let c of columns" [header]="c.header" [field]="c.field" [editable]="c.ediable"> </igx-column>
+  </igx-grid>
+  <div><div class="col-lg-2"></div><div class="col-lg-2"></div><div class="col-lg-2"></div><div class="col-lg-2"></div><div class="col-lg-2"><button class="btn" (click)="openDaekningsKortDialog()">Dæknings kort</button><div><button class="btn-success" (click)="opretMediePlan()">Gem</button></div></div></div>
+  <!--
+  "Adresse": "Østergade 19                  ",
+    "Adresse2": "",
+    "AnnonceEmail": "",
+    "AnnonceKontrolEmail": "dlu@jfmedier.dk",
+    "BilagsbladeEmail": "dlu@jfmedier.dk",
+    "BladID": 9,
+    "BogholderiEmails": "debitor@fynskemedier.dk",
+    "CVR": "45765415       ",
+    "DiMPDelOmraadeKode": "Y",
+    "": "Fynske Medier",
+    "Emails": null,
+    "": 0,
+    "Fax": "6262 1077      ",
+    "Format": "6/365/2190     ",
+    "GiverWebTillaeg": true,
+    "GruppeRabat": "",
+    "Hjemmeside": "www.fyens.dk",
+    "Koncern": "Jysk-Fynske Medier",
+    "Kontaktperson": "Anders K. Høgh",
+    "KontaktpersonerEmails": "jev@fynskemedier.dk;akh@faa.dk",
+    "MaterialedeadlineRubrik": "Fredag 16:00",
+    "MaterialeDeadlineRubrikDag": 5,
+    "MaterialeDeadlineRubrikKl": "14:00",
+    "MaterialedeadlineTekst": "Fredag 16:00",
+    "MaterialeDeadlineTekstDag": 5,
+    "MaterialeDeadlineTekstKl": "14:00",
+    "MaterialeEmail": "fm-prod@jfmedier.dk",
+    "MatGodtBeloeb": null,
+    "MedlemMaaned": 1,
+    "Medlemaar": 86,
+    "MaaGiveFarveRabat": false,
+    "Navn": "Midtfyns Posten               ",
+    "Navn2": "",
+    "Ophoert": false,
+    "OrdrecheckEmail": "dlu@jfmedier.dk",
+    "OrdrecheckSendeDagID": 3,
+    "OrdredeadlineRubrik": "Fredag 08:30",
+    "OrdreDeadlineRubrikDag": 5,
+    "OrdreDeadlineRubrikKl": "10:00",
+    "OrdredeadlineTekst": "Onsdag 15:00",
+    "OrdreDeadlineTekstDag": 3,
+    "OrdreDeadlineTekstKl": "15:00",
+    "OrdreEmail": "dlu@jfmedier.dk",
+    "OrienteringEmails": "dlu@jfmedier.dk",
+    "Overfoert": true,
+    "Primaer": 0,
+    "PrimaerPct": 0,
+    "": "dlu@jfmedier.dk",
+    "RedaktionEmail": "mip-red@fyens.dk",
+    "SamannonceringsRabat": "Der ydes samanonceringsrabat mellem de fynske ugeaviser som er tilsluttet 100% FYN-samarbejdet efter følgende skala:<BR>\n2 blade: 15% - 4 blade 20% - 6 blade: 25% - 8 blade 30% - 10 blade: 35%                      ",
+    "SendetidOrdrecheck": "15:00",
+    "SendIndevaerendeUge": false,
+    "StamdataEmail": "dlu@jfmedier.dk",
+    "Tlf": "6262 1330      ",
+    "Totalomraade": 19000,
+    "TotalomraadePct": 60,
+    "VisPaaWWW": true,
+    "WWWDaekningSomTekst": "5260 Odense S, 5550 Langeskov, 5672 Broby, 5750 Ringe, 5771 Stenstrup, 5772 Kværndrup, 5792 Årslev, 5854 Gislev, 5856 Ryslinge, 5863 Ferritslev Fyn",
+    "Farve4Max": null,
+    "Farve4Min": null,
+    "": 1.0000,
+    "FarveMax": null,
+    "FarveMin": null,
+    "FarvePris": 1.0000,
+    "FormatFra": 0,
+    "FormatTil": 9999,
+    "": 4.2000,
+    "RegionNavn": "Syddanmark",
+    "DaekningsGrad": 22,
+    "": 1876,
+    "DagNavn": "Tirsdag",
+    "GeoKodeNavn": "Fyn",
+    "": "DD",
+    "Husstande": 5382,
+    "MaxDaekningsGrad": 93,
+    "PostBy": "Ringe",
+    "PostNr": 5750,
+    "Betegnelse": "Tekstside",
+    "PrislisteNavn": "Hele året"
+  -->
+<div class="row"></div>
 </div>
 
 

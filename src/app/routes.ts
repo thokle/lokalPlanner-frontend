@@ -10,9 +10,11 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {RedirectComponent} from './redirect/redirect.component';
 import {CreatePriceComponent} from './create-price/create-price.component';
 import {RabatComponent} from './rabat/rabat.component';
-import {MedieplanComponent} from './medieplan/medieplan.component';
-import {NewDashboardComponent} from './new-dashboard/new-dashboard.component';
+
+
 import {FindMedieplanComponent} from './find-medieplan/find-medieplan.component';
+import {MedieplanComponent} from './medieplan/medieplan.component';
+import {FindMedieplanToolbarComponent} from './find-medieplan-toolbar/find-medieplan-toolbar.component';
 
 export const routes: Routes = [
   {path: '', component: RedirectComponent},
@@ -23,7 +25,8 @@ export const routes: Routes = [
       {path: 'indhentPriser', component: CreatePriceComponent},
       {path: 'rabat',  component: RabatComponent},
       {path: 'opret_medieplan', component: MedieplanComponent },
-      {path: 'find_medieplan' , component: FindMedieplanComponent}
+      {path: 'find_medieplan' , component: FindMedieplanToolbarComponent},
+      {path: 'fundet_mediePlan/:medieplanId', component: MedieplanComponent}
     ]},
   {path: 'opret', component: RegisteruserComponent},
   {path: 'stamblad', component: StamBladComponent}

@@ -3,7 +3,7 @@ import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {BladKommentar} from '../models/blad-kommentar';
-import {b} from '@angular/core/src/render3';
+
 
 @Injectable({
   providedIn: 'root'

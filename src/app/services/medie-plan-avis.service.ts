@@ -13,8 +13,8 @@ export class MediePlanAvisService {
   constructor(private http: HttpClient) { }
 
 
-  public  getMediePlanAvis(bladid: number, year: number): Observable<MediePlanAvisModel[]> {
-    const url = this.bastUtrl + '/medieplanavis/' + bladid + '/' + year;
+  public  getMediePlanAvis(bladid: number, year: number, placeringsid): Observable<MediePlanAvisModel[]> {
+    const url = this.bastUtrl + '/medieplanavis/' + bladid + '/' + year + '/' + placeringsid;
     return this.http.get<MediePlanAvisModel[]>(url).pipe();
   }
 }

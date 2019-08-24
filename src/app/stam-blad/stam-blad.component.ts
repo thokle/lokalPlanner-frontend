@@ -22,7 +22,7 @@ import {DelOmraade} from '../models/DelOmraade';
 import {GeoService} from '../services/geo.service';
 import {Month} from '../models/Month';
 import {ExcelexportService} from '../services/excelexport.service';
-import {v} from '@angular/core/src/render3';
+
 import {EjerforholdService} from '../services/ejerforhold.service';
 import {Ejerforhold} from '../models/ejerforhold';
 import {BladKommentar} from '../models/blad-kommentar';
@@ -34,7 +34,7 @@ import {BladkommentarComponent} from '../bladkommentar/bladkommentar.component';
 @Component({
   selector: 'app-stam-blad',
   templateUrl: './stam-blad.component.html',
-  styleUrls: ['./stam-blad.component.css']
+  styleUrls: ['./stam-blad.component.scss']
 })
 
 
@@ -81,12 +81,13 @@ ejerforholdliste: Ejerforhold[];
 searchLabelPlaceHolder = 'Søg';
 
 
-  @ViewChild('singleSelect') singleSelect: MatSelect;
+  @ViewChild('singleSelect', {static: false}) singleSelect: MatSelect;
 postnr: number;
   constructor(private st: StamdataService, private obs: StamBladObserver, public fb: FormBuilder,
               private ps: PostNummerService, private dialog: MatDialog, private pss: PostService, private  rs: RegionService,
               private dels: DelomraadeService, private gs: GeoService, private  exservice: ExcelexportService,
               private snack: MatSnackBar, private  efs: EjerforholdService, private  k: KommentarService) {
+
     this.obs.emitChange({id: 0});
     this.setEjerforhold();
     this.stamBladForm = this.fb.group({
@@ -240,7 +241,7 @@ this.stamBladNavn = '';
 
 
   public visStamBlad() {
-
+    this.obs.getMovePaper().subscribe(value => console.log('llfsklskffk '  + value));
     this.obs.getStamBladEventEmitter().subscribe(s => {
       this.st.getStamBladById(s).subscribe(value => {
 

@@ -7,7 +7,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 @Component({
   selector: 'app-bladtil-laegstype',
   templateUrl: './bladtil-laegstype.component.html',
-  styleUrls: ['./bladtil-laegstype.component.css']
+  styleUrls: ['./bladtil-laegstype.component.scss']
 })
 export class BladtilLaegstypeComponent implements OnInit {
 

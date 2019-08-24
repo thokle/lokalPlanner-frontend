@@ -7,7 +7,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 @Component({
   selector: 'app-bladtil-laegs-dialog',
   templateUrl: './bladtil-laegs-dialog.component.html',
-  styleUrls: ['./bladtil-laegs-dialog.component.css']
+  styleUrls: ['./bladtil-laegs-dialog.component.scss']
 })
 export class BladtilLaegsDialogComponent implements OnInit {
   public tillasgsTyper: BladtillaegsType[] = [];

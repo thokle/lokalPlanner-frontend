@@ -9,7 +9,7 @@ import {ExcelexportService} from '../services/excelexport.service';
 @Component({
   selector: 'app-ejerforhold',
   templateUrl: './ejerforhold.component.html',
-  styleUrls: ['./ejerforhold.component.css']
+  styleUrls: ['./ejerforhold.component.scss']
 })
 export class EjerforholdComponent implements OnInit {
 

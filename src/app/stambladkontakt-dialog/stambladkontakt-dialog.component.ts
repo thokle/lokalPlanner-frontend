@@ -9,7 +9,7 @@ import {validate} from 'codelyzer/walkerFactory/walkerFn';
 @Component({
   selector: 'app-stambladkontakt-dialog',
   templateUrl: './stambladkontakt-dialog.component.html',
-  styleUrls: ['./stambladkontakt-dialog.component.css']
+  styleUrls: ['./stambladkontakt-dialog.component.scss']
 })
 export class StambladkontaktDialogComponent {
 

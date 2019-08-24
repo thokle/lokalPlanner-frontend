@@ -11,8 +11,8 @@
       </mat-menu>
       <button mat-button [matMenuTriggerFor]="MediePlan">MediePlan</button>
       <mat-menu #MediePlan="matMenu">
-        <button mat-menu-item routerLink="opret_medieplan" >Opret MediePlan</button>
-        <button mat-menu-item (click)="findMediePlan()">Find MediePlan</button>
+        <button mat-menu-item routerLink="opret_medieplan"  (click)="hideResult()">Opret MediePlan</button>
+        <button mat-menu-item  routerLink="find_medieplan" >Find MediePlan</button>
         <button> </button>
       </mat-menu>
       <button mat-button [matMenuTriggerFor]="booking">Booking</button>
@@ -45,7 +45,7 @@
     </mat-toolbar-row>
 
   </mat-toolbar>
-  <div [@findMediePlan]="isOpen ? 'open' : 'closed'"><app-find-medieplan-toolbar></app-find-medieplan-toolbar></div>
+  <div #findmedieplan [@findMediePlan]="isOpen ? 'open' : 'closed'"><app-find-medieplan-toolbar></app-find-medieplan-toolbar></div>
   <div [@visResultat]="isResultat ? 'open' : 'closed'">
     <h1>Hello world</h1>
     <button mat-raised-button (click)="hideResult()">hide</button>
@@ -56,8 +56,7 @@
 
 
     <mat-drawer #endnav position="end"  class="example-sidenav-container"  >
-      <div><button mat-icon-button (click)="openAktiveAviserColumnsDialog()"><mat-icon>menu</mat-icon></button></div>
-      <app-stam-blad-over-sigt></app-stam-blad-over-sigt>
+      <app-left-avis-grid></app-left-avis-grid>
     </mat-drawer>
 
     <mat-drawer-content>

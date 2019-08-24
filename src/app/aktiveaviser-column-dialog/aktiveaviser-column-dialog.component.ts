@@ -6,7 +6,7 @@ import {StamBladObserver} from '../stam-blad-observer';
 @Component({
   selector: 'app-aktiveaviser-column-dialog',
   templateUrl: './aktiveaviser-column-dialog.component.html',
-  styleUrls: ['./aktiveaviser-column-dialog.component.css']
+  styleUrls: ['./aktiveaviser-column-dialog.component.scss']
 })
 export class AktiveaviserColumnDialogComponent {
   selectedColumns: string[] = [];

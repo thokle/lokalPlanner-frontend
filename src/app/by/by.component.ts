@@ -8,7 +8,7 @@ import {PostService} from '../services/post.service';
 @Component({
   selector: 'app-by',
   templateUrl: './by.component.html',
-  styleUrls: ['./by.component.css']
+  styleUrls: ['./by.component.scss']
 })
 export class ByComponent implements OnInit {
 

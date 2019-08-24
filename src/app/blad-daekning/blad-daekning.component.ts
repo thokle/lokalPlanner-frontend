@@ -4,13 +4,13 @@ import {BladDaekning} from '../models/blad-daekning';
 import {StamBladObserver} from '../stam-blad-observer';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {EditBladdaekningComponent} from './edit-bladdaekning/edit-bladdaekning.component';
-import {b, v} from '@angular/core/src/render3';
+
 
 
 @Component({
   selector: 'app-blad-daekning',
   templateUrl: './blad-daekning.component.html',
-  styleUrls: ['./blad-daekning.component.css']
+  styleUrls: ['./blad-daekning.component.scss']
 })
 export class BladDaekningComponent implements OnInit {
 
@@ -81,7 +81,7 @@ this.dk.AddBladDaeknig(daekning).subscribe(value1 => {
   }
 
   slet(selected: any) {
-    const data = [{'selected' : selected},  {'bladid': this.bladid},{'update': 'slet'} ];
+    const data = [{'selected' : selected},  {'bladid': this.bladid}, {'update': 'slet'} ];
     this.dialog.open(EditBladdaekningComponent,  {data:  data, width: '10%', height: '30%'}).afterClosed().subscribe(value => {
       console.log( value.data.BladID1 +  ' ' + value.data.PostNr1);
       this.dk.DeleteDaeknig(value.data.BladID1, value.data.PostNr1 ).subscribe(value1 => {

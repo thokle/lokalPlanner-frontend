@@ -11,7 +11,7 @@ import {StambladkontaktDialogComponent} from '../stambladkontakt-dialog/stamblad
 
 selector: 'app-udsendingkontaktertable',
   templateUrl: './udsendingkontaktertable.component.html',
-  styleUrls: ['./udsendingkontaktertable.component.css']
+  styleUrls: ['./udsendingkontaktertable.component.scss']
 })
 export class UdsendingkontaktertableComponent implements OnInit {
 

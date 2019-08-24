@@ -6,7 +6,7 @@ import {PriceListItem} from '../models/price-list-item';
 import {PlaceringListItem} from '../models/placering-list-item';
 import {PlaceringModel} from '../models/placering-model';
 import {PlaceringServiceService} from '../services/placering-service.service';
-import {v} from '@angular/core/src/render3';
+
 import {combineAll} from 'rxjs/operators';
 import {PricetableComponent} from '../pricetable/pricetable.component';
 import {PriceWeekItem} from '../models/price-week-item';
@@ -18,7 +18,7 @@ import {PriceBladAarService} from '../services/price-blad-aar.service';
 @Component({
   selector: 'app-price-tab',
   templateUrl: './price-tab.component.html',
-  styleUrls: ['./price-tab.component.css']
+  styleUrls: ['./price-tab.component.scss']
 })
 export class PriceTabComponent implements OnInit {
 
@@ -33,7 +33,7 @@ selectedYear  = new Date().getFullYear();
 bladId = 0;
 year = 2019;
 
-@ViewChild(PricetableComponent)
+@ViewChild(PricetableComponent, { static: false})
 private  priveTable: PricetableComponent;
 
   listPlaceringTabItems: PlaceringModel[];

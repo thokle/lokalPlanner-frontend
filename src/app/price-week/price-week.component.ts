@@ -3,7 +3,7 @@ import {PriceService} from '../services/price.service';
 import {PriceWeekItem} from '../models/price-week-item';
 import {PriceListItem} from '../models/price-list-item';
 import {StamBladObserver} from '../stam-blad-observer';
-import {v} from '@angular/core/src/render3';
+
 import {MatDialog} from '@angular/material';
 import {PriceWeeTypeDialogComponent} from '../price-wee-type-dialog/price-wee-type-dialog.component';
 import {Year} from '../models/year';
@@ -11,7 +11,7 @@ import {Year} from '../models/year';
 @Component({
   selector: 'app-price-week',
   templateUrl: './price-week.component.html',
-  styleUrls: ['./price-week.component.css']
+  styleUrls: ['./price-week.component.scss']
 })
 export class PriceWeekComponent implements OnInit {
 

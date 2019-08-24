@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 @Component({
   selector: 'app-yeardialog',
   templateUrl: './yeardialog.component.html',
-  styleUrls: ['./yeardialog.component.css']
+  styleUrls: ['./yeardialog.component.scss']
 })
 export class YeardialogComponent implements OnInit {
 

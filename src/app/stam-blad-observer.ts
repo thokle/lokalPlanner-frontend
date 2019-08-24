@@ -1,9 +1,8 @@
-import {$} from 'protractor';
+
 import {EventEmitter} from '@angular/core';
 import {SetPrisListTable} from './models/set-pris-list-table';
 import {Subject} from 'rxjs';
-import {Prisers} from './models/Prisers';
-import {AktiveAviser} from './models/aktive-aviser';
+
 
 export  interface StamBladPagerId {
   id?: number;
@@ -42,13 +41,19 @@ export class StamBladObserver {
   private  pristList: Subject<PrisersTable> = new Subject();
   private  bladtillaeg: Subject<BladTillægsType> = new Subject();
   private columnsSubjest: Subject<string[]>  = new Subject<string[]>();
-  private aktiveAviserSubject: Subject<Avis> = new Subject<Avis>();
+  private aktiveAviserSubject: Subject<number> = new Subject<number>();
 private createPriseYears: Subject<number> = new Subject<number>();
-
+private movePaper: Subject<number> = new Subject<number>();
 public  setCreateYear(b: number) {
   this.createPriseYears.next(b);
 }
 
+public  setMovePaper(bladid: number) {
+  this.movePaper.next(bladid);
+}
+public  getMovePaper(): Subject<number> {
+  return this.movePaper;
+}
 public  getCreatedYear(): Subject<number> {
  return  this.createPriseYears;
 }
@@ -58,10 +63,12 @@ public  getCreatedYear(): Subject<number> {
   public getBladTilLaeg(): Subject<BladTillægsType> {
     return this.bladtillaeg;
   }
-  public setAktivAvis(aktivAvis: Avis) {
-    this.aktiveAviserSubject.next(aktivAvis);
+  public setAktivAvis(bladid: number) {
+  console.log('before ' + bladid);
+    this.aktiveAviserSubject.next(bladid);
+    console.log('after ' + bladid);
   }
-  public getAktivAvis(): Subject<Avis> {
+  public getAktivAvis(): Subject<number> {
     return this.aktiveAviserSubject;
   }
   public setColumnList(columns: string[]) {

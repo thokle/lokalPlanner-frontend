@@ -1,14 +1,17 @@
 
-
 import { AppComponent } from './app.component';
 import { StamBladComponent } from './stam-blad/stam-blad.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
 
 import { IndexComponent } from './index/index.component';
-import { MatFormFieldModule, MatIconModule, MatListModule, MatSidenavModule, MatTabsModule, MatToolbarModule, MatInputModule, MatOptionModule, MatSelectModule, MatGridListModule, MatButtonModule, MatMenuModule,
-  MatRadioModule, MatChipsModule, MatExpansionModule, MatTableModule, MatDialogModule, MatDialog, MatDialogRef, MatSnackBarModule, MatCheckboxModule, MatAutocompleteModule, MatCardModule, MatDrawerContent, MatSortModule } from '@angular/material';
-
+import { MatFormFieldModule, MatIconModule, MatListModule, MatSidenavModule, MatTabsModule, MatToolbarModule, MatInputModule,
+  MatOptionModule,
+  MatSelectModule, MatGridListModule,
+  MatButtonModule, MatMenuModule, MatRadioModule, MatChipsModule, MatExpansionModule, MatTableModule, MatDialogModule,
+  MatDialog, MatDialogRef,
+  MatSnackBarModule, MatCheckboxModule,
+  MatAutocompleteModule, MatCardModule, MatDrawerContent, MatSortModule } from '@angular/material';
 
 import { AdresseStambladComponent } from './adresse-stamblad/adresse-stamblad.component';
 import { StamdataService } from './services/stamdata.service';
@@ -60,21 +63,20 @@ import { KommentarService } from './services/kommentar.service';
 import { PriceWeekComponent } from './price-week/price-week.component';
 import { StambladkontaktTabelComponent } from './stambladkontakt-tabel/stambladkontakt-tabel.component';
 import { PlaceringServiceService } from './services/placering-service.service';
-import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+
 import { PricetableComponent } from './pricetable/pricetable.component';
 import { PriceDialogComponent } from './price-dialog/price-dialog.component';
 import { PriceBladAarService } from './services/price-blad-aar.service';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { QuillModule } from 'ngx-quill';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { YeardialogComponent } from './yeardialog/yeardialog.component';
 
 import { UdsendingkontaktertableComponent } from './udsendingkontaktertable/udsendingkontaktertable.component';
 import { UdsendingkontakterDialogComponent } from './udsendingkontakter-dialog/udsendingkontakter-dialog.component';
 import { UdsendingkontakterService } from './services/udsendingkontakter.service';
 import { UdsendingKontaktTyperService } from './services/udsending-kontakt-typer.service';
-import { AktiveAviserDialogComponent } from './aktive-aviser-dialog/aktive-aviser-dialog.component';
+
 import { PriceWeeTypeDialogComponent } from './price-wee-type-dialog/price-wee-type-dialog.component';
 
 import { BladtilLaegstypeComponent } from './bladtil-laegstype/bladtil-laegstype.component';
@@ -88,13 +90,13 @@ import { KontaktTitlerService } from './services/kontakt-titler.service';
 import { PriceListPositionDialogComponent } from './price-list-position-dialog/price-list-position-dialog.component';
 import { AktiveaviserColumnDialogComponent } from './aktiveaviser-column-dialog/aktiveaviser-column-dialog.component';
 import { MedieplanToolbarComponent } from './medieplan-toolbar/medieplan-toolbar.component';
-import { MedieplanComponent } from './medieplan/medieplan.component';
+
 import { FindMedieplanToolbarComponent } from './find-medieplan-toolbar/find-medieplan-toolbar.component';
-import { NewDashboardComponent } from './new-dashboard/new-dashboard.component';
+
 import { DashBoardMaterialComponent } from './dash-board-material/dash-board-material.component';
 import { FindMedieplanComponent } from './find-medieplan/find-medieplan.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { MedieplanAvisTableComponent } from './medieplan-avis-table/medieplan-avis-table.component';
+
 import { MediePlanAvisService } from './services/medie-plan-avis.service';
 import { BureauService } from './services/bureau.service';
 import { AnnonceService } from './services/annonce.service';
@@ -102,8 +104,17 @@ import { JsonUtilService } from './services/json-util.service';
 import { ArrayUtilService } from './services/array-util.service';
 import { LeftAvisGridComponent } from './left-avis-grid/left-avis-grid.component';
 
-import {IgxGridModule} from 'igniteui-angular';
-import {NgModule} from '@angular/core';
+import {IgxExcelExporterService, IgxGridModule, IgxInputGroupModule, IgxRippleModule} from 'igniteui-angular';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MovePaperService} from './services/move-paper.service';
+import { MedieplanComponent } from './medieplan/medieplan.component';
+import { GemMedieplanDialogComponent } from './gem-medieplan-dialog/gem-medieplan-dialog.component';
+import { TilBookingDialogComponent } from './til-booking-dialog/til-booking-dialog.component';
+import { DeakningKortDialogComponent } from './deakning-kort-dialog/deakning-kort-dialog.component';
 
 
 @NgModule({
@@ -155,59 +166,52 @@ import {NgModule} from '@angular/core';
 
     UdsendingkontakterDialogComponent,
 
-
     UdsendingkontaktertableComponent,
 
-
-    AktiveAviserDialogComponent,
 
 
     PriceWeeTypeDialogComponent,
 
-
     BladtilLaegstypeComponent,
-
 
     BladtilLaegsComponent,
 
-
     BladtilLaegsDialogComponent,
-
 
     PlaceringdialogComponent,
 
-
     RabatComponent,
-
 
     PriceListPositionDialogComponent,
 
-
     AktiveaviserColumnDialogComponent,
-
 
     MedieplanToolbarComponent,
 
-
-    MedieplanComponent,
 
 
     FindMedieplanToolbarComponent,
 
 
-    NewDashboardComponent,
-
 
     DashBoardMaterialComponent,
-
 
     FindMedieplanComponent,
 
 
-    MedieplanAvisTableComponent,
+    LeftAvisGridComponent,
 
 
-    LeftAvisGridComponent
+    MedieplanComponent,
+
+
+    GemMedieplanDialogComponent,
+
+
+    TilBookingDialogComponent,
+
+
+    DeakningKortDialogComponent
 
   ],
   imports: [
@@ -239,15 +243,17 @@ import {NgModule} from '@angular/core';
     MatSnackBarModule,
     MatCheckboxModule,
     MatExpansionModule,
-    NgxMatSelectSearchModule,
-    QuillModule,
+
     AngularFontAwesomeModule,
-    NgxEditorModule,
+
     MatAutocompleteModule,
     MatCardModule,
     DragDropModule,
     MatSortModule,
-    IgxGridModule
+    IgxGridModule,
+    IgxRippleModule,
+    IgxInputGroupModule
+
   ],
   providers: [StamdataService, StamBladObserver, PostNummerService, DateSupplierService, RegisteruserService,
     PostService, PriceAskingService, RegionService, DelomraadeService, StamBladKontaktPersonService, BladdaekningService,
@@ -255,10 +261,12 @@ import {NgModule} from '@angular/core';
     EjerforholdService, KommentarService, PlaceringServiceService, PlaceringServiceService, PriceBladAarService,
     BureauService, ArrayUtilService,
     AnnonceService,
-    UdsendingkontakterService, UdsendingKontaktTyperService, KontaktTitlerService, MediePlanAvisService],
+    UdsendingkontakterService, UdsendingKontaktTyperService, KontaktTitlerService, MediePlanAvisService, MovePaperService,
+    IgxExcelExporterService],
   entryComponents: [StambladkontaktDialogComponent, PriceAskingDialogComponent, EditBladdaekningComponent, PriceDialogComponent,
     UdsendingkontakterDialogComponent, PriceWeeTypeDialogComponent, BladtilLaegstypeComponent, BladtilLaegsDialogComponent,
-    PlaceringdialogComponent, BladkommentarComponent, PriceListPositionDialogComponent, AktiveaviserColumnDialogComponent
+    PlaceringdialogComponent, BladkommentarComponent, PriceListPositionDialogComponent, AktiveaviserColumnDialogComponent,
+    GemMedieplanDialogComponent, DeakningKortDialogComponent
   ],
 
   bootstrap: [AppComponent]

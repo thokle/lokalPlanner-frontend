@@ -8,7 +8,7 @@ import {PriceAskingService} from '../services/price-asking.service';
 @Component({
   selector: 'app-price-asking-dialog',
   templateUrl: './price-asking-dialog.component.html',
-  styleUrls: ['./price-asking-dialog.component.css']
+  styleUrls: ['./price-asking-dialog.component.scss']
 })
 export class PriceAskingDialogComponent implements OnInit {
 

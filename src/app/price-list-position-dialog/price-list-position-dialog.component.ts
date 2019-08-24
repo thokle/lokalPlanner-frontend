@@ -7,7 +7,7 @@ import {FormControl} from '@angular/forms';
 @Component({
   selector: 'app-price-list-position-dialog',
   templateUrl: './price-list-position-dialog.component.html',
-  styleUrls: ['./price-list-position-dialog.component.css']
+  styleUrls: ['./price-list-position-dialog.component.scss']
 })
 export class PriceListPositionDialogComponent implements OnInit {
 

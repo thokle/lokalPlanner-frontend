@@ -7,7 +7,7 @@ import {StamdataService} from '../services/stamdata.service';
 @Component({
   selector: 'app-rabat',
   templateUrl: './rabat.component.html',
-  styleUrls: ['./rabat.component.css']
+  styleUrls: ['./rabat.component.scss']
 })
 export class RabatComponent implements OnInit {
 

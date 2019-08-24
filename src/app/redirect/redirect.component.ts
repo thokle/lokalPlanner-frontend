@@ -5,7 +5,7 @@ import {User} from '../models/user';
 @Component({
   selector: 'app-redirect',
   templateUrl: './redirect.component.html',
-  styleUrls: ['./redirect.component.css']
+  styleUrls: ['./redirect.component.scss']
 })
 export class RedirectComponent implements OnInit {
 

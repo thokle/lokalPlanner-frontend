@@ -1,0 +1,102 @@
+.findmeddieplan section {
+  background-color: gainsboro;
+  height: 300px;
+  border-bottom-style: solid !important;
+}
+
+.field ::ng-deep .mat-input-element  {
+  background-color: white !important;
+  border-style:  solid !important;
+  border-width: 1px !important;
+  height: 30px !important;
+  padding: 0 !important;
+ height: 23px !important;
+
+}
+
+.div1  {
+  width: 24% !important;
+  float: left !important;
+height: 298px !important;
+  margin-left: 0%;
+  float: left;
+  background: #72da67;
+}
+
+.div2 {
+  width: 24% !important;
+  float: left;
+  height: 298px !important;
+  margin-left: 26%;
+  background: #0099ff;
+}
+
+.div3 {
+  width: 75% !important;
+  float: left !important;
+  margin-left: 50%  !important;
+  height: 298px !important;
+  background: #717171;
+}
+ ::ng-deep .mat-input-underline {
+  display: none !important;
+}
+
+
+::ng-deep .no-line .mat-form-field-underline {
+  display: none;
+}
+
+label {
+ display: inline-block;
+
+
+
+}
+
+.konsulent label{
+  float: start;
+}
+
+.number {
+  width: 4vh !important;
+  margin-bottom: 3vh !important;
+
+}
+
+.number ::ng-deep .mat-form-field-infix {
+  padding-left: 1vh !important;
+}
+
+.year ::ng-deep .mat-form-field-infix {
+  width: 6vh !important;
+}
+
+.boxes {
+display: table;
+  margin-top: 3vh;
+  margin-left: 3vh;
+  width: 100%;
+  height: 298px;
+}
+
+.box-column {
+  display: table-column;
+}
+.box{
+  display: table-row;
+  width: 24%;
+}
+
+.row-box {
+  display: table-row;
+  margin: 40px;
+  float: start;
+  width: 100%;
+}
+.row-cell {
+  display: table-cell;
+}
+
+
+

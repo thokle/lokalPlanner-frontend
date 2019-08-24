@@ -4,7 +4,7 @@ import {BladpriceView} from '../models/bladprice-view';
 @Component({
   selector: 'app-price-builder',
   templateUrl: './price-builder.component.html',
-  styleUrls: ['./price-builder.component.css']
+  styleUrls: ['./price-builder.component.scss']
 })
 export class PriceBuilderComponent implements OnInit {
 

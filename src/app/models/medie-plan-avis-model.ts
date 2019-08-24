@@ -78,4 +78,7 @@ export interface MediePlanAvisModel {
   PostNr: number;
   Betegnelse: string;
   PrislisteNavn: string;
+mmTotal;
+totalPris;
+  webtillages: [];
 }
