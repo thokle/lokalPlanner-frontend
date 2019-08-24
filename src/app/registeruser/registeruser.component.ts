@@ -6,11 +6,13 @@ import {User} from '../models/user';
 @Component({
   selector: 'app-registeruser',
   templateUrl: './registeruser.component.html',
-  styleUrls: ['./registeruser.component.css']
+  styleUrls: ['./registeruser.component.scss']
 })
 export class RegisteruserComponent implements OnInit {
 
   userForm: FormGroup;
+  jobFunction;
+  color;
   constructor(private  fb: FormBuilder, private rs: RegisteruserService) {
     this.userForm = fb.group({
       firstname: [],
@@ -21,6 +23,8 @@ export class RegisteruserComponent implements OnInit {
       password: [],
       repassword : [],
       title: [],
+      color: [],
+      middlename: []
     });
   }
 
@@ -28,16 +32,21 @@ export class RegisteruserComponent implements OnInit {
   }
 
   public createUser() {
-    const user: User = {username: this.userForm.get('username').value
-      , email: this.userForm.get('firstname').value
-      , password: this.userForm.get('password').value
-      , firstname: this.userForm.get('firstname').value ,
-      lastname: this.userForm.get('lastname').value ,
-      jobfunction: this.userForm.get('jobfunction').value};
+    console.log(this.userForm.controls);
+    const user: User = {
+    username: this.userForm.controls.username.value
+    , email: this.userForm.controls.email.value
+    , password: this.userForm.controls.password.value
+    , firstname: this.userForm.controls.firstname.value,
+    lastname: this.userForm.controls.lastname.value,
+    jobfunction: this.jobFunction,
+    color: this.userForm.controls.color.value,
+    middlename: this.userForm.controls.middlename.value
+  };
     this.rs.creteUser(user).subscribe( value => {
 
     }, error1 => {
-
+      console.log(error1);
     });
 
   }

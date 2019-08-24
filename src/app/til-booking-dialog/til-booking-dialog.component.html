@@ -1,0 +1,68 @@
+<div class="container">
+
+  <div class="col-lg-6">
+  <div class="row"><label><strong>Ordre</strong></label></div>
+    <div class="row"><label for="annoncør">Annoncør</label><input id="annoncør" type="text"></div>
+    <div class="row"><label for="medieplanNr">Medieplan nr</label><input id="medieplanNr" type="text"></div>
+    <div class="row"><label for="ugeNr">Uge Nr</label><input id="ugeNr" type="text"></div>
+    <div class="row"> </div>
+    <div class="row"><mat-checkbox labelPosition="before">Bladene skal fakturere</mat-checkbox></div>
+    <div class="row"></div>
+    <div class="row"><label><strong>Materiale</strong></label></div>
+    <div class="row"><label>Matr. følger fra</label><mat-radio-group labelPosition="after">
+      <mat-radio-button>Tidligere Uge</mat-radio-button>
+      <mat-radio-button>DLU</mat-radio-button>
+      <mat-radio-button>Bur</mat-radio-button>
+      <mat-radio-button>Ann</mat-radio-button>
+
+    </mat-radio-group></div>
+    <div clas="row">
+     <mat-checkbox id="MatrModtaget" labelPosition="before">Matr. Modtaget</mat-checkbox>
+    </div>
+    <div class="row"><input type="text"></div>
+    <div class="row"><mat-radio-group><mat-radio-button labelPosition="after">Samme</mat-radio-button><mat-radio-button>Forskelligt</mat-radio-button></mat-radio-group></div>
+    <div class="row"></div>
+    <div class="row"><label><strong>Bemærkninger</strong></label></div>
+    <div class="row"><label>Til Faktura</label></div>
+    <div class="row"><input type="text"> </div>
+    <div class="row"><input type="text"></div>
+    <div class="row"> </div>
+    <div class="row"><label>Til Ugeaviserne</label></div>
+    <div class="row">
+      <textarea></textarea>
+
+    </div>
+    <div class="bottom-left">
+      <button class="btn">Annuller</button>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="col-lg-6">
+  <div class="row"><h3>Support Bilag</h3></div>
+  <div class="row"> <label for="løbende_ordre"><strong>Løbende ordre</strong></label></div>
+  <div class="row"><input type="text" id="løbende_ordre"></div>
+  <div class="row"><label for="overskrift"><strong>Overskrift</strong></label></div>
+  <div class="row"><input type="text" class="input-lg" id="overskrift"></div>
+  <div class="row"></div>
+  <div class="row"><label><strong>Bilagsblade</strong></label></div>
+  <div class="row"><label>Bilagsblade</label><mat-radio-group><mat-radio-button labelPosition="after">Annoncør</mat-radio-button><mat-radio-button labelPosition="after">Bureau</mat-radio-button><mat-radio-button labelPosition="after">Anden</mat-radio-button></mat-radio-group></div>
+
+  <div class="row"></div>
+  <div class="row"></div>
+  <div class="row"></div>
+  <div class="row"></div>
+  <div class="row"></div>
+  <div class="row"></div>
+  <div class="row"></div>
+  <div class="row"></div>
+  <div class="row"><label>Til Support</label><mat-checkbox>Bureauordresedler ligger i ind bakken</mat-checkbox></div>
+  <div class="row"><textarea></textarea></div>
+  <div class="row bottom-right btn-group-vertical"><button (click)="udskriv()">Udkriv</button><button disabled="disabled" (click)="send()">Send</button>/div>
+                                </div>
+
+

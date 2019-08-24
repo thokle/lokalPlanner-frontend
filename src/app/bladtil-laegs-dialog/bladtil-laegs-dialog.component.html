@@ -1,0 +1,15 @@
+<form [formGroup]="form"  (ngSubmit)="opret()">
+<label>Tillægs Type</label>
+<mat-form-field class="blad">
+  <select matInput matNativeControl formControlName="type">
+    <option *ngFor="let s of tillasgsTyper" value="{{s.id}}">{{s.type}}</option>
+
+  </select>
+
+</mat-form-field>
+  <label>Pris</label>
+<mat-form-field class="blad">
+  <input type="text"  matInput formControlName="pris">
+</mat-form-field>
+<button mat-raised-button type="submit">Opret blad tillæg </button>
+</form>

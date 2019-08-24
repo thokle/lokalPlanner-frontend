@@ -1,0 +1,43 @@
+  <div class="container-fluid" style="height: 90%; margin-top: 2%;" >
+  <form [formGroup]="formArray">
+  <div class="row" style="background-color: #EEEEEE">
+  <div class="col-lg-3"><div class=flex-md-row><label  style="margin-left: 5%; margin-right: 3%; margin-top: 4%;"><strong>MedieNr</strong></label>  <input type="text" id="medieplannr" formControlName="medieplannr">  </div>
+
+    <div class=row><label style="margin-left: 5%; margin-right: 3%;"><strong>Konsulent</strong></label>  <input type="text" id="konsulent" formControlName="konsulent"></div>
+  </div>
+  <div class="col-lg-3"><div class=flex-md-row><label style="margin-left: 5%; margin-right: 3%;"><strong>Annoncør</strong></label >  <mat-form-field class="no-line field"><select matNativeControl id="annoncpoer" formControlName="annoncoer">
+    <option *ngFor="let a of annoncer" value="{{a.AnnoncoerID}}">{{a.Annoncoer}}</option>
+  </select></mat-form-field></div><div class=flex-md-row><label style="margin-left: 5%; margin-right: 3%;"><strong>Bureau</strong></label>  <mat-form-field class="no-line field">
+    <select matNativeControl formControlName="bureau">
+      <option *ngFor="let b of burreauer" value="{{b.AnnoncoerID}}">{{b.Annoncoer}}</option>
+    </select>
+  </mat-form-field></div></div>
+  <div class="col-lg-2"><div class="flex-md-row"><label  style="margin-left: 5%; margin-right: 3%; margin-top: 4%;"><strong>Fra</strong></label><input type="number"  value="0" id="fra"  class="number" formControlName="fraAar">-<input type="number"  id="til" class="number" formControlName="tilAar"></div>
+    <div class="row"><label style="margin-left: 5%; margin-right: 3%; margin-top: 4%;"><strong>Årstal</strong></label><input type="number"  id="aar" class="number" formControlName="aar"></div>
+    <div class="row"><mat-checkbox style="margin-left: 5%; margin-right: 3%; margin-top: 4%;">vis inaktiveAviser</mat-checkbox></div>
+  </div>
+  <div class="col-lg-3">
+
+    <div class="row"><label  style="margin-left: 5%; margin-right: 3%; margin-top: 4%;"><strong>Medtag versioner</strong></label></div>
+    <div class="row"> <mat-checkbox formControlName="checkBoxMediePlan">Medieplan</mat-checkbox></div>
+    <div class="row"> <mat-checkbox labelPosition="after" formControlName="checkBoxBooking">Booking</mat-checkbox><mat-checkbox labelPosition="after" formControlName="checkBoxrtAK">+ rt fra AK</mat-checkbox></div>
+    <div class="row"    >   <mat-checkbox labelPosition="after" formControlName="ckechboxFaktureing">Fakturing</mat-checkbox></div>
+  </div>
+  <div class="col-lg-1" >
+    <div class="row">
+    <button style="right: 3px; position: fixed" (click)="search()">Find</button>
+    </div>
+  </div>
+</div>
+  </form>
+
+<div *ngIf="list">
+
+  <igx-grid [data]="list | async" autoGenerate="autoGenerate" height="90%" width="95%" (onSelection)="transferdata($event)"></igx-grid>
+
+</div>
+</div>
+
+
+
+

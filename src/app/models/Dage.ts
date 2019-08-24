@@ -1,8 +1,7 @@
+export interface Dage {
 
-export  interface  Dage {
-
-   DagID: any,
-DagNavn: string,
-DagType: string,
-  timestamp: any
+  DagID;
+  DagNavn;
+  DagType;
+  timestamp;
 }

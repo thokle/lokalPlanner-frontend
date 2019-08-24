@@ -1,0 +1,21 @@
+<div *ngIf="isTherePrices" style="margin-right: 10px; margin-left: 10px; overflow: auto !important; margin-bottom: 20px; !important; background-color: transparent !important;">
+<label>Ændre År</label>
+  <mat-form-field>
+  <select matNativeControl [(ngModel)]="selectedYear" (change)="changeYear()" placeholder="-Vælg År-" required>
+  <option *ngFor="let y of years">{{y.year}}</option>
+
+</select>
+  </mat-form-field>
+  <div *ngIf="isData">
+<table >
+  <tr><th>År</th><th>Uge</th><th>Prislist</th><th>Ændre</th></tr>
+  <tr *ngFor="let p of priceListWeekItenm">
+    <td style="margin-right: 4px;">{{p.AAr}}</td><td>{{p.Uige}}</td><td>{{p.PrisListeNavn}}</td>
+
+    <td (click)="update(p)">
+     Ændre
+    </td>
+  </tr>
+</table>
+  </div>
+</div>

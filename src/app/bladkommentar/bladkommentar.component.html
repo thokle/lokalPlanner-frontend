@@ -1,0 +1,18 @@
+<div style="width: 100%;">
+<mat-list>
+  <mat-list-item *ngFor="let k of list"><label style="margin-right: 5px;">Dato oprettet:</label><span style="margin-right: 10px;">{{k.date | date: 'dd/MM/yyyy'}}</span>
+  <textarea [value]="k.tekst"></textarea>
+  </mat-list-item>
+
+</mat-list>
+
+</div>
+<div style="width: 100%;">
+<form [formGroup]="form">
+  <mat-form-field style="width: 100%;">
+    <textarea matInput formControlName="text"></textarea>
+<mat-label>Skrive en kommentar</mat-label>
+  </mat-form-field>
+  <button mat-raised-button (click)="SetKommentar()">Opret kommentar</button>
+</form>
+</div>

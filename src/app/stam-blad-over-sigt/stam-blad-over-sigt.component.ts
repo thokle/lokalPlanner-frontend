@@ -5,7 +5,7 @@ import {StamBladObserver} from '../stam-blad-observer';
 @Component({
   selector: 'app-stam-blad-over-sigt',
   templateUrl: './stam-blad-over-sigt.component.html',
-  styleUrls: ['./stam-blad-over-sigt.component.css']
+  styleUrls: ['./stam-blad-over-sigt.component.scss']
 })
 export class StamBladOverSigtComponent implements OnInit {
 

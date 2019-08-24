@@ -1,0 +1,18 @@
+<mat-tab-group>
+  <mat-tab label="Opret Rabat">
+<mat-grid-list cols="3" rowHeight="7:1">
+  <mat-grid-tile colspan="1" rowspan="1"><Label style="margin-right: 20px; font-size: 14px; margin-left: 20px;">Ejerforhold</Label><select (change)="setStamDataByEjerforhold()" [(ngModel)]=selectedEjerforhold placeholder="Ejerforhold"  matNativeControl required><option  *ngFor="let e of data" value="{{e.Ejerforhold}}">{{e.Ejerforhold}}</option></select></mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1"></mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1"></mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="6"><mat-selection-list>
+    <mat-list-option *ngFor="let s of stamData">{{s.Navn}}</mat-list-option>
+
+  </mat-selection-list></mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="6"></mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="6"></mat-grid-tile>
+</mat-grid-list>
+  </mat-tab>
+  <mat-tab label="Se Rabat for Ejerforhold">
+
+  </mat-tab>
+</mat-tab-group>

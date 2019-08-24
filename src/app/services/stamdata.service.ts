@@ -2,13 +2,17 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {StamData} from '../models/Stamdata';
-import {environment} from '../../environments/environment';
+
 import {Dage} from '../models/Dage';
 import {Region} from '../models/Region';
 
 import {GeoKode} from '../models/GeoKode';
 import {PostNr} from '../models/PostNr';
-import {tap} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
+import {StamBladViewModel} from '../models/StamBladViewModel';
+import {encode} from 'punycode';
+import {BladIds} from '../models/blad-ids';
+import {environment} from '../../environments/environment';
 
 const httpHeaders = {
   header: new HttpHeaders({
@@ -26,22 +30,21 @@ export class StamdataService {
   constructor(public  http: HttpClient) {
   }
 
-
-  public GetStamBladById(bladid: any): Observable<StamData[]> {
+  public getStamBladById(bladid: any): Observable<StamBladViewModel[]> {
     const url = this.baseUrl + '/stamblad/' + bladid.id;
-    return this.http.get<StamData[]>(url);
+    return this.http.get<StamBladViewModel[]>(url).pipe();
   }
 
-  public getStabbladByName(name: string): Observable<StamData> {
+  public GetStabbladByName(name: string): Observable<StamBladViewModel[]> {
     const url = this.baseUrl + `/stamblad/navn/${name}`;
-    return this.http.get<StamData>(url).pipe();
+    return this.http.get<StamBladViewModel[]>(url).pipe();
   }
 
   public createStamblad(stamblad: StamData): Observable<StamData> {
     const url = this.baseUrl + `/stamblad`;
-    return this.http.post<StamData>(url, JSON.stringify(stamblad), {
+    return this.http.post<StamData>(url, stamblad, {
       headers: new HttpHeaders({
-        'Content-type': 'application/json'
+
       })
     }).pipe();
   }
@@ -51,11 +54,11 @@ export class StamdataService {
     return this.http.get<GeoKode[]>(url).pipe();
   }
 
-
   public StamBladAllPostnr(): Observable<PostNr[]> {
       const url = this.baseUrl  + '/stamblad/allpostnr';
       return this.http.get<PostNr[]>(url).pipe();
   }
+
 
   public StamBladRegions(): Observable<Region[]> {
     const url = this.baseUrl + `/stamblad/regions`;
@@ -73,6 +76,20 @@ export class StamdataService {
     return this.http.get<any>(url).pipe();
   }
 
+ public  GetLastestStamBladId(): Observable<any> {
+    const url = this.baseUrl + `/stamblad/latestid`;
+    return this.http.get<any>(url).pipe();
+ }
+
+ public  GetStamBladByEjerforHold(ejerforhold: string): Observable<StamBladViewModel[]>  {
+    const url = this.baseUrl + '/stamblad/ejerforhold/';
+    return  this.http.get<StamBladViewModel[]>(url, {headers: {'ejerforhold': ejerforhold }} ).pipe();
+ }
+
+ public GetAllIBladIds(): Observable<BladIds[]> {
+    const url = this.baseUrl + '/stamblad/getAllBladid';
+    return this.http.get<BladIds[]>(url).pipe();
+ }
 }
 //   Get("/stamblad/GeoCodes", o => { return stamBladDao.GetTableGeoCode(); });
 //

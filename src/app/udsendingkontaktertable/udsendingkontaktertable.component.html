@@ -1,0 +1,13 @@
+
+<div>
+  <button mat-raised-button (click)="openOpretKonntakDialog()">Opret Ny Udsending Kontakt</button>
+</div>
+<div>
+ <table>
+   <tr><th>Kontakt type</th><th>Titel</th><th>Navn</th><th>Email</th><th>Telefon</th><th>Vælg</th></tr>
+   <tr *ngFor="let k of kontaktStamBladData"><td>{{k.KontaktType}}</td><td>{{k.Titel}}</td><td>{{k.Name}}</td><td>{{k.Email}}</td><td>{{k.Telefonnummer}}</td><td><mat-checkbox (click)="selectedItem(k)"></mat-checkbox></td></tr>
+   <tr><td colspan="6"><div style="align-items: end"><button mat-raised-button (click)="sendEmail()"> Send Email</button></div> </td></tr>
+ </table>
+
+  <div>
+

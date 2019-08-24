@@ -1,0 +1,21 @@
+<div>Dialog til oprettelse af prisliste</div>
+<div >
+ <label>Vælg Prisliste</label> <mat-form-field class="example-container">
+<mat-select [(ngModel)]="selectedListId">
+  <mat-option *ngFor="let p of priseListItemns" value="{{p.PrislisteID}}">{{p.PrislisteNavn}}</mat-option>
+</mat-select>
+  </mat-form-field>
+  <label>Vælg år</label>
+<mat-form-field class="example-container">
+<mat-select  [(ngModel)]="selectedyear">
+<mat-option *ngFor="let y of years" value="{{y}}">{{y}}</mat-option>
+
+</mat-select>
+
+</mat-form-field>
+<div>
+  <button mat-raised-button (click)="close()">Opret Pris</button>
+</div>
+</div>
+
+

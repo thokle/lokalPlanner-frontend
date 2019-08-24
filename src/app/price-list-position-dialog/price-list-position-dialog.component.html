@@ -1,0 +1,8 @@
+<label>Vælg placering</label>
+<mat-form-field style="width: 100%;">
+
+  <select matNativeControl [formControl]=selectedValue (change)="savePlacering()">
+    <option *ngFor="let p of placeringer" value='{"PlaceringID" : {{p.PlaceringID}} , "Betegnelse" : "{{p.Betegnelse}}"}' > {{p.Betegnelse}}</option>
+
+  </select>
+</mat-form-field>

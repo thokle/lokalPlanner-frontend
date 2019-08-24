@@ -1,171 +1,508 @@
-<div style="left: 100px;">
+<div style="left: 100px;" *ngIf="erDerStamblad">
   <app-stamblad-paginator [num]="0" [minNumber]="0" [maxNumber]="maxAntalAviser"></app-stamblad-paginator>
 </div>
-<div>
-  <button mat-icon-button (click)="OpretStamBlad()"> <mat-icon>add_circle</mat-icon></button>
+<div *ngIf="erDerStamblad">
+  <button mat-icon-button (click)="StartOpretNytStamBlad()">
+    <mat-icon>add_circle</mat-icon>
+  </button>
+  <button mat-icon-button (click)="OpdatereStamBlad()"><mat-icon>save</mat-icon></button>
+  <button mat-icon-button (click)="OpretNode()"><mat-icon>note_add</mat-icon></button>
+<h2 style="margin-left: 100px;"><label style="margin-right: 10px; font-size: 30px;">Avis navn:</label>{{stamBladNavn}}</h2>
 </div>
-  <form [formGroup]="stamBladForm"  (ngSubmit)="OpretStamBlad()"   >
-    <div style="width: 100%; margin-bottom: 40px !important;">
-<mat-tab-group >
+<form [formGroup]="stamBladForm">
 
-  <mat-tab label='Stamdata'>
+    <mat-tab-group *ngIf="erDerStamblad" class="stambladtab">
 
-    <div class="divTable" >
-      <div class="divTableBody" >
-        <div formGroupName="stamDataArray" *ngFor="let s of data">
-
-        <div   class="divTableCell" >
-
-            <mat-list>
-              <mat-list-item >
-                <label for="BladID">Blad ID</label>
-                <mat-form-field >
-                  <input matInput id="BladID" formControlName="BladID" name="BladID"  value="{{s.BladID}}" >
-
-                </mat-form-field>
-
-              </mat-list-item>
-              <mat-list-item>
-                <label for="Navn" >Navn</label>
-                <mat-form-field  >
-
-                  <input id="Navn"  matInput class="mat-form-field" formControlName="Navn"  value="{{s.Navn}}" required>
+      <mat-tab label='Navn/Adresser'>
+      <section>
+<div id="stabblad1">
+  <div class="formfield">
+  <label style="margin-right: 2% !important;">Blad ID</label>
 
 
-
-                </mat-form-field>
-              </mat-list-item>
-
-              <mat-list-item>
-                <label for="Addresse" >Addresse</label>
-                <mat-form-field>
+    <input class="textfield-stamblad"  id="bladid"  type="text" readonly="true"  formControlName="BladId" value="BladId"  placeholder="Blad Id" >
 
 
-                  <input matInput id="Addresse" formControlName="Addresse"  value="{{s.Adresse}}">
-                </mat-form-field>
-              </mat-list-item>
+</div>
+  <div class="formfield">
+    <label style="margin-right: 11.5% !important;">Navn</label>
 
-              <mat-list-item>
-                <label for="Addresse2" >Adresse2</label>
-                <mat-form-field  >
-                  <input matInput id="Addresse2"  formControlName="Addresse2" value="{{s.Adresse2}}">
-                </mat-form-field>
+      <input  class="mat-form-field" formControlName="Navn" value="Navn" required placeholder="Navn">
 
-              </mat-list-item>
-              <mat-list-item>
-                <label  for="Postnr">Post nr</label>
-                <mat-form-field  >
-                  <mat-select id="postnr" formControlName="Postnr" [(ngModel)]="selectedPostNr">
-                    <mat-option *ngFor="let p of postNr" [value]="p.PostNr">{{p.PostNr}}</mat-option>
-                  </mat-select>
-
-                </mat-form-field>
-                <label for="By" >By</label>
-                <mat-form-field>
-                  <mat-select id="By" formControlName="By"  [(ngModel)]="selectBynavn" >
-                    <mat-option  *ngFor="let s of byNavn" [value]="s.PostBy">{{s.PostBy}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </mat-list-item>
-              <mat-list-item>
-                <label for="Tlf" >Tlf</label>
-                <mat-form-field>
-                  <input matInput id="Tlf" formControlName="Tlf">
-                </mat-form-field>
-              </mat-list-item>
-              <mat-list-item>
-                <label for="Fax" >fax</label>
-                <mat-form-field>
-                  <input matInput id="Fax" formControlName="Fax" >
-                </mat-form-field>
-              </mat-list-item>
-              <mat-list-item>
-                <label  for="CVR">CVR</label>
-                <mat-form-field >
-                  <input matInput id="CVR" formControlName="CVR">
-                </mat-form-field>
-              </mat-list-item>
-
-            </mat-list>
-          </div>
+  </div>
 
 
-          <div class="divTableCell" formGroupName="stamdataSide2">
-            <mat-list>
-<mat-list-item>
-  <mat-list-item>
-    <label for="kontaktPerson" >Kontakt Person</label>
-    <app-komtakt-person id="kontaktPerson"></app-komtakt-person>
-  </mat-list-item>
-</mat-list-item>
-              <mat-list-item>
-              <mat-chip-list>
-                <mat-chip>Hovedgruppe</mat-chip>
-              </mat-chip-list>
-            </mat-list-item>
-              <mat-list-item>
-                <mat-radio-group >
-                  <mat-radio-button value="1">DD</mat-radio-button>
-                  <mat-radio-button value="2">DL</mat-radio-button>
-                  <mat-radio-button value="3">Øvrige</mat-radio-button>
+  <div class="formfield">
+    <label  style="margin-right:8%;">Adresse</label>
+
+
+      <input  formControlName="Adresse" value="Adresse" >
+
+
+  </div>
+
+
+  <div class="formfield">
+    <label>Adresse2</label>
+
+      <input  formControlName="Adresse2" value="Adresse2" placeholder="Addresse 2">
+
+
+  </div>
+
+
+  <div class="formfield">
+    <label>Postnr/By</label>
+<mat-form-field class="stamblad">
+      <select formControlName="PostNr" value="PostNr" matNativeControl placeholder="Post Nummer" required
+              [(ngModel)]="selectedPost"
+              (change)="setByNavnByZipCode()">
+
+        <option *ngFor="let p of postNr" [value]="p?.PostNr">{{p?.PostNr}}</option>
+
+      </select>
+</mat-form-field>
+    <app-by></app-by>
+  </div>
+
+
+
+  <div class="formfield"><label style="margin-right: 15% !important;">Tlf</label>
+
+      <input  id="Tlf" formControlName="Tlf" value="Tlf" placeholder="Tlf">
+
+
+  </div>
+
+
+
+  <div class="formfield">
+    <label style="margin-right: 14.5% !important;">Fax</label>
+        <input  id="Fax" formControlName="Fax" value="Fax" placeholder="Fax">
+
+
+  </div>
+</div>
+<div id="stabblad2" class="formfield">
+          <label>Kontakt Person</label>
+
+          <input formControlName="Kontaktperson" value="Kontaktperson"
+          >
+
+
+
+  <div>
+    <label>Ejerforhold</label>
+<mat-form-field>
+      <select formControlName="Ejerforhold" value="Ejerforhold" matNativeControl required placeholder="Ejerforhold">
+
+        <option *ngFor="let ej of ejerforholdliste"
+                [value]="ej.Ejerforhold">{{ej.Ejerforhold}}</option>
+      </select>
+</mat-form-field>
+  </div>
+</div>
+        <div id="stabblad3">
+
+          <mat-accordion style="width: 300px !important;">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Bogholderi
+                </mat-panel-title>
+
+              </mat-expansion-panel-header>
+              <app-bogholderi></app-bogholderi>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Avis status
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-grid-list cols="1" rowHeight="10:1">
+                <mat-grid-tile rowspan="1">
+                  <mat-checkbox formControlName="Ophoert" value="Ophoert" (click)="stamBladOphoert()">
+                    Ophørt
+                  </mat-checkbox>
+                </mat-grid-tile>
+
+                <div style="float: left;">
+                  <mat-checkbox formControlName="VisPaaWww"
+                                value="VisPaaWww">Vis på Web
+                  </mat-checkbox>
+
+                  <mat-checkbox formControlName="Overfoert"
+                                value="Overfoert">Skal Overføres til web
+                  </mat-checkbox>
+                </div>
+
+
+                <mat-radio-group formControlNam="HovedgruppeId" value="HovedgruppeId"  aria-label="Select an option">
+                  <mat-radio-button value="0">DD</mat-radio-button>
+                  <mat-radio-button value="1">DL</mat-radio-button>
+                  <mat-radio-button value="2">Øvrige</mat-radio-button>
                 </mat-radio-group>
 
-              </mat-list-item>
-              <mat-list-item>
-                <label>Medlem Siden</label>
-                <mat-select id="medlemSidenAAr" formControlName="medlemSidenAAr" ><mat-option *ngFor="let mo of months" [value]="mo.months">{{mo.months}}</mat-option></mat-select>
 
-                <mat-select id="medlemnSidenMd"  formControlName="medlemnSidenMd" ><mat-option *ngFor="let y of years" value="y"
-                >{{y}}</mat-option></mat-select>
-              </mat-list-item>
-              <mat-list-item>
-                <label for="ejerforhold">Ejerforhold</label>
-                <mat-form-field>
-                <input matInput id="ejerforhold"  formControlName="ejerforhold">
-                </mat-form-field>
-              </mat-list-item>
-              <mat-list-item>
-              <label>Koncert</label>
-                <mat-form-field>
-                <input matInput id="koncern" formControlName="koncern">
-                </mat-form-field>
-              </mat-list-item>
-              <mat-list-item>
-              <mat-radio-group>
-          <mat-radio-button >Ophørt</mat-radio-button>
-                <mat-radio-button>Skal Overføres til Website</mat-radio-button>
-              </mat-radio-group>
-              </mat-list-item>
+<mat-form-field>
+                  <select id="MedlemMaaned" formControlName="MedlemMaaned"
+                          placeholder="{{stamBladForm.get('MedlemMaaned').value}}"
+                          matNativeControl
+                          required="true">
 
-            </mat-list>
+                    <option *ngFor="let mo of months" [value]="mo">{{mo.name}}</option>
+
+                  </select>
+</mat-form-field>
+<mat-form-field><
+
+                  <select id="MedlemAAr" formControlName="MedlemAAr"
+                          placeholder="{{stamBladForm.get('MedlemAAr').value | year}}" matNativeControl>
 
 
+                    <option *ngFor="let y of years" [value]="y">{{y}}</option>
+                  </select>
 
-          </div>
+</mat-form-field>
+
+              </mat-grid-list>
+            </mat-expansion-panel>
+          </mat-accordion>
         </div>
 
-      </div>
+</section>
+      </mat-tab>
 
-    </div>
-  </mat-tab>
+      <mat-tab label="Dækningsområde">
+        <section>
+          <div id="one">
+            <div style="width: 100%; height: 10%">
+            <h4>Geografisk Data</h4>
+            </div>
+            <div style="width: 100%; height: 16%">
+              <label>Region</label>
+<mat-form-field class="formfield">
+                <select id="RegionId" formControlName="RegionId" matNativeControl matInput
+                        placeholder="{{stamBladForm.get('RegionId').value}}">
 
-  <mat-tab label='Dækningsområde'>
+                  <option *ngFor="let d of regions" [value]="d">{{d.RegionNavn}}</option>
+                </select>
+</mat-form-field>
+            </div>
+
+              <div style="width: 100%; height: 16%">
+                <label>Delområde</label>
+<mat-form-field class="formfield">
+                  <select id="DelOmraadeId" formControlName="Delomraade" matNativeControl matInput
+                          placeholder="{{ stamBladForm.get('Delomraade').value }}"
+                  >
+
+                    <option *ngFor="let r of delomraader" [value]="r">{{r.DelOmraadeNavn1}}</option>
+                  </select>
+</mat-form-field>
+
+              </div>
+
+<div style="width: 100%; height: 16%">
+              <label>GeoKode</label>
+<mat-form-field class="formfield">
+                <select formControlName="GeoKodeId" value="GeoKodeId" matNativeControl matInput
+                        placeholder="{{stamBladForm.get('GeoKodeId')?.value }}">
+
+                  <option *ngFor="let g of geocodes" [value]="g">{{g.GeoKodeNavn}}</option>
+                </select>
+
+</mat-form-field>
+
+</div>
+
+            <div class="formfield">
+              <label>TotalOmråde</label>
+
+                <input  id="Totalomraade" formControlName="Totalomraade" value="Totalomraade">
 
 
-  </mat-tab>
-<mat-tab label='Priser'>
 
-</mat-tab>
-  <mat-tab label="Priser">
+            </div>
 
-  </mat-tab>
-  <mat-tab label="Pris oversigt"></mat-tab>
-  <mat-tab label="Teknisk Data"></mat-tab>
-  <mat-tab label="Udsending"></mat-tab>
 
-</mat-tab-group>
-      <div style="float: right !important; padding-right: 40% !important; " ><button mat-raised-button  type="submit">Opdatere</button></div>
-    </div>
+
+<div class="formfield">
+<label>Oversigt overdækning</label>
+  <textarea rows="3" cols="40" style="overflow-y: auto;" ></textarea>
+</div>
+
+
+
+</div>
+          <div id="two">
+            <div style="width: 100%; height: 100%;">
+            <mat-label>Blad Dækning</mat-label>
+            <app-blad-daekning [bladid]="bladId"></app-blad-daekning>
+            </div>
+          </div>
+        </section>
+
+
+      </mat-tab>
+
+      <mat-tab label="Priser">
+        <app-price-tab></app-price-tab>
+
+      </mat-tab>
+
+      <mat-tab label="Teknisk Data">
+
+        <div class="divTable">
+          <div class="divTableRow">
+            <div class="divTableCell">
+              <mat-list>
+                <mat-list-item>
+                  <mat-tab>Teknisk Data</mat-tab>
+                </mat-list-item>
+                <mat-list-item>
+                  <label style="margin-right: 30% !important;">Oplag</label>
+
+                    <input  type="text" id="Oplag" formControlName="Oplag" value="Oplag">
+
+
+                </mat-list-item>
+                <mat-list-item>
+                <label style="margin-right: 27.5% !important;">Ugedag</label>
+<mat-form-field>
+                    <select id="Ugedage"
+                            formControlName="UgedagId" matNativeControl
+                            [placeholder]="tekniskDagNavn"                             (change)="setTekniksUgeDag(stamBladForm.get('UgedagId').value)" >
+
+                      <option class="stamblad" *ngFor="let d of dage" [value]="d">{{d.DagNavn}}</option>
+                    </select>
+</mat-form-field>
+                </mat-list-item>
+                <mat-list-item>
+                  <label style="margin-right: 28.5% !important;">Format</label>
+
+                    <input  id="Format" type="text" formControlName="Format" value="Format">
+
+
+                </mat-list-item>
+              </mat-list>
+
+              <mat-list>
+                <mat-list-item>
+                  <h6>Deadlines for ordre</h6>
+                </mat-list-item>
+
+                <mat-list-item>
+                  <label style="margin-right: 9% !important;">Ordre Deadline Tekst</label>
+
+
+                    <input id="OrdredeadlineTekst" formControlName="OrdredeadlineTekst"
+                           value="OrdredeadlineTekst">
+
+
+                </mat-list-item>
+                <mat-list-item>
+                  <label  style="margin-right: 16% !important;">Deadline Rubrik</label>
+
+
+                    <input id="OrdredeadlineRubrik" type="text"  formControlName="OrdredeadlineRubrik"
+                           value="OrdredeadlineRubrik">
+
+                </mat-list-item>
+
+                <mat-list-item>
+                  <h6>Deadline for materiale</h6>
+                </mat-list-item>
+                <mat-list-item>
+                  <label  style="margin-right: 18% !important;">Deadline tekst</label>
+
+
+                    <input id="MaterialedeadlineTekst"  type="text" formControlName="MaterialedeadlineTekst"
+                           value="MaterialedeadlineTekst">
+
+                </mat-list-item>
+                <mat-list-item>
+                  <label  style="margin-right: 17% !important;">Deadline rubrik</label>
+
+                    <input  type="text" id="MaterialedeadlineRubrik" formControlName="MaterialedeadlineRubrik"
+                           value="MaterialedeadlineRubrik">
+
+                </mat-list-item>
+
+
+              </mat-list>
+            </div>
+            <div class="divTableCell">
+              <mat-list>
+                <mat-list-item>
+                  <mat-label>Oplysninger til DLU's hjemmeside</mat-label>
+                </mat-list-item>
+                <mat-list-item>
+                  <label  style="margin-right: 14.5% !important;">Hjemmeside</label>
+
+                    <input type="text" id="Hjemmeside"  formControlName="Hjemmeside"
+                           value="Hjemmeside">
+
+                </mat-list-item>
+                <mat-list-item>
+                 <label> Redaktions email </label>
+
+                    <input  id="RedaktionEmail" type="text" formControlName="RedaktionEmail"
+                           value="RedaktionEmail">
+
+                </mat-list-item>
+              </mat-list>
+            </div>
+
+          </div>
+
+        </div>
+
+      </mat-tab>
+      <mat-tab label="Udsending">
+        <mat-grid-list cols="2" rowHeight="17:1" class="udsending-stamblad-grid">
+          <mat-grid-tile colspan="2" rowspan="1"><label>Udsending</label></mat-grid-tile>
+          <mat-grid-tile colspan="2" rowspan="1"><label style="margin-right: 5% !important; margin-left: 0% !important;">Ordre email</label>
+
+              <input type="text" id="OrdreEmail"  formControlName="OrdreEmail" value="OrdreEmail">
+
+       </mat-grid-tile>
+          <mat-grid-tile><label style="margin-right: 10% !important;" >Material Email</label>
+
+
+              <input  type="text" formControlName="MaterialeEmail" value="MaterialeEmail">
+
+
+          </mat-grid-tile>
+          <mat-grid-tile><label>Medienet</label></mat-grid-tile>
+
+          <mat-grid-tile><label style="margin-right: 10% !important;">Tjekliste email</label>
+
+            <input  id="OrdrecheckEmail" formControlName="OrdrecheckEmail"
+                   value="OrdrecheckEmail">
+
+       </mat-grid-tile>
+          <mat-grid-tile rowspan="6"><label>MedieNet ID</label>
+
+              <input  type="text" id="MedieNetKode" formControlName="MedieNetKode"
+                     value="MedieNetKode">
+
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <label>Tjekliste Udsendelse</label>
+
+              <input type="time" formControlName="MaterialeDeadlineRubrikDag" id="MaterialeDeadlineRubrikDag"
+                     value="MaterialeDeadlineRubrikDag" >
+
+
+
+<mat-form-field>
+              <select formControlName="OrdrecheckSendeDagID"  matNativeControl>
+                <mat-label>{{stamBladForm.get('OrdrecheckSendeDagID')?.value | dage}}</mat-label>
+                <option *ngFor="let d of dage" [value]="d">{{d.DagNavn}}</option>
+              </select></mat-form-field>
+       </mat-grid-tile>
+          <mat-grid-tile>  <mat-checkbox color="accent" id="SendIndevaerendeUge" formControlName="SendIndevaerendeUge"
+                                         value="SendIndevaerendeUge"></mat-checkbox> <div style="margin-left: 1%;"> Send Liste for indværende uge</div></mat-grid-tile>
+          <mat-grid-tile><label>Annonce Kontrol Email</label>
+
+              <input  type="text" formControlName="AnnonceKontrolEmail"
+                     value="{{stamBladForm.get('AnnonceKontrolEmail')?.value}}">
+
+       </mat-grid-tile>
+          <mat-grid-tile><label style="margin-right: 7% !important;">Billagsblade Email</label>
+
+
+              <input  type="text" id="BilagsbladeEmail" formControlName="BilagsbladeEmail"
+                     value="BilagsbladeEmail">
+
+
+          </mat-grid-tile>
+
+        </mat-grid-list>
+
+<mat-accordion>            <mat-expansion-panel class="udsending-expansion-body" style="background-color: #999999 !important;">
+              <mat-expansion-panel-header >
+                <mat-panel-title>
+                Ansvarlig for
+                </mat-panel-title>
+
+              </mat-expansion-panel-header>
+<mat-list style="width: 100% !important;">
+  <mat-list-item>
+    <label style="margin-left: 0px;">Stamdata Email</label>
+
+      <input type="text"  id="StamdataEmail" formControlName="StamdataEmail"
+             value="StamdataEmail">
+
+
+  </mat-list-item>
+  <mat-list-item>
+
+    <label style="margin-left: 0px !important;">Prisforspørgelsel Email</label>
+
+      <input type="text" id="PrisforespoergselEmails" formControlName="PrisforespoergselEmails"
+             value="PrisforespoergselEmails">
+
+
+  </mat-list-item>
+  <mat-list-item>
+    <label style="margin-left: 0px !important;">Orienterings emails</label>
+
+
+      <input type="text" id="OrienteringEmails"  formControlName="OrienteringEmails"
+             value="OrienteringEmails">
+
+
+  </mat-list-item>
+  <mat-list-item>
+    <label>Emails</label>
+
+      <input type="email" id="Emails"  formControlName="Emails" value="Emails">
+
+
+
+  </mat-list-item>
+  <mat-list-item>
+    <label style="margin-left: 0px !important; ">Kontaktpersoners emails</label>
+
+
+      <input  type="email" formControlName="KontaktpersonerEmails"
+             value="KontaktpersonerEmails">
+
+
+  </mat-list-item>
+  <mat-list-item>
+
+    <label style="margin-left: 0px !important;">Bogholderi emails </label>
+
+
+      <input  type="email" id="BogholderiEmails" formControlName="BogholderiEmails"
+             value="BogholderiEmails">
+
+  </mat-list-item>
+</mat-list>
+
+
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Udsending kontakter
+    </mat-expansion-panel-header>
+
+<app-udsendingkontaktertable></app-udsendingkontaktertable>
+  </mat-expansion-panel>
+</mat-accordion>
+
+      </mat-tab>
+      <mat-tab label="Ejerforhold">
+        <app-ejerforhold></app-ejerforhold>
+      </mat-tab>
+
+    </mat-tab-group>
+
+
 
 </form>
 

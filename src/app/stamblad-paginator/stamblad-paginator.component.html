@@ -1,3 +1,5 @@
 <p>
-<button mat-icon-button (click)="previewStamblad() " *ngIf="minDisable"><mat-icon>navigate_before</mat-icon></button>{{num}}/{{maxNumber}}<button *ngIf="maxDisable" mat-icon-button (click)="nextStamblad()"><mat-icon>navigate_next</mat-icon></button>
+<button mat-icon-button (click)="goFirstPage()"><mat-icon>first_page</mat-icon></button><button mat-icon-button (click)="previewStamblad() "><mat-icon>chevron_left</mat-icon></button>{{num}}/{{maxNumber}}<button *ngIf="maxDisable" mat-icon-button (click)="nextStamblad()"><mat-icon>chevron_right</mat-icon></button><button mat-icon-button (click)="goToLastPage()"><mat-icon>last_page</mat-icon></button>
+  <input type="text" maxlength="4" style="max-width: 30px" >
 </p>
+

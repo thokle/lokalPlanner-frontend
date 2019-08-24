@@ -1,0 +1,97 @@
+<div class="grid__wrapper">
+  <igx-input-group type="search" class="offset">
+    <igx-prefix>
+      <igx-icon *ngIf="searchText.length == 0">search</igx-icon>
+      <igx-icon *ngIf="searchText.length > 0" (click)="clearSearch()">clear</igx-icon>
+    </igx-prefix>
+
+    <input #search id="search1" igxInput placeholder="Search" [(ngModel)]="searchText" (ngModelChange)="grid.findNext(searchText, caseSensitive, exactMatch)"
+           (keydown)="searchKeyDown($event)" />
+
+    <igx-suffix *ngIf="searchText.length > 0">
+      <div class="resultsText" *ngIf="grid.lastSearchInfo">
+                <span *ngIf="grid.lastSearchInfo.matchInfoCache.length > 0">
+                    {{ grid.lastSearchInfo.activeMatchIndex + 1 }} of {{ grid.lastSearchInfo.matchInfoCache.length }}
+                  results
+                </span>
+        <span *ngIf="grid.lastSearchInfo.matchInfoCache.length == 0">
+                    No results
+                </span>
+      </div>
+      <div class="chips">
+        <igx-chips-area>
+          <igx-chip (click)="updateSearch()" [color]="caseSensitive? 'lightgrey' : 'rgba(0, 0, 0, .04)'">
+            <span>Case Sensitive</span>
+          </igx-chip>
+          <igx-chip (click)="updateExactSearch()" [color]="exactMatch? 'lightgrey' : 'rgba(0, 0, 0, .04)'">
+            <span>Exact Match</span>
+          </igx-chip>
+        </igx-chips-area>
+      </div>
+      <div class="searchButtons">
+        <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="grid.findPrev(searchText, caseSensitive, exactMatch)">
+          <igx-icon fontSet="material">navigate_before</igx-icon>
+        </button>
+        <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="grid.findNext(searchText, caseSensitive, exactMatch)">
+          <igx-icon fontSet="material">navigate_next</igx-icon>
+        </button>
+      </div>
+    </igx-suffix>
+  </igx-input-group>
+<igx-grid #grid [allowFiltering]="true" [data]="_alldata"    [rowSelectable]="seletedable"
+          [showToolbar]="true"
+          [columnHiding]="true" toolbarTitle="Aviser"  (onSelection)="transferdata($event)"
+>
+  <igx-column field="Adresse" header="Adresse" [dataType]="'string'" [sortable]="true"></igx-column>
+  <igx-column field="Adresse2" header="Adresse 2" [dataType]="'string'"></igx-column>
+  <igx-column field="BladID" header="Bladid" ></igx-column>
+  <igx-column field="CVR" header="CVR"></igx-column>
+  <igx-column field="DaekningsGrad" header="Dækningsgrad"></igx-column>
+  <igx-column field="DagNavn" header="DagNavn"></igx-column>
+  <igx-column field="DelOmraadeNavn" header="Delområdenavn"> </igx-column>
+  <igx-column field="GeoKodeNavn" header="Geokodenavn" [groupable]="true"></igx-column>
+  <igx-column field="GruppeNavn" header="Gruppenavn"></igx-column>
+  <igx-column field="HovedGruppeNavn" header="HovedGruppenavn"> </igx-column>
+  <igx-column field="Kontaktperson" header="Kontaktperson"></igx-column>
+  <igx-column field="MaterialedeadlineRubrik" header="MaterialedeadlineRubrik"></igx-column>
+  <igx-column field="MaterialedeadlineTekst" header="MaterialedeadlineTekst"></igx-column>
+  <igx-column field="Navn" header="Navn"></igx-column>
+  <igx-column field="Navn2" header="Navn2"></igx-column>
+  <igx-column field="Oplag" header="Oplag"></igx-column>
+  <igx-column field="OrdredeadlineRubrik" header="OrdredeadlineRubrik"></igx-column>
+  <igx-column field="OrdredeadlineTekst" header="OrdredeadlineTekst"></igx-column>
+  <igx-column field="PostBy" header="PostBy" [groupable]="true"></igx-column>
+  <igx-column field="PostNr" header="PostNr"></igx-column>
+  <igx-column field="RegionNavn" header="RegionNavn"></igx-column>
+</igx-grid>
+</div>
+
+
+
+<!--
+
+{
+    "": "Havnegade 41                  ",
+    "": "",
+    "": 8,
+    "": "45765415       ",
+    "": 86,
+    "": "Tirsdag",
+    "": "Y",
+    "": "Fyn",
+    "": "Ikke i Gruppe",
+    "": "DD",
+    "": "Allan Pedersen",
+    "": "Mandag 09:00",
+    "": "Mandag 09:00",
+    "": "Melfar Posten                 ",
+    "": "",
+    "": 1569540,
+    "": "Mandag 10:00",
+    "": "Torsdag 15:00",
+    "": "Middelfart",
+    "": 5500,
+    "": "Syddanmark"
+  },
+
+-->

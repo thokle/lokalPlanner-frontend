@@ -1,0 +1,21 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+background: transparent !important;
+  height: 60vh;
+overflow: hidden;
+  width:27vh;
+}
+
+td, th {
+margin: 2px;
+  text-align: left;
+  font-size: 14px;
+  border: 0.1px solid  black;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+}
+
+

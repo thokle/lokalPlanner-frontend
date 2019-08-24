@@ -24,8 +24,9 @@
               "src/assets/data"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
+
             "scripts": []
           },
           "configurations": {
@@ -34,6 +35,23 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            },
+            "development": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
                 }
               ],
               "optimization": true,
@@ -56,6 +74,9 @@
           "configurations": {
             "production": {
               "browserTarget": "LokalPlannerFrontEnd:build:production"
+            },
+            "development": {
+              "browserTarget": "LokalPlannerFrontEnd:build:development"
             }
           }
         },
@@ -73,12 +94,15 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
+
+
               "src/styles.css"
             ],
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/swf"
             ]
           }
         },
@@ -109,6 +133,9 @@
           "configurations": {
             "production": {
               "devServerTarget": "LokalPlannerFrontEnd:serve:production"
+            },
+            "development": {
+              "devServerTarget": "LokalPlannerFrontEnd:serve:development"
             }
           }
         },
@@ -124,5 +151,10 @@
       }
     }
   },
-  "defaultProject": "LokalPlannerFrontEnd"
+  "defaultProject": "LokalPlannerFrontEnd",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

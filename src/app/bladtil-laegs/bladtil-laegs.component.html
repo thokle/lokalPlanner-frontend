@@ -1,0 +1,11 @@
+<section style="width: 100%; width: 100%; margin-top: 20px;">
+  <div style="margin-left: 30px !important;">
+    <button mat-raised-button (click)="CreateBladTillaegs()">Opret Nyt Tillæg</button><button mat-raised-button (click)="CreatBladTillaegsType()">Opret Ny Tillaegs Type</button>
+  </div>
+  <div style="margin-left: 40px !important;">
+    <table>
+      <tr><th>Tillægs type</th><th>Pris</th></tr>
+      <tr *ngFor="let b of bladtillags"><td>{{b.type}}</td><td>{{b.pris}}</td></tr>
+    </table>
+  </div>
+</section>

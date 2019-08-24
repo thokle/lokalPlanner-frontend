@@ -1,32 +1,50 @@
-<div >
+<div  style="width: 80%; height: 80%; margin-right: 10%; margin-left: 10%; margin-top: 10%;margin-bottom: 10% ">
   <form [formGroup]="userForm" class="example-form" (ngSubmit)="createUser()">
     <mat-form-field class="example-full-width">
-    <label for="firstname" >Fornavn</label>
       <input id="firstname" type="text" matInput formControlName="firstname">
+      <mat-label>Foravn</mat-label>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <label for="lastname">Efternavn</label>
       <input id="lastname" matInput type="text"  formControlName="lastname">
+      <mat-label>Efternavn</mat-label>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input id="middlename" type="text" formControlName="middlename" matInput>
+      <mat-label>Mellemnavn</mat-label>
     </mat-form-field>
     <mat-form-field>
-      <label >Job funktion</label>
-      <mat-select id="jobfunction" formControlName="jobfunction"><mat-option value="1">1</mat-option></mat-select>
+
+      <mat-select id="jobfunction"  formControlName="jobfunction"  [(ngModel)]="jobFunction">
+        <mat-option value="Sælger">Sælger</mat-option>
+        <mat-option value="Support">Support</mat-option>
+        <mat-option value="Adminstration">Adminstration</mat-option>
+      </mat-select>
+
+      <mat-label>Vælg jobfunktion</mat-label>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <label for="username">Bruger Navn</label>
-      <input id="username" matInput type="text" formControlName="username" maxlength="10">
+
+      <input id="username" matInput type="text" formControlName="username" maxlength="50"   >
+      <mat-label>Brugernavn</mat-label>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <label for="email">E-mail </label>
+
       <input id="email" matInput type="email" formControlName="email">
+      <mat-label>E-Mail</mat-label>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <label for="password">Password</label>
+
       <input id="password" matInput type="password" formControlName="password">
+      <mat-label>Password</mat-label>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <label for="repassword">Gentag Password</label>
+
       <input id="repassword" matInput type="password"  formControlName="repassword">
+      <mat-label>Gentag password</mat-label>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+    <input type="color" value="red" formControlName="color"  matInput  [(ngModel)] ="color" >
+      <mat-label>Vælg face</mat-label>
     </mat-form-field>
     <button type="submit"  mat-flat-button>Opret</button>
   </form>

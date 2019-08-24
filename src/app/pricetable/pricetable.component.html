@@ -1,0 +1,64 @@
+<div  style="margin-left: 5% !important; background-color: white; padding-bottom: 50px !important; padding-top: 20px !important; overflow-y: auto !important;">
+
+
+<table>
+  <tr><th>Position</th><th colspan="3">Format</th><th colspan="2">Mm. Pris</th><th colspan="6">Farvetillæg</th></tr>
+<tr  *ngFor="let p of prisList" >
+<td>{{p.Betegnelse1}}</td>
+  <td >
+    <label>Fra</label>
+    <input  style="width: 30px; padding: 0px;"   id="formatfra" type="text" value="{{p.FormatFra1}}"></td>
+  <td>
+    <label>Til</label>
+    <input  style="width: 30px; padding: 0px;"  value="{{p.FormatTil1}}"  ></td>
+
+
+  <td>  <label>mmPris</label><input   style="width: 30px; padding: 0px;"  type="text" value="{{p.MmPris}}"></td>
+  <td><label>1 farve</label><input  style="width: 30px; padding: 0px;"  value="{{p.FarvePris1}}" type="text"></td>
+  <td><label>min,</label><input   style="width: 30px; padding: 0px;"  value="{{p.FarveMin1}}" type="text"></td>
+  <td><label>max</label><input   style="width: 30px; padding: 0px;"  value="{{p.FarveMax1}}" type="text"></td>
+  <td><label>4 farver</label><input  style="width: 30px; padding: 0px;"  value="{{p.Farve4Pris1}}" type="text"></td>
+  <td><label>min.</label><input   style="width: 30px; padding: 0px;" value="{{p.Farve4Min1}}" type="text"></td>
+  <td><label>max.</label><input  style="width: 30px; padding: 0px;" value="{{p.Farve4Max1}}" type="text"></td>
+<td> <button mat-icon-button (click)="delete(p)" matTooltip="Klik for at slette pris" ><mat-icon>delete</mat-icon></button> </td>
+</tr>
+  <tr *ngFor="let i of listtoSave">
+    <div *ngIf="hasPlacering"  style="width: 100%; height: 100%;">
+    <td >{{betegenlse}}</td>
+    </div>
+    <div *ngIf="!hasPlacering"  style="width: 100%; height: 100%;">
+      <td><button mat-raised-button (click)="vaelgPlacering()" color="primary">Vælg Placering</button></td>
+    </div>
+    <td >
+      <label>Fra</label>
+      <input  id="fra" type="text" style="width: 30px; padding: 0px;"  (focusout)="addtoMap($event, 'fra')" ></td>
+    <td>
+      <label>Til</label>
+      <input id="til" type="text " style="width: 30px; padding: 0px" (focusout)="addtoMap($event,'til')" ></td>
+
+
+    <td><label>mmPris</label><input id="mmPris" type="text" style="width: 30px; padding: 0px" (focusout)="addtoMap($event, 'mmPris')"></td>
+    <td><label>1 farve</label><input id="1farve" style="width: 30px;" type="text" (focusout)="addtoMap($event, '1farve')"></td>
+    <td><label>min</label><input id="1min" style="width: 30px;" type="text" (focusout)="addtoMap($event, '1min')"></td>
+    <td><label>max</label><input id="1max" style="width: 30px;" type="text" (focusout)="addtoMap($event, '1max')"></td>
+    <td><label>4 farver</label><input id="4farve"style="width: 30px;" type="text" (focusout)="addtoMap($event, '4farve')"></td>
+    <td><label>min</label><input id="4min"style="width: 30px;" type="text" (focusout)="addtoMap($event, '4min')"></td>
+    <td ><label>max</label><input id="4max" style="width: 30px;" type="text" (focusout)="addtoMap($event, '4max')" ></td><td><button mat-icon-button (click)="addRow(i-1)"><mat-icon>add</mat-icon></button></td>
+
+  </tr>
+
+
+</table>
+</div>
+<!--  ;
+
+  Farve4Min1;
+  Farve4Pris1;
+  FarveMax1;
+  FarveMin1;
+  FarvePris1;
+  FormatFra1;
+  FormatTil1;
+  PlaceringID1;
+  PrislisteID1;
+  Farve4Max1;-->
