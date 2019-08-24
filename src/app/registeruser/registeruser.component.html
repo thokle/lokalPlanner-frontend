@@ -1,0 +1,33 @@
+<div >
+  <form [formGroup]="userForm" class="example-form" (ngSubmit)="createUser()">
+    <mat-form-field class="example-full-width">
+    <label for="firstname" >Fornavn</label>
+      <input id="firstname" type="text" matInput formControlName="firstname">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <label for="lastname">Efternavn</label>
+      <input id="lastname" matInput type="text"  formControlName="lastname">
+    </mat-form-field>
+    <mat-form-field>
+      <label >Job funktion</label>
+      <mat-select id="jobfunction" formControlName="jobfunction"><mat-option value="1">1</mat-option></mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <label for="username">Bruger Navn</label>
+      <input id="username" matInput type="text" formControlName="username" maxlength="10">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <label for="email">E-mail </label>
+      <input id="email" matInput type="email" formControlName="email">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <label for="password">Password</label>
+      <input id="password" matInput type="password" formControlName="password">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <label for="repassword">Gentag Password</label>
+      <input id="repassword" matInput type="password"  formControlName="repassword">
+    </mat-form-field>
+    <button type="submit"  mat-flat-button>Opret</button>
+  </form>
+</div>

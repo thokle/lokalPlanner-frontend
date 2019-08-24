@@ -1,0 +1,14 @@
+<div>
+  <form [formGroup]="logninForm" (submit)="login()">
+    <mat-form-field>
+      <label for="username">Brugernavn</label>
+      <input formControlName="username"  id="username" type="text" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <label for="password">Password</label>
+      <input formControlName="password" id="password"  type="password" matInput>
+    </mat-form-field>
+    <button mat-raised-button type="submit">Login</button>
+  </form>
+
+</div>
