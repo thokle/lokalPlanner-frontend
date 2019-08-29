@@ -259,38 +259,38 @@ this.isOpretVisable = true;
     this.grid.data.forEach(value => {
       console.log('grid data');
      const mpl: MedieplanLinjer = {
-       Bemaerkning: '',
-       BureauOrdreNr: '',
-       ErWeekendGruppe: false,
-       FarveMax: 0,
-       FarveMin: 0,
-       FarvePris: 0,
-       FarveRabat: 0,
-       FarveTillaeg: 0,
-       FarveTotal: 0,
-       MaaGiveMaterialeGodtgoerelse: false,
-       MaaGiveMmRabat: false,
-       ManueltAendret: false,
-       MaterialeGodtgoerelsePris: 0,
+       Bemaerkning: value.bemækningtilAvis ,
+       BureauOrdreNr: value.BureauOrdreNr,
+       ErWeekendGruppe: value.ErWeekendGruppe,
+       FarveMax: value.FarveMax,
+       FarveMin: value.FarveMin,
+       FarvePris: value.FarvePris,
+       FarveRabat: value.FarveRabat,
+       FarveTillaeg: value.FarveTillaeg,
+       FarveTotal: value.FarveTotal,
+       MaaGiveMaterialeGodtgoerelse: value.MaaGiveMaterialeGodtgoerelse,
+       MaaGiveMmRabat: value.MaaGiveMmRabat,
+       ManueltAendret: value.ManueltAendret,
+       MaterialeGodtgoerelsePris: value.MaterialeGodtgoerelsePris,
        MaterialeNr:  this.mediePlaId.toString(),
-       MedIGrupper: '',
+       MedIGrupper: value.MedIGrupper,
        MedieplanNr: this.mediePlaId,
-       MiljoeTillaeg: 0,
-       Mm: 0,
-       MmPris: 0,
-       MmRabat: 0,
-       MmTotal: 0,
-       NormalMmPris: 0,
-       PrisLaast: false,
-       RabatGruppe: '',
-       SendeGruppe: '',
-       SkalGiveMaterialeGodtgoerelse: false,
-       Total: 0,
-       TotalInclTillaeg: 0,
-       TotalPris: 0,
+       MiljoeTillaeg: value.MiljoeTillaeg,
+       Mm: value.Mm,
+       MmPris: value.MmPris,
+       MmRabat: value.MmRabat,
+       MmTotal: value.MmTotal,
+       NormalMmPris: value.NormalMmPris,
+       PrisLaast: value.PrisLaast,
+       RabatGruppe: value.RabatGruppe,
+       SendeGruppe: value.SendeGruppe,
+       SkalGiveMaterialeGodtgoerelse: value.SkalGiveMaterialeGodtgoerelse,
+       Total: value.Total,
+       TotalInclTillaeg: value.TotalInclTillaeg,
+       TotalPris: value.TotalPris,
        UgeavisID: value.BladID,
        Version: 1,
-       WebtillaegFaktureresHer: false
+       WebtillaegFaktureresHer: value.WebtillaegFaktureresHer
 
      };
 
@@ -454,7 +454,8 @@ if (index > -1 ) {
        type: 'number'
      });
 
-     this.columns.push({field: 'mmRabat', header: 'mmRabat', moveable: true, type: 'number', groupable: false, ediable: true, hasSummery: true});
+     this.columns.push({field: 'mmRabat', header: 'mmRabat', moveable: true, type: 'number',
+       groupable: false, ediable: true, hasSummery: true});
    }
  }
   openSendTilBookingDialog() {
