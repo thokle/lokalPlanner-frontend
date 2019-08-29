@@ -15,6 +15,7 @@ import {RabatComponent} from './rabat/rabat.component';
 import {FindMedieplanComponent} from './find-medieplan/find-medieplan.component';
 import {MedieplanComponent} from './medieplan/medieplan.component';
 import {FindMedieplanToolbarComponent} from './find-medieplan-toolbar/find-medieplan-toolbar.component';
+import {MedieplanToolbarComponent} from './medieplan-toolbar/medieplan-toolbar.component';
 
 export const routes: Routes = [
   {path: '', component: RedirectComponent},
@@ -26,7 +27,7 @@ export const routes: Routes = [
       {path: 'rabat',  component: RabatComponent},
       {path: 'opret_medieplan', component: MedieplanComponent },
       {path: 'find_medieplan' , component: FindMedieplanToolbarComponent},
-      {path: 'fundet_mediePlan/:medieplanId', component: MedieplanComponent}
+      {path: 'fundet_mediePlan/:medieplanId', component: MedieplanToolbarComponent}
     ]},
   {path: 'opret', component: RegisteruserComponent},
   {path: 'stamblad', component: StamBladComponent}

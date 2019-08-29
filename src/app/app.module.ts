@@ -115,6 +115,9 @@ import { MedieplanComponent } from './medieplan/medieplan.component';
 import { GemMedieplanDialogComponent } from './gem-medieplan-dialog/gem-medieplan-dialog.component';
 import { TilBookingDialogComponent } from './til-booking-dialog/til-booking-dialog.component';
 import { DeakningKortDialogComponent } from './deakning-kort-dialog/deakning-kort-dialog.component';
+import {DPKuloerService} from './services/dpkuloer.service';
+import {MediePlanNrService} from './services/medie-plan-nr.service';
+import { CompetitonCoverageComponent } from './competiton-coverage/competiton-coverage.component';
 
 
 @NgModule({
@@ -211,7 +214,10 @@ import { DeakningKortDialogComponent } from './deakning-kort-dialog/deakning-kor
     TilBookingDialogComponent,
 
 
-    DeakningKortDialogComponent
+    DeakningKortDialogComponent,
+
+
+    CompetitonCoverageComponent
 
   ],
   imports: [
@@ -262,11 +268,11 @@ import { DeakningKortDialogComponent } from './deakning-kort-dialog/deakning-kor
     BureauService, ArrayUtilService,
     AnnonceService,
     UdsendingkontakterService, UdsendingKontaktTyperService, KontaktTitlerService, MediePlanAvisService, MovePaperService,
-    IgxExcelExporterService],
+    IgxExcelExporterService, DPKuloerService, MediePlanNrService],
   entryComponents: [StambladkontaktDialogComponent, PriceAskingDialogComponent, EditBladdaekningComponent, PriceDialogComponent,
     UdsendingkontakterDialogComponent, PriceWeeTypeDialogComponent, BladtilLaegstypeComponent, BladtilLaegsDialogComponent,
     PlaceringdialogComponent, BladkommentarComponent, PriceListPositionDialogComponent, AktiveaviserColumnDialogComponent,
-    GemMedieplanDialogComponent, DeakningKortDialogComponent
+    GemMedieplanDialogComponent, DeakningKortDialogComponent, TilBookingDialogComponent
   ],
 
   bootstrap: [AppComponent]

@@ -28,9 +28,9 @@ export class MediePlanService {
     return this.http.get<any[]>(url).pipe();
   }
 
-  public getLatestMediePlanId(): Observable<any[]> {
+  public getLatestMediePlanId(): Observable<any> {
     const url = this.baseUrl + '/mediePlan/getlatestId/';
     console.log(url);
-    return this.http.get<any[]>(url).pipe();
+    return this.http.get<any>(url).pipe();
 }
 }

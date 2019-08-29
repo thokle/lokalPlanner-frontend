@@ -5,8 +5,8 @@
 <label>Beskrivelse</label><input type="text">
   </div>
   <div class="row">
-    <mat-radio-group formControlName="type"><mat-radio-button color="warn">Annonce</mat-radio-button><mat-radio-button color="primary">Bureau</mat-radio-button></mat-radio-group>
+    <mat-radio-group formControlName="type"><mat-radio-button value="1">Annonce</mat-radio-button><mat-radio-button value="2">Bureau</mat-radio-button></mat-radio-group>
   </div>
-  <div class="row"><button class="btn-success" (click)="gem()">GEM</button></div>
+  <div class="row"  style="float: left"><button class="btn" (click)="gem()">GEM</button></div>
 </div>
 </form>

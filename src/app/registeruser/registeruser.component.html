@@ -33,7 +33,9 @@
       <mat-label>E-Mail</mat-label>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-
+      <mat-form-field class="example-full-width">
+        <input type="text" formControlName="konsulentkode">
+      </mat-form-field>
       <input id="password" matInput type="password" formControlName="password">
       <mat-label>Password</mat-label>
     </mat-form-field>
@@ -46,6 +48,7 @@
     <input type="color" value="red" formControlName="color"  matInput  [(ngModel)] ="color" >
       <mat-label>Vælg face</mat-label>
     </mat-form-field>
+
     <button type="submit"  mat-flat-button>Opret</button>
   </form>
 </div>

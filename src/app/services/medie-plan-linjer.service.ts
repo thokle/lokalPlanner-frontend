@@ -13,8 +13,8 @@ export class MediePlanLinjerService {
   baseUrl  = environment.url + environment.port;
   constructor(private http:  HttpClient) { }
 
-  CreateMediePlanLinje(mpl: MedieplanLinjer): Observable<any[]> {
-    const url = this.baseUrl + '//';
+  CreateMediePlanLinje(mpl: MedieplanLinjer[], numofRecords: number, i: number): Observable<any[]> {
+    const url = this.baseUrl + '/mediePlanlinjer/create/' + numofRecords + '/'  + i;
     return  this.http.post<any[]>(url, mpl, {}).pipe();
   }
 }

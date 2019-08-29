@@ -5,4 +5,6 @@ export interface IgxColumn {
   type?;
   ediable?;
   groupable?;
+  hasSummery?;
+  moveable?;
 }

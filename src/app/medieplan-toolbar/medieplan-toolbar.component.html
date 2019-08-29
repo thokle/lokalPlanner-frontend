@@ -1,5 +1,5 @@
 <div class="container-fluid" style="margin-bottom: 10px; height: 90%">
-  <div class="row">{{mediePlaId}}</div>
+  <div class="row" ><label style="margin-left: 5px;">Nyt Medieplan Nr</label>{{mediePlaId}}</div>
   <div class="row">
     <form [formGroup]="form">
     <div class="col-lg-4">
@@ -21,11 +21,18 @@
   <input type="text" style="width: 20px;" formControlName="format1" > x <input type="text" style="width: 20px;" format2>
 </div>
       <div class="row">
-        <mat-radio-group style="margin-left: 5% !important;" >
-          <mat-radio-button labelPosition="before" formControlName="farve_sh" value="1">S/H</mat-radio-button>
-          <mat-radio-button labelPosition="before" formControlName="farve_1" value="2">1 Farve</mat-radio-button>
-          <mat-radio-button  labelPosition="before" formControlName="farve_4" checked="true" color="3"> 4 Fave</mat-radio-button>
+      <div style="float: left; margin-left: 10px;">
+        <mat-radio-group formControlName="farver">
+          <mat-radio-button labelPosition="before" value="0" (click)="skujlOpret1Kuloer()">S/H</mat-radio-button>
+          <mat-radio-button labelPosition="before" value="1" (click)="visOneKuloer()">1 Farve</mat-radio-button>
+          <div *ngIf="erDetKuloer1">
+            <mat-form-field class="no-line field">
+              <select matNativeControl formControlName="dpklouer" ><option *ngFor="let k of kuloer" value="{{k.DPKuloerId}}">{{k.kuloer}}</option></select>
+            </mat-form-field>
+          </div>
+          <mat-radio-button  labelPosition="before" (click)="vis4Farve()" value="4"> 4 Fave</mat-radio-button>
         </mat-radio-group>
+      </div>
       </div>
       <div class="row">
         <label style="margin-left: 5%; margin-right: 3%;"><strong>Placering</strong></label>
@@ -51,7 +58,11 @@
       <div class="row">
         <label   style="margin-left: 5%; margin-right: 3%; margin-top: 4%;">Bemærkning</label><textarea formControlName="bemaerkning" matNativeControl style="background-color: white"></textarea>
       </div>
-
+<div class="row">
+  <mat-radio-group formControlName="sammeForskelligt">
+    <mat-radio-button value="samme" >Samme</mat-radio-button><mat-radio-button value="forskelligt">Forskelligt</mat-radio-button>
+  </mat-radio-group>
+</div>
     </div>
     <div class="col-lg-4">
 
@@ -66,13 +77,26 @@
 <div class="col-lg-offset-0">
   <div class="row">  <button igxButton="raised" (click)="exportButtonHandler()" class="btn-primary">Export Grid to Excel</button></div>
 </div>
-
+<div   [style.visibility]="isOpretVisable ? 'visible' : 'hidden'" >
   <igx-grid #grid [showToolbar]="true"  [data]="ObsPaper | async" (onCellEdit)="totalSum()"
             [columnHiding]="true" toolbarTitle="Aviser" >
-            [columnHiding]="true" toolbarTitle="Aviser" >
-  <igx-column *ngFor="let c of columns" [header]="c.header" [field]="c.field" [editable]="c.ediable" [groupable]="c.groupable" [hidden]="c.hidden"> </igx-column>
+
+  <igx-column *ngFor="let c of columns" [header]="c.header" [field]="c.field" [editable]="c.ediable" [groupable]="c.groupable" [hidden]="c.hidden" [hasSummary]="c.hasSummery" [dataType]="c.type" [movable]="c.moveable" >
+    <ng-template igxCell let-cell="cell" let-val let-row>
+      {{val}}
+    </ng-template>
+    <ng-template igxHeader let-col>
+      <div class="text">{{col.field}}</div>
+
+    </ng-template>
+  </igx-column>
   </igx-grid>
-  <div><div class="col-lg-2"></div><div class="col-lg-2"></div><div class="col-lg-2"></div><div class="col-lg-2"></div><div class="col-lg-2"><button class="btn" (click)="openDaekningsKortDialog()">Dæknings kort</button><div><button class="btn-success" (click)="opretMediePlan()">Gem</button></div></div></div>
+</div>
+  <div  [style.visibility]="isMiddleDivVisible ? 'visible' : 'hidden'">
+    <label>VIS PLANER</label>
+    <igx-grid #grid2 autoGenerate="true" [data]="data | async" height="600px"></igx-grid>
+  </div>
+  <div><div class="col-lg-2"></div><div class="col-lg-2"></div><div class="col-lg-2"></div><div class="col-lg-2"></div><div class="col-lg-2" style="float: left"><button class="btn"(click)="openSendTilBookingDialog()">Booking</button><button class="btn" (click)="openDaekningsKortDialog()">Dæknings kort</button><button class="btn" (click)="opretMediePlan()">Gem</button></div>
   <!--
   "Adresse": "Østergade 19                  ",
     "Adresse2": "",
@@ -156,5 +180,5 @@
   -->
 <div class="row"></div>
 </div>
-
+</div>
 

@@ -1,4 +1,5 @@
-export  interface  x {
+export  interface  PostNrSoegning {
   BrugerNavn: string;
   PostNr: string;
+  Husstande: string;
 }

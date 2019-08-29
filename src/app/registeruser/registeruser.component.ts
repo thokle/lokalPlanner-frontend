@@ -24,7 +24,8 @@ export class RegisteruserComponent implements OnInit {
       repassword : [],
       title: [],
       color: [],
-      middlename: []
+      middlename: [],
+      konsulentKode: []
     });
   }
 
@@ -41,7 +42,8 @@ export class RegisteruserComponent implements OnInit {
     lastname: this.userForm.controls.lastname.value,
     jobfunction: this.jobFunction,
     color: this.userForm.controls.color.value,
-    middlename: this.userForm.controls.middlename.value
+    middlename: this.userForm.controls.middlename.value,
+      konsulentKode: this.userForm.controls.konsulentKode.value
   };
     this.rs.creteUser(user).subscribe( value => {
 

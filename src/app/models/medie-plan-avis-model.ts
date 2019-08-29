@@ -81,5 +81,6 @@ export interface MediePlanAvisModel {
   PrislisteNavn: string;
 mmTotal;
 totalPris;
+  ErWeekendGruppe: boolean;
   webtillages: [];
 }
